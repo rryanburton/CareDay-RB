@@ -19,5 +19,8 @@ from careapp.views import index
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    # url(r'^kids$', ListChildView.as_view(), name='children-list',),
+    # url(r'^new$', CreateChildView.as_view(), name='child-new',),
     url(r'^$', index, name='index'),
+
 ]
