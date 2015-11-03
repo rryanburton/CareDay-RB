@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 # from django.contrib.auth.models import User
 # Create your models here.
 
@@ -22,6 +23,9 @@ class Child(models.Model):
     parent_email = models.EmailField(max_length=254)
     parent_phone = models.CharField(max_length=12)
 
+    def __str__(self):
+        return ("{}".format(self.first_name))
+
 
 class DailyReport(models.Model):
     HAPPY = 'HA'
@@ -36,7 +40,7 @@ class DailyReport(models.Model):
         (VERY_FUSSY, 'Very Fussy'),
         (NOT_WELL, 'Not Well'),
     )
-    date = models.DateField(default=timezone.now())   # default = Year-Mo-Day
+    date = models.DateField(default=timezone.now)   # default = Year-Mo-Day
     child = models.ForeignKey(Child)   # Assume '_id' will be added to 'child'
     arrival_time = models.TimeField()
     departure_time = models.TimeField()
@@ -47,5 +51,5 @@ class DailyReport(models.Model):
                                choices=MOOD_CHOICE,
                                default=HAPPY)
 
-    # def __str__(self):
-    #     return ("Name: {}, Date: {}".format(Child.name, date))
+    def __str__(self):
+        return ("Name: {}, Date: {}".format(self.Child.name, self.date))
