@@ -4,7 +4,7 @@ from django.views.generic import CreateView, ListView
 from django.shortcuts import render, redirect
 from datetime import datetime
 from .models import Child, DailyReport
-from .forms import ChildForm, DailyInitialForm, DailyEndingForm
+from .forms import ChildForm, DailyReportForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -47,32 +47,32 @@ def add_child(request):
                   {'form': form})
 
 
-class DailyInitialCreateView(CreateView):
+class DailyReportCreateView(CreateView):
 
     model = DailyReport
-    template_name = 'careapp/daily_report_initial.html'
+    template_name = 'careapp/daily_report.html'
     fields = ('date', 'child', 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
 
 # @login_required
-    def daily_initial(request):
+    def daily_report(request):
         '''
-        opens the initial part of the Daily sign-in form.
+        Opens the Daily sign-in form.
         '''
         if request.method == 'POST':
-            form = DailyInitialForm(request.POST)
+            form = DailyReportForm(request.POST)
             if form.is_valid():
                 form.save()
-            return redirect('daily-report-initial')
+            return redirect('daily-report')
         else:
-            form = DailyInitialCreateView()
-        return render(request, 'daily_report_initial.html',
+            form = DailyReportCreateView()
+        return render(request, 'daily_report.html',
                       {'form': form})
 
 
     def get_success_url(self):
-        return reverse('children-list')
+        return reverse('daily-report')
 
 
 

@@ -15,15 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from careapp.views import index, ChildListView, ChildCreateView, DailyInitialCreateView
+from careapp.views import index, ChildListView, ChildCreateView, DailyReportCreateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^kids$', ChildListView.as_view(), name='children-list',),
     url(r'^new$', ChildCreateView.as_view(), name='child-new',),
-    url(r'^dailyinitial$', DailyInitialCreateView.as_view(),
-        name='daily-report-initial',),
-    # url(r'^dailyending$', DailyEndingCreateView.as_view(),
-    #     name='daily-report-ending',),
+    url(r'^dailyintake$', DailyReportCreateView.as_view(),
+        name='daily-report',),
     url(r'^$', index, name='index'),
 ]

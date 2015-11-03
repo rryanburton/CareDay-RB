@@ -18,15 +18,7 @@ class ChildForm(ModelForm):
 #         fields = ('title','comment')
 
 
-class DailyInitialForm(ModelForm):
-
-    class Meta:
-        model = DailyReport
-        fields = ('date', 'child', 'arrival_time', 'departure_time',
-                  'mood_am', 'mood_pm')
-
-
-class DailyEndingForm(ModelForm):
+class DailyReportForm(ModelForm):
 
     class Meta:
         model = DailyReport
