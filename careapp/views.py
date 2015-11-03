@@ -4,7 +4,7 @@ from django.views.generic import CreateView, ListView
 from django.shortcuts import render, redirect
 from datetime import datetime
 from .models import Child, DailyReport
-from .forms import ChildForm, DailyReportForm
+from .forms import ChildForm, DailyInitialForm, DailyEndingForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -17,13 +17,13 @@ def index(request):
     return HttpResponse(html)
 
 
-class ListChildView(ListView):
+class ChildListView(ListView):
 
     model = Child
-    template_name = 'careapp/children_list.html'
+    template_name = 'careapp/childs_list.html'
 
 
-class CreateChildView(CreateView):
+class ChildCreateView(CreateView):
 
     model = Child
     template_name = 'careapp/edit_child.html'
@@ -45,3 +45,48 @@ def add_child(request):
         form = ChildForm()
     return render(request, 'edit_child.html',
                   {'form': form})
+
+
+class DailyInitialCreateView(CreateView):
+
+    model = DailyReport
+    template_name = 'careapp/daily_report_initial.html'
+    fields = ('date', 'child', 'arrival_time',
+              'departure_time', 'mood_am', 'mood_pm')
+
+
+# @login_required
+    def daily_initial(request):
+        '''
+        opens the initial part of the Daily sign-in form.
+        '''
+        if request.method == 'POST':
+            form = DailyInitialForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('daily-report-initial')
+        else:
+            form = DailyInitialCreateView()
+        return render(request, 'daily_report_initial.html',
+                      {'form': form})
+
+
+    def get_success_url(self):
+        return reverse('children-list')
+
+
+
+# @login_required
+# def daily_ending(request):
+#     '''
+#     opens the end-of-day part of the Daily sign-in form.
+#     '''
+#     if request.method == 'POST':
+#         form = DailyEndingForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#         return redirect('daily-report-ending')
+#     else:
+#         form = DailyEndingCreateView()
+#     return render(request, 'daily_report_ending.html',
+#                   {'form': form})
