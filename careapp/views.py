@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, ListView
 from django.shortcuts import render, redirect
 from datetime import datetime
-from .models import Child
-from .forms import ChildForm
+from .models import Child, DailyReport
+from .forms import ChildForm, DailyReportForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
