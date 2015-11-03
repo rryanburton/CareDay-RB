@@ -10,8 +10,8 @@ class Child(models.Model):
     BOY = 'B'
     GIRL = 'G'
     GENDER_CHOICES = (
-        (BOY, 'B'),
-        (GIRL, 'G'),
+        (BOY, 'Boy'),
+        (GIRL, 'Girl'),
     )
     gender = models.CharField(max_length=1,
                               choices=GENDER_CHOICES,
