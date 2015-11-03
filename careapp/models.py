@@ -52,4 +52,4 @@ class DailyReport(models.Model):
                                default=HAPPY)
 
     def __str__(self):
-        return ("Name: {}, Date: {}".format(self.Child.name, self.date))
+        return ("Name: {}, Date: {}".format(self.Child.first_name, self.date))
