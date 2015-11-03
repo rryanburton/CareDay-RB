@@ -22,6 +22,8 @@ class Child(models.Model):
     parent_email = models.EmailField(max_length=254)
     parent_phone = models.CharField(max_length=12)
 
+    def __str__(self):
+        return ("{}".format(self.first_name))
 
 class DailyReport(models.Model):
     HAPPY = 'HA'
@@ -36,7 +38,7 @@ class DailyReport(models.Model):
         (VERY_FUSSY, 'Very Fussy'),
         (NOT_WELL, 'Not Well'),
     )
-    date = models.DateField(default=timezone.now())   # default = Year-Mo-Day
+    date = models.DateField(default=timezone.now)   # default = Year-Mo-Day
     child = models.ForeignKey(Child)   # Assume '_id' will be added to 'child'
     arrival_time = models.TimeField()
     departure_time = models.TimeField()
