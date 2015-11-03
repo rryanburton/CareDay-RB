@@ -10,8 +10,8 @@ class Child(models.Model):
     BOY = 'B'
     GIRL = 'G'
     GENDER_CHOICES = (
-        (BOY, 'B'),
-        (GIRL, 'G'),
+        (BOY, 'Boy'),
+        (GIRL, 'Girl'),
     )
     gender = models.CharField(max_length=1,
                               choices=GENDER_CHOICES,
@@ -52,4 +52,4 @@ class DailyReport(models.Model):
                                default=HAPPY)
 
     def __str__(self):
-        return ("Name: {}, Date: {}".format(self.Child.first_name, self.date))
+        return ("Name: {}, Date: {}".format(self.child.first_name, self.date))
