@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 # from django.contrib.auth.models import User
 # Create your models here.
 
@@ -25,6 +26,7 @@ class Child(models.Model):
     def __str__(self):
         return ("{}".format(self.first_name))
 
+
 class DailyReport(models.Model):
     HAPPY = 'HA'
     FINE = 'FI'
@@ -49,5 +51,5 @@ class DailyReport(models.Model):
                                choices=MOOD_CHOICE,
                                default=HAPPY)
 
-    # def __str__(self):
-    #     return ("Name: {}, Date: {}".format(Child.name, date))
+    def __str__(self):
+        return ("Name: {}, Date: {}".format(self.Child.name, self.date))
