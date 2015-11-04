@@ -13,11 +13,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='child',
-            name='modified',
-            field=models.DateTimeField(default=datetime.datetime(2015, 11, 2, 22, 57, 50, 379529)),
-        ),
+
         migrations.AlterField(
             model_name='dailyreport',
             name='date',
