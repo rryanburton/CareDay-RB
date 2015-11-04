@@ -14,13 +14,14 @@
     <li><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</li>
     <li><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</li>
   </ul>
-  <button type="reset" class="btn btn-default">Cancel</button>
-  <input id="save_daily_report" type="submit" value="Save" />
+  <button type="reset" class="btn btn-default">CANCEL</button>
+  <button type="submit" class="btn btn-default">SAVE</button>
+  <!-- <input id="save_daily_report" type="submit" value="Save" /> -->
 </form>
 
 <a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
 <br>
-<a href="{% url 'children-list' %}">CHILD LIST</a>
+<a href="{% url 'childs-list' %}">CHILD LIST</a>
 <br>
 <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
 {% endblock %}
