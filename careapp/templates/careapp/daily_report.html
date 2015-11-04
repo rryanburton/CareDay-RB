@@ -2,7 +2,7 @@
 <form action="{% url "daily-report" %}" method="POST">
   {% csrf_token %}
   <ul>
-    <li><label for="id_date">Date:</label>{{form.date|date:"D d M Y"}}</li>
+    <li><label for="id_date">Date:</label>{{form.date}}</li>
     <li><label for="id_child">Child:</label>{{form.child}}</li>
     <li><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</li>
     <li><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</li>
