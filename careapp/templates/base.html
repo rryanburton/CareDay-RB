@@ -17,10 +17,20 @@
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+  <header class="main-header">
+      <h1>Careday</h1>
+      <nav>
+        <a href="#welcome">Home</a>
+        <a href="dailyintake">Arrival checkin</a>
+        <a href="#grid">The Kids</a>
+        <a href="#daily-report">Child detail</a>
+      </nav>
+  </header>
+  <main class="container">
   {% block content %}
   {% endblock %}
+  </main> <!-- end main.container -->
 <br>
-<footer>CareDay Team: Terry, Bob, Ryan</footer>
+<footer></footer>
 </body>
 </html>
