@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<section id="sub-header-daily">
 <h1 id="activities">Daily Activity Updates</h1>
 <form class="activities" action="{% url "daily-report" %}" method="POST">
   {% csrf_token %}
@@ -52,4 +53,99 @@
   <a href="{% url 'childs-list' %}">CHILD LIST</a>
   <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
 </nav>
+</section>
+<div class="daily-report">
+  <h2>Diapers</h2>
+  <form id="diaper" name="diaper-form" method="post">
+    <h3>Please select childs potty details</h3>
+      Time:<input type="time"/>
+      #1: <input type="checkbox" name="potty" value="number one"/>
+      #2: <input type="checkbox" name="potty" value="number two"/>
+      <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+      <input type="submit" value="Submit"/>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>#1</th>
+					<th>#2</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>9:45am</td>
+					<td>X</td>
+					<td>X</td>
+					<td>had issues</td>
+				</tr>
+        <tr>
+         <td>1:00pm</td>
+         <td></td>
+         <td>X</td>
+         <td>none</td>
+       </tr>
+			</tbody>
+ </table>
+</div>
+<div class="daily-report">
+  <h2>Sleeping</h2>
+  <form id="sleeping" name="diaper-form" method="post">
+    <h3>Nap time</h3>
+    Time:<input type="time"/>
+    slept: <input type="checkbox" name="slept" value="slept"/>
+    did not sleep: <input type="checkbox" name="did not sleep" value="no sleep"/><br/>
+    <p><textarea name="myTextArea" cols="40" rows="1">Duration of sleep</textarea></p><br/>
+    <input type="submit" value="Submit"/>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Yes</th>
+					<th>No</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1:00pm</td>
+					<td>X</td>
+					<td></td>
+					<td>2 hours</td>
+				</tr>
+      </tbody>
+ </table>
+</div>
+<div class="daily-report">
+  <h2>Eating</h2>
+  <form id="eating" name="eating" method="post">
+    <h3>Eating schedule</h3>
+    Time:<input type="time"/>
+    Type: <input type="text" name="type" value="type of food"/><br/>
+    Amount: <input type="text" name="amount" value="amount of food"/>
+    <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+    <p><input type="submit" value="Submit"/></p>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Amount</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1:00pm</td>
+					<td>bottle</td>
+					<td>2 oz</td>
+					<td>ate very well</td>
+				</tr>
+      </tbody>
+ </table>
+</div>
+<div class="daily-report"></div>
 {% endblock %}
