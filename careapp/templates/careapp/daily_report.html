@@ -1,10 +1,15 @@
- <h1>Daily Intake Form</h1>
-
+<h1>Daily Intake Form</h1>
 <form action="{% url "daily-report" %}" method="POST">
   {% csrf_token %}
   <ul>
-    {{ form.as_ul }}
+    <li><label for="id_date">Date:</label>{{form.date}}</li>
+    <li><label for="id_child">Child:</label>{{form.child}}</li>
+    <li><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</li>
+    <li><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</li>
+    <li><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</li>
+    <li><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</li>
   </ul>
+  <button type="reset" class="btn btn-default">Cancel</button>
   <input id="save_daily_report" type="submit" value="Save" />
 </form>
 
