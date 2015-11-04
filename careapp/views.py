@@ -18,7 +18,7 @@ def index(request):
     returns current time in html
     '''
     now = datetime.now()
-    html = "<html><body>Hello world. It is now {} local server time.</body></html>".format(
+    html = "<html><body>Welcome to CareDay! <br> The current time is: {} local server time.</body></html>".format(
         now)
     return HttpResponse(html)
 
@@ -56,11 +56,26 @@ class ChildCreateView(ChildActionMixin, CreateView):
 
 
 class ChildUpdateView(ChildActionMixin, UpdateView):
+    # form_class = ChildForm
     model = Child
     # fields = ('first_name', 'gender', 'birthday',
     #           'parent_name', 'parent_email', 'parent_phone')
-
+    template_name_suffix = '_update_form'
     success_msg = "Child updated!"
+
+    def get(self, request, **kwargs):
+        self.object = Child.objects.get(id=self.kwargs['id'])
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        context = self.get_context_data(object=self.object, form=form)
+        return self.render_to_response(context)
+
+    def get_object(self, queryset=None):
+        obj = Child.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def get_success_url(self):
+        return reverse('childs-list')
 
 
 class ChildDetailView(DetailView):
