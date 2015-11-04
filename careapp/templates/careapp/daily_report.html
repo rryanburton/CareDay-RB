@@ -1,26 +1,152 @@
 {% extends "base.html" %}
-{% load bootstrap3 %}
 {% block content %}
-{% bootstrap_javascript jquery=1 %}
-{% bootstrap_css %}
-<h1>Daily Intake Form</h1>
-<form action="{% url "daily-report" %}" method="POST">
+<section id="sub-header-daily">
+<h1 id="activities">Daily Activity Updates</h1>
+<form class="activities" action="{% url "daily-report" %}" method="POST">
   {% csrf_token %}
-  <ul>
-    <li><label for="id_date">Date:</label>{{form.date}}</li>
-    <li><label for="id_child">Child:</label>{{form.child}}</li>
-    <li><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</li>
-    <li><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</li>
-    <li><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</li>
-    <li><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</li>
+  <ul class="mood">
+    <li>
+      <label for="id_date">Date:</label>
+      <input id="id_date" name="date" type="date">
+    </li>
+    <li>
+      <label for="id_child">Child:</label>
+      <select id="id_child" name="child">
+      <option value="" selected="selected">---------</option>
+      <option value="1">Bobby</option>
+      <option value="2">Julie</option>
+      <option value="3">Terry</option>
+    </select>
+    </li>
+    <li>
+      <label for="id_arrival_time">Arrival time:</label>
+      <input type="time" id="id_arrival_time" name="arrival_time"/>
+    </li>
+    <li>
+      <label for="id_departure_time">Departure time:</label>
+      <input type="time" id="id_departure_time" name="departure_time"/></li><br/>
+    <li class="mood-am"><label for="id_mood_am">Mood am:</label>
+      <select id="id_mood_am" name="mood_am">
+      <option value="HA" selected="selected">Happy</option>
+      <option value="FI">Fine</option>
+      <option value="LF">A Little Fussy</option>
+      <option value="VF">Very Fussy</option>
+      <option value="NW">Not Well</option>
+      </select>
+    </li>
+    <li class="mood-pm">
+      <label for="id_mood_pm">Mood pm:</label>
+      <select id="id_mood_pm" name="mood_pm">
+      <option value="HA" selected="selected">Happy</option>
+      <option value="FI">Fine</option>
+      <option value="LF">A Little Fussy</option>
+      <option value="VF">Very Fussy</option>
+      <option value="NW">Not Well</option>
+      </select>
+    </li>
   </ul>
-  <button type="reset" class="btn btn-default">Cancel</button>
-  <input id="save_daily_report" type="submit" value="Save" />
-</form>
 
-<a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
-<br>
-<a href="{% url 'childs-list' %}">CHILD LIST</a>
-<br>
-<a href="{% url 'child-new' %}">NEW CHILD FORM</a>
+  <input id="save_daily_report" type="submit" value="Save"/>
+  <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
+</form>​
+<nav id="daily-report">
+  <a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
+  <a href="{% url 'childs-list' %}">CHILD LIST</a>
+  <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
+</nav>
+</section>
+<div class="daily-report">
+  <h2>Diapers</h2>
+  <form id="diaper" name="diaper-form" method="post">
+    <h3>Please select childs potty details</h3>
+      Time:<input type="time"/>
+      #1: <input type="checkbox" name="potty" value="number one"/>
+      #2: <input type="checkbox" name="potty" value="number two"/>
+      <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+      <input type="submit" value="Submit"/>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>#1</th>
+					<th>#2</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>9:45am</td>
+					<td>X</td>
+					<td>X</td>
+					<td>had issues</td>
+				</tr>
+        <tr>
+         <td>1:00pm</td>
+         <td></td>
+         <td>X</td>
+         <td>none</td>
+       </tr>
+			</tbody>
+ </table>
+</div>
+<div class="daily-report">
+  <h2>Sleeping</h2>
+  <form id="sleeping" name="diaper-form" method="post">
+    <h3>Nap time</h3>
+    Time:<input type="time"/>
+    slept: <input type="checkbox" name="slept" value="slept"/>
+    did not sleep: <input type="checkbox" name="did not sleep" value="no sleep"/><br/>
+    <p><textarea name="myTextArea" cols="40" rows="1">Duration of sleep</textarea></p><br/>
+    <input type="submit" value="Submit"/>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Yes</th>
+					<th>No</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1:00pm</td>
+					<td>X</td>
+					<td></td>
+					<td>2 hours</td>
+				</tr>
+      </tbody>
+ </table>
+</div>
+<div class="daily-report">
+  <h2>Eating</h2>
+  <form id="eating" name="eating" method="post">
+    <h3>Eating schedule</h3>
+    Time:<input type="time"/>
+    Type: <input type="text" name="type" value="type of food"/><br/>
+    Amount: <input type="text" name="amount" value="amount of food"/>
+    <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+    <p><input type="submit" value="Submit"/></p>
+  </form>
+  <table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Amount</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1:00pm</td>
+					<td>bottle</td>
+					<td>2 oz</td>
+					<td>ate very well</td>
+				</tr>
+      </tbody>
+ </table>
+</div>
+<div class="daily-report"></div>
 {% endblock %}
