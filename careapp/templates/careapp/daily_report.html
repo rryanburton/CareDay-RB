@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_css %}
 <h1>Daily Intake Form</h1>
 <form action="{% url "daily-report" %}" method="POST">
   {% csrf_token %}
@@ -18,3 +23,4 @@
 <a href="{% url 'children-list' %}">CHILD LIST</a>
 <br>
 <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
+{% endblock %}

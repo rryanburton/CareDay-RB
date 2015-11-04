@@ -1,0 +1,35 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_messages %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareDay</title>
+
+ <link rel="stylesheet" href="{% static 'style.css' %}"/>
+
+</head>
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="/path/to/jquery.js"></script> -->
+  <script type="text/javascript" src="/static/moment.js"></script>
+  <script type="text/javascript" src="/static/bootstrap/js/transition.js"></script>
+  <script type="text/javascript" src="/static/bootstrap/js/collapse.js"></script>
+  <script type="text/javascript" src="/static/bootstrap/dist/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/bootstrap-datetimepicker.min.js"></script>
+<!-- <style media="screen" type="text/css">
+ body { padding-top: 60px; padding-left: 10px}
+</style> -->
+
+  {% block content %}
+  {% endblock %}
+<br>
+<footer>CareDay Team: Terry, Bob, Ryan</footer>
+</body>
+</html>
