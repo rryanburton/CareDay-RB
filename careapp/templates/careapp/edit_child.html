@@ -1,29 +1,13 @@
-{# <h1>Add Child</h1>
-
+<h1>Add A Child</h1>
 <form action="{% url "child-new" %}" method="POST">
   {% csrf_token %}
   <ul>
-    {{ form.as_ul }}
+    <li><label for="id_first_name">First name:</label>{{ form.first_name }}</li>
+    <li><label for="id_gender">Gender:</label>{{form.gender}}</li>
+    <li><label for="id_parent_name">Parent name:</label>{{form.parent_name}}</li>
+    <li><label for="id_parent_email">Parent email:</label>{{form.parent_email}}</li>
+    <li><label for="id_parent_phone">Parent phone:</label>{{form.parent_phone}}</li>
   </ul>
   <input id="save_child" type="submit" value="Save" />
 </form>
-
-<a href="{% url "children-list" %}">back to list</a>#}
-
-{%extends 'base.html' %}
-{% load bootstrap3 %}
-{% block content %}
-<div class="well bs-component">
-<form method="POST" action="{% url 'child-new' %}" class="form-horizontal">
-<legend>Add A Child</legend>
-  {% csrf_token %}
-  {{form.as_p}}
-  <div class="form-group">
-        <div class="col-lg-10 col-lg-offset-2">
-  <button type="reset" class="btn btn-default">Cancel</button>
-  <button type="submit" class="btn btn-primary" value='submit new child'>Submit</button>
-</div>
-    </div>
-</div>
-</form>
-{% endblock %}
+<a href="{% url "childs-list" %}">back to list</a>
