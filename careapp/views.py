@@ -91,6 +91,10 @@ class DailyReportCreateView(CreateView):
     template_name = 'careapp/daily_report.html'
     fields = ('date', 'child', 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
+    # widgets = {
+    #            'arrival_time': DailyReportForm(format='%H:%M'),
+    #            'departure_time': DailyReportForm(format='%H:%M'),
+    #            }
 
 
 # @login_required

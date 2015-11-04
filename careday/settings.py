@@ -87,6 +87,7 @@ DATABASES = {
     }
 }
 
+# TIME_INPUT_FORMATS = ('%I:%M %p', )  # input to be controlled in bootstrap
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
