@@ -16,7 +16,7 @@
 <h1>Children</h1>
 <ul>
   {% for child in object_list %}
-  <li class="child">{{ child }} birthday: {{ child.birthday}}</li>
+  <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
   {% endfor %}
 </ul>
 <a href="{% url "child-new" %}">add child</a>
