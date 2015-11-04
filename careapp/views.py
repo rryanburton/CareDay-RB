@@ -135,4 +135,3 @@ class DailyReportUpdateView(DailyReportMixin, UpdateView):
 
 class DailyReportDetailView(DailyReportMixin, DetailView):
     model = DailyReport
-    

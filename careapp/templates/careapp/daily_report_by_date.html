@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+<h1>List of Daily Reports by Child</h1>
+<ul>
+  {% for child in object_list %}
+  <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
+  {% endfor %}
+</ul>
+<a href="{% url "child-new" %}">add child</a>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#}
+{% endblock %}

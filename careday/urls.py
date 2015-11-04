@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from careapp.views import index, ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child
+from careapp.views import index, ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView
+from careapp.views import add_child, DailyReportUpdateView, DailyReportDetailView
 
 
 urlpatterns = [
@@ -27,5 +28,7 @@ urlpatterns = [
     url(r'^dailyintake$', DailyReportCreateView.as_view(),
         name='daily-report',),
     url(r'^child/update/(?P<id>\d+)/$', ChildUpdateView.as_view(), name='child-update'),
+    url(r'^dailyintake/update/(?P<id>\d+)/$', DailyReportUpdateView.as_view(), name='daily-update'),
+    url(r'^dailyintake/detail/(?P<id>\d+)/$', DailyReportDetailView.as_view(), name='daily-detail'),
     url(r'^$', index, name='index'),
 ]
