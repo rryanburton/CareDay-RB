@@ -9,7 +9,6 @@ from django.contrib import messages
 from .models import Child, DailyReport
 from .forms import ChildForm, DailyReportForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
 
 
 # Create your views here.
@@ -18,7 +17,7 @@ def index(request):
     returns current time in html
     '''
     now = datetime.now()
-    html = "<html><body>Welcome to CareDay! <br> The current time is: {} local server time.</body></html>".format(
+    html = "<html><body>Hello world. It is now {} local server time.</body></html>".format(
         now)
     return HttpResponse(html)
 
@@ -56,26 +55,11 @@ class ChildCreateView(ChildActionMixin, CreateView):
 
 
 class ChildUpdateView(ChildActionMixin, UpdateView):
-    # form_class = ChildForm
     model = Child
     # fields = ('first_name', 'gender', 'birthday',
     #           'parent_name', 'parent_email', 'parent_phone')
-    template_name_suffix = '_update_form'
+
     success_msg = "Child updated!"
-
-    def get(self, request, **kwargs):
-        self.object = Child.objects.get(id=self.kwargs['id'])
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        context = self.get_context_data(object=self.object, form=form)
-        return self.render_to_response(context)
-
-    def get_object(self, queryset=None):
-        obj = Child.objects.get(id=self.kwargs['id'])
-        return obj
-
-    def get_success_url(self):
-        return reverse('childs-list')
 
 
 class ChildDetailView(DetailView):
@@ -100,17 +84,34 @@ def add_child(request):
                   {'form': form})
 
 
-class DailyReportCreateView(CreateView):
+# class DailyReportCreateView(CreateView):
+#
+#     model = DailyReport
+#     template_name = 'careapp/daily_report.html'
+#     fields = ('date', 'child', 'arrival_time',
+#               'departure_time', 'mood_am', 'mood_pm')
 
-    model = DailyReport
-    template_name = 'careapp/daily_report.html'
+
+class DailyReportMixin(object):
     fields = ('date', 'child', 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
+    @property
+    def success_msg(self):
+        return NotImplemented
 
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(DailyReportMixin, self).form_valid(form)
+
+class DailyReportCreateView(DailyReportMixin, CreateView):
+    model = DailyReport
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Initial Daily Report saved"
 
 # @login_required
     def daily_report(request):
         '''
+
         Opens the Daily sign-in form.
         '''
         if request.method == 'POST':
@@ -127,17 +128,10 @@ class DailyReportCreateView(CreateView):
         return reverse('daily-report')
 
 
-# @login_required
-# def daily_ending(request):
-#     '''
-#     opens the end-of-day part of the Daily sign-in form.
-#     '''
-#     if request.method == 'POST':
-#         form = DailyEndingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('daily-report-ending')
-#     else:
-#         form = DailyEndingCreateView()
-#     return render(request, 'daily_report_ending.html',
-#                   {'form': form})
+class DailyReportUpdateView(DailyReportMixin, UpdateView):
+    model = DailyReport
+    success_msg = "Daily Report Updated"
+
+
+class DailyReportDetailView(DailyReportMixin, DetailView):
+    model = DailyReport

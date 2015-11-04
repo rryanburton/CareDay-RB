@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_css %}
+<h1>Daily Intake Update Form</h1>
+<form action="{% url "daily-update" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    <li><label for="id_date">Date:</label>{{form.date}}</li>
+    <li><label for="id_child">Child:</label>{{form.child}}</li>
+    <li><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</li>
+    <li><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</li>
+    <li><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</li>
+    <li><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</li>
+  </ul>
+  <button type="reset" class="btn btn-default">Clear</button>
+  <button type="submit" class="btn btn-default">SAVE</button>
+  <!-- <input id="save_daily_report" type="submit" value="Save" /> -->
+</form>
+
+<a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
+<br>
+<a href="{% url 'childs-list' %}">CHILD LIST</a>
+<br>
+<a href="{% url 'child-new' %}">NEW CHILD FORM</a>
+{% endblock %}
