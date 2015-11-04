@@ -43,7 +43,7 @@ class DailyReport(models.Model):
     date = models.DateField(default=timezone.now)   # default = Year-Mo-Day
     child = models.ForeignKey(Child)   # Assume '_id' will be added to 'child'
     arrival_time = models.TimeField()
-    departure_time = models.TimeField()
+    departure_time = models.TimeField(null=True)
     mood_am = models.CharField(max_length=2,
                                choices=MOOD_CHOICE,
                                default=HAPPY)
