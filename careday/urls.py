@@ -15,13 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-<<<<<<< HEAD
-from careapp.views import index, ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView
-from careapp.views import add_child, DailyReportUpdateView, DailyReportDetailView
-=======
 from django.views.generic import TemplateView
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child
->>>>>>> 6119805f54932e9bfb6dcb22a945f4ef91aeb11c
+from careapp.views import DailyReportUpdateView, DailyReportDetailView
 
 
 urlpatterns = [
@@ -30,16 +26,14 @@ urlpatterns = [
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
     url(r'^dailyintake$', DailyReportCreateView.as_view(),
         name='daily-report',),
-<<<<<<< HEAD
-    url(r'^child/update/(?P<id>\d+)/$', ChildUpdateView.as_view(), name='child-update'),
+
     url(r'^dailyintake/update/(?P<id>\d+)/$', DailyReportUpdateView.as_view(), name='daily-update'),
     url(r'^dailyintake/detail/(?P<id>\d+)/$', DailyReportDetailView.as_view(), name='daily-detail'),
-    url(r'^$', index, name='index'),
-=======
+
     url(r'^child/update/(?P<id>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
     # url(r'^$', index, name='index'),
->>>>>>> 6119805f54932e9bfb6dcb22a945f4ef91aeb11c
+
 ]

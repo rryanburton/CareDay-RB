@@ -1,19 +1,26 @@
-from django import forms
+from django.forms import ModelForm
+from django.contrib.admin.widgets import AdminTimeWidget
+
 # from django.contrib.auth.models import User
 
 from .models import Child, DailyReport
 # Create the form class.
 
 
-class ChildForm(forms.ModelForm):
+class ChildForm(ModelForm):
 
     class Meta:
         model = Child
         fields = ('first_name', 'gender', 'birthday',
                   'parent_name', 'parent_email', 'parent_phone')
 
+# class EditBookmarkForm(ModelForm):
+#     class Meta:
+#         model = Bookmark
+#         fields = ('title','comment')
 
-class DailyReportForm(forms.ModelForm):
+
+class DailyReportForm(ModelForm):
 
     class Meta:
         model = DailyReport
