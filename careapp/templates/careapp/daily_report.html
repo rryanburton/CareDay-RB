@@ -1,0 +1,15 @@
+ <h1>Daily Intake Form</h1>
+
+<form action="{% url "daily-report" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input id="save_daily_report" type="submit" value="Save" />
+</form>
+
+<a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
+<br>
+<a href="{% url 'children-list' %}">CHILD LIST</a>
+<br>
+<a href="{% url 'child-new' %}">NEW CHILD FORM</a>

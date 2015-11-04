@@ -1,0 +1,11 @@
+ <h1>DailyReport-Initial Intake</h1>
+
+<form action="{% url "daily-report-initial" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input id="save_daily_report" type="submit" value="Save" />
+</form>
+
+<a href="{% url "daily-report-initial" %}">back to list</a>
