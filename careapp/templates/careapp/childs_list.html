@@ -1,12 +1,17 @@
-{% if messages %}
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+<!-- {% if messages %}
 <ul class="messages">
   {% for message in messages %}
-  <li id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-    {{ message }}
-  </li>
+  <p id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+   {{ message }}
+</p>
   {% endfor %}
 </ul>
-{% endif %}
+{% endif %} -->
 
 <h1>Children</h1>
 <ul>
@@ -17,3 +22,4 @@
 <a href="{% url "child-new" %}">add child</a>
 
 {# <a href="{% url "childs_new" %}">childs_new</a>#}
+{% endblock %}

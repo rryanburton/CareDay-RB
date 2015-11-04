@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'careapp',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
