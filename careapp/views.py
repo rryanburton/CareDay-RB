@@ -6,10 +6,9 @@ from datetime import datetime
 
 from django.contrib import messages
 
-from .models import Child, DailyReport
+from .models import Child, DailyReport, Diapering
 from .forms import ChildForm, DailyReportForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
 
 
 # Create your views here.
@@ -18,7 +17,7 @@ def index(request):
     returns current time in html
     '''
     now = datetime.now()
-    html = "<html><body>Welcome to CareDay! <br> The current time is: {} local server time.</body></html>".format(
+    html = "<html><body>Hello world. It is now {} local server time.</body></html>".format(
         now)
     return HttpResponse(html)
 
@@ -56,26 +55,11 @@ class ChildCreateView(ChildActionMixin, CreateView):
 
 
 class ChildUpdateView(ChildActionMixin, UpdateView):
-    # form_class = ChildForm
     model = Child
     # fields = ('first_name', 'gender', 'birthday',
     #           'parent_name', 'parent_email', 'parent_phone')
-    template_name_suffix = '_update_form'
+
     success_msg = "Child updated!"
-
-    def get(self, request, **kwargs):
-        self.object = Child.objects.get(id=self.kwargs['id'])
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        context = self.get_context_data(object=self.object, form=form)
-        return self.render_to_response(context)
-
-    def get_object(self, queryset=None):
-        obj = Child.objects.get(id=self.kwargs['id'])
-        return obj
-
-    def get_success_url(self):
-        return reverse('childs-list')
 
 
 class ChildDetailView(DetailView):
@@ -99,45 +83,110 @@ def add_child(request):
     return render(request, 'careapp/edit_child.html',
                   {'form': form})
 
+''' Daily Report Views  '''
+# class DailyReportCreateView(CreateView):
+#
+#     model = DailyReport
+#     template_name = 'careapp/daily_report.html'
+#     fields = ('date', 'child', 'arrival_time',
+#               'departure_time', 'mood_am', 'mood_pm')
 
-class DailyReportCreateView(CreateView):
 
-    model = DailyReport
-    template_name = 'careapp/daily_report.html'
+class DailyReportMixin(object):
     fields = ('date', 'child', 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(DailyReportMixin, self).form_valid(form)
+
+
+class DailyReportCreateView(DailyReportMixin, CreateView):
+    model = DailyReport
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Initial Daily Report saved"
 
 # @login_required
-    def daily_report(request):
+def daily_report(request):
+    '''
+
+    Opens the Daily sign-in form.
+    '''
+    if request.method == 'POST':
+        form = DailyReportForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('daily-report')
+    else:
+        form = DailyReportCreateView()
+    return render(request, 'daily_report.html',
+                  {'form': form})
+
+def get_success_url(self):
+    return reverse('daily-report')
+
+
+class DailyReportUpdateView(DailyReportMixin, UpdateView):
+    model = DailyReport
+    success_msg = "Diapering Report Updated"
+
+
+class DailyReportDetailView(DailyReportMixin, DetailView):
+    model = DailyReport
+
+""" DIAPERING TABLES """
+
+
+class DiaperingMixin(object):
+    fields = ('dailyreport_id', 'time_diaper', 'num_one',
+              'num_two', 'comments')
+
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(DiaperingMixin, self).form_valid(form)
+
+
+class DiaperingCreateView(DiaperingMixin, CreateView):
+
+    model = Diapering
+#    template_name = 'careapp/edit_child.html'
+    success_msg = "Diaper completed"
+
+    # def get_success_url(self):
+    #     return reverse('childs-list')
+
+
+    def diapering(request):
         '''
-        Opens the Daily sign-in form.
+        Opens the Diapering activity panel.
         '''
         if request.method == 'POST':
-            form = DailyReportForm(request.POST)
+            form = DiaperingForm(request.POST)
             if form.is_valid():
                 form.save()
-            return redirect('daily-report')
+            return redirect('diapering')
         else:
-            form = DailyReportCreateView()
-        return render(request, 'daily_report.html',
+            form = DiaperingCreateView()
+        return render(request, 'diapering.html',
                       {'form': form})
 
+
     def get_success_url(self):
-        return reverse('daily-report')
+        return reverse('diapering')
 
 
-# @login_required
-# def daily_ending(request):
-#     '''
-#     opens the end-of-day part of the Daily sign-in form.
-#     '''
-#     if request.method == 'POST':
-#         form = DailyEndingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('daily-report-ending')
-#     else:
-#         form = DailyEndingCreateView()
-#     return render(request, 'daily_report_ending.html',
-#                   {'form': form})
+class DiaperingUpdateView(DiaperingMixin, UpdateView):
+    model = Diapering
+    success_msg = "Diaper completed"
+
+
+class DiaperingDetailView(DiaperingMixin, DetailView):
+    model = Child

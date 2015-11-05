@@ -53,3 +53,12 @@ class DailyReport(models.Model):
 
     def __str__(self):
         return ("Name: {}, Date: {}".format(self.child.first_name, self.date))
+
+
+class Diapering(models.Model):
+    # assumed diapering_id
+    dailyreport_id = models.ForeignKey(DailyReport)
+    time_diaper = models.TimeField()
+    num_one = models.BooleanField()  # default is None when empty
+    num_two = models.BooleanField()
+    comments = models.CharField(max_length=100)
