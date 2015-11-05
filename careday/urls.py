@@ -30,4 +30,6 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
     # url(r'^$', index, name='index'),
+    url(r'^calander$', TemplateView.as_view(
+        template_name='careapp/calander.html'), name='calander',),
 ]
