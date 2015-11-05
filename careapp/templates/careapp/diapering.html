@@ -1,0 +1,25 @@
+{% extends "daily_report.html" %}
+     <!-- {% extends "base.html" %} -->
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+<!-- <h1>Diapering</h1> -->
+<ul>
+  {% for child in object_list %}
+  {% for diaper in object_list %}
+  <li class="diapering">Time: {{ diapering.time_diaper }} Number 1: {{ diapering.num_one} } Number 2: {{ diapering.num_two }}
+    Comment: {{ diapering.comments }}
+
+    <a href="/child/update/{{ child.id }}/">  update child</a></li>
+
+
+
+
+  {% endfor %}
+</ul>
+<a href="{% url "child-new" %}">add child</a>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#}
+{% endblock %}
