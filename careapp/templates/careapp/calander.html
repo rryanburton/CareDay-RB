@@ -1,1 +1,5 @@
-<div id=calander><img src="img/calander.jpg" alt="child playing"/></div>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id=calander><img src="{% static 'img/calander.jpg' %}" alt="calander"/></div>
+{% endblock %}
