@@ -165,6 +165,7 @@
         max-width: 1140px;
         margin: 0 auto;
         background-color: #DCDCDC;
+        padding: 0;
         overflow: auto; }
 
       div.main-image {
@@ -324,6 +325,10 @@
 
       #sub-header-daily {
         overflow:auto;
+        background-color: #539EC4;
+        margin-top: 2em;
+        border-radius: 5px;
+        margin: 3%;
         display: block; }
 
       #calander {
