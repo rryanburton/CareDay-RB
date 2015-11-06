@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
-from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child
+from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child, DiaperingCreateView
 
 
 urlpatterns = [
@@ -32,4 +32,5 @@ urlpatterns = [
     # url(r'^$', index, name='index'),
     url(r'^calander$', TemplateView.as_view(
         template_name='careapp/calander.html'), name='calander',),
+    url(r'^diapering/new$', DiaperingCreateView.as_view(), name='diapering',),
 ]
