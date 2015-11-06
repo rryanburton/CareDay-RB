@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Child, DailyReport
+from .models import Child, DailyReport, Diapering
 # Register your models here.
 
 
@@ -13,5 +13,10 @@ class DailyReportAdmin(admin.ModelAdmin):
                     'departure_time', 'mood_am', 'mood_pm']
 
 
+class DiaperingAdmin(admin.ModelAdmin):
+    list_display = ['id', 'dailyreport_id', 'time_diaper', 'num_one', 'num_two', 'comments']
+
+
 admin.site.register(Child, ChildAdmin)
 admin.site.register(DailyReport, DailyReportAdmin)
+admin.site.register(Diapering, DiaperingAdmin)

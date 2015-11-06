@@ -1,7 +1,7 @@
 from django import forms
 # from django.contrib.auth.models import User
 
-from .models import Child, DailyReport
+from .models import Child, DailyReport, Diapering
 # Create the form class.
 
 
@@ -19,3 +19,10 @@ class DailyReportForm(forms.ModelForm):
         model = DailyReport
         fields = ('date', 'child', 'arrival_time', 'departure_time',
                   'mood_am', 'mood_pm')
+
+
+class DiaperForm(forms.ModelForm):
+
+    class Meta:
+        model = Diapering
+        fields = ('time_diaper', 'num_one', 'num_two', 'comments')
