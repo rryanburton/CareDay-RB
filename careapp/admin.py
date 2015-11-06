@@ -14,7 +14,7 @@ class DailyReportAdmin(admin.ModelAdmin):
 
 
 class DiaperingAdmin(admin.ModelAdmin):
-    list_display = ['time_diaper', 'num_one', 'num_two', 'comments']
+    list_display = ['id', 'dailyreport_id', 'time_diaper', 'num_one', 'num_two', 'comments']
 
 
 admin.site.register(Child, ChildAdmin)
