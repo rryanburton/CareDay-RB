@@ -112,7 +112,7 @@
           margin-left: .8em;
           display: block;
           float: left;
-          color: #D8BFD8;
+          color: #BBBBAF;
           font: 50pt 'ChunkFiveRegular';
           -webkit-box-sizing: content-box;
           -moz-box-sizing: content-box;
@@ -123,7 +123,7 @@
           text-align: center;
           -o-text-overflow: clip;
           text-overflow: clip;
-          color: #D8BFD8;
+          color: #BBBBAF;
           text-shadow: 0 1px 0 white, 0 2px 0 white, 0 3px 0 white, 0 4px 0 white, 0 5px 0 white, 0 6px 1px rgba(0, 0, 0, 0.0980392), 0 0 5px rgba(0, 0, 0, 0.0980392), 0 1px 3px rgba(0, 0, 0, 0.298039), 0 3px 5px rgba(0, 0, 0, 0.2), 0 -5px 10px rgba(0, 0, 0, 0.247059), 0 -7px 10px rgba(0, 0, 0, 0.2), 0 -15px 20px rgba(0, 0, 0, 0.14902);
           -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
           -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
@@ -139,7 +139,7 @@
           color: gray;
           margin-left: 1.5em; }
         nav a {
-          color: #fff;
+          color: #BBBBAF;
           text-decoration: none;
           padding: .5em; }
 
@@ -155,11 +155,11 @@
         form.admin-login input {
           border-radius: 5px;
           margin-left: 1em;
-          border: 2px solid #D8BFD8; }
+          border: 2px solid #F1D79F; }
         form.admin-login button {
-          background-color: #D8BFD8;
+          background-color: #F1D79F;
           border-radius: 5px;
-          border: 2px solid #D8BFD8; }
+          border: 2px solid #F1D79F; }
 
       main.container {
         max-width: 1140px;
@@ -272,7 +272,7 @@
         text-align: center;
         margin-top: 1em; }
         section.arrival input {
-          border: 2px solid #D8BFD8;
+          border: 2px solid #F1D79F;
           border-radius: 5px;
           margin-left: 1em; }
 
@@ -291,25 +291,25 @@
           display: inline;
           margin: 1em; }
         ul.mood input {
-          border: 2px #D8BFD8 solid;
+          border: 2px #F1D79F solid;
           border-radius: 5px; }
 
       li.mood-am select {
         margin-top: 1em;
         text-align: center;
-        border: 2px #D8BFD8 solid; }
+        border: 2px #F1D79F solid; }
 
       li.mood-pm select {
         margin-top: 1em;
         text-align: center;
-        border: 2px #D8BFD8 solid; }
+        border: 2px #F1D79F solid; }
 
       #save_daily_report {
         float: right;
         margin-right: 41%;
         width: 200px;
         margin-bottom: 0.5em;
-        background-color: #D8BFD8;
+        background-color: #F1D79F;
         border-radius: 5px; }
 
       #daily-report-reset {
@@ -317,7 +317,7 @@
         margin-right: 41%;
         width: 200px;
         margin-bottom: 0.5em;
-        background-color: #D8BFD8;
+        background-color: #F1D79F;
         border-radius: 5px; }
 
       #daily-report {
@@ -331,9 +331,45 @@
         margin: 3%;
         display: block; }
 
-      #calander {
-        max-width: 100%;
-        height: auto; }
+      #calendar-form {
+        width: 96%;
+        margin: 2% auto;
+        margin-top: 2%;
+        background-color: #F1D79F;
+        border-radius: 5px;
+        position: relative;
+      }
+      #calendar-form #boy {
+        float: left;
+
+      }
+      #calendar-form #girl {
+        float: right;
+        vertical-align: top;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      #calendar-page h2 {
+        margin: 0 auto;
+        margin-top:7%;
+        color: #fff;
+        padding: 2em;
+      }
+      #calendar-page {
+        width: 600px;
+        height: 350px;
+        /*background-color: #539EC4;*/
+        margin: 0 auto;
+
+        /*position: relative;*/
+                        }
+
+      /*main.container:after{
+        background:#7f7f7f;
+        background:rgba(0,0,0,0.5);
+        overflow: auto;
+      }*/
 
       /* ==========================================================================
          Helper classes
