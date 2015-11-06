@@ -6,8 +6,8 @@ from datetime import datetime
 
 from django.contrib import messages
 
-from .models import Child, DailyReport
-from .forms import ChildForm, DailyReportForm
+from .models import Child, DailyReport, Diapering
+from .forms import ChildForm, DailyReportForm, DiaperForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -141,3 +141,54 @@ class DailyReportCreateView(CreateView):
 #         form = DailyEndingCreateView()
 #     return render(request, 'daily_report_ending.html',
 #                   {'form': form})
+
+""" DIAPERING TABLES """
+
+
+class DiaperingMixin(object):
+    fields = ('dailyreport_id', 'time_diaper', 'num_one',
+              'num_two', 'comments')
+
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(DiaperingMixin, self).form_valid(form)
+
+
+class DiaperingCreateView(DiaperingMixin, CreateView):
+
+    model = Diapering
+#    template_name = 'careapp/edit_child.html'
+    success_msg = "Diaper completed"
+
+    # def get_success_url(self):
+    #     return reverse('childs-list')
+
+    def diapering(request):
+        '''
+        Opens the Diapering activity panel.
+        '''
+        if request.method == 'POST':
+            form = DiaperForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('diapering')
+        else:
+            form = DiaperingCreateView()
+        return render(request, 'diapering.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('diapering')
+
+
+class DiaperingUpdateView(DiaperingMixin, UpdateView):
+    model = Diapering
+    success_msg = "Diaper completed"
+
+
+class DiaperingDetailView(DiaperingMixin, DetailView):
+    model = Child
