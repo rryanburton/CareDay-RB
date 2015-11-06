@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_css %}
+{% block content %}
+
+<h1>Add A Diaper Change</h1>
+<form action="{% url "diapering" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    <li><label for="id_dailyreport_id">DailyReport:</label>{{ form.dailyreport_id }}</li>
+    <li><label for="id_time_diaper">Diaper Time:</label>{{form.time_diaper}}</li>
+    <li><label for="id_num_one">Number one:</label>{{form.num_one}}</li>
+
+    <li><label for="id_num_two">Number two:</label>{{form.num_two}}</li>
+    <li><label for="id_comments">Comments:</label>{{form.comments}}</li>
+  </ul>
+  <button type="reset" class="btn btn-default">Clear</button>
+  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
+</form>
+
+{% endblock %}

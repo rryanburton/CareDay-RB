@@ -21,7 +21,7 @@ class DailyReportForm(forms.ModelForm):
                   'mood_am', 'mood_pm')
 
 
-class DiaperForm(forms.ModelForm):
+class DiaperingForm(forms.ModelForm):
 
     class Meta:
         model = Diapering

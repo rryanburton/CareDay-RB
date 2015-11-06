@@ -7,7 +7,7 @@ from datetime import datetime
 from django.contrib import messages
 
 from .models import Child, DailyReport, Diapering
-from .forms import ChildForm, DailyReportForm, DiaperForm
+from .forms import ChildForm, DailyReportForm, DiaperingForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -162,7 +162,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
 
     model = Diapering
 #    template_name = 'careapp/edit_child.html'
-    success_msg = "Diaper completed"
+    success_msg = "Diapering completed"
 
     # def get_success_url(self):
     #     return reverse('childs-list')
@@ -172,7 +172,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
         Opens the Diapering activity panel.
         '''
         if request.method == 'POST':
-            form = DiaperForm(request.POST)
+            form = DiaperingForm(request.POST)
             if form.is_valid():
                 form.save()
             return redirect('diapering')
@@ -187,7 +187,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
 
 class DiaperingUpdateView(DiaperingMixin, UpdateView):
     model = Diapering
-    success_msg = "Diaper completed"
+    success_msg = "Diapering completed"
 
 
 class DiaperingDetailView(DiaperingMixin, DetailView):
