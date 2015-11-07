@@ -17,13 +17,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
-from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child, DiaperingCreateView, SleepingCreateView
+from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='careday_login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': reverse_lazy('index')}, name='careday_logout'),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'},
+        name='careday_login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': reverse_lazy('index')},
+        name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list',),
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
     url(r'^dailyintake$', DailyReportCreateView.as_view(),
@@ -37,4 +39,5 @@ urlpatterns = [
         template_name='careapp/calander.html'), name='calander',),
     url(r'^diapering/new$', DiaperingCreateView.as_view(), name='diapering',),
     url(r'^sleeping/new$', SleepingCreateView.as_view(), name='sleeping',),
+    url(r'^eating/new$', EatingCreateView.as_view(), name='eating',),
 ]

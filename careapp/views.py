@@ -6,8 +6,8 @@ from datetime import datetime
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-from .models import Child, DailyReport, Diapering, Sleeping
-from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm
+from .models import Child, DailyReport, Diapering, Sleeping, Eating
+from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm, EatingForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -238,3 +238,50 @@ class SleepingUpdateView(SleepingMixin, UpdateView):
 
 class SleepingDetailView(SleepingMixin, DetailView):
     model = Sleeping
+
+
+""" EATING TABLES """
+
+
+class EatingMixin(object):
+    fields = ('dailyreport', 'time_eat', 'food', 'leftover')
+
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(EatingMixin, self).form_valid(form)
+
+
+class EatingCreateView(EatingMixin, CreateView):
+
+    model = Eating
+    success_msg = "Food Intake recorded"
+
+    def sleeping(request):
+        '''
+        Opens the Eating activity panel.
+        '''
+        if request.method == 'POST':
+            form = EatingForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('eating')
+        else:
+            form = EatingCreateView()
+        return render(request, 'eating_form.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('eating')
+
+
+class EatingUpdateView(EatingMixin, UpdateView):
+    model = Eating
+    success_msg = "Food Intake recorded"
+
+
+class EatingDetailView(EatingMixin, DetailView):
+    model = Eating
