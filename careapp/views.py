@@ -146,7 +146,7 @@ class DailyReportCreateView(CreateView):
 
 
 class DiaperingMixin(object):
-    fields = ('dailyreport_id', 'time_diaper', 'num_one',
+    fields = ('dailyreport', 'time_diaper', 'num_one',
               'num_two', 'comments')
 
     @property
@@ -197,7 +197,7 @@ class DiaperingDetailView(DiaperingMixin, DetailView):
 
 
 class SleepingMixin(object):
-    fields = ('dailyreport_id', 'time_slp_start', 'time_slp_end')
+    fields = ('dailyreport', 'time_slp_start', 'time_slp_end')
 
     @property
     def success_msg(self):
