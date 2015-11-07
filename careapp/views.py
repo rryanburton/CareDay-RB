@@ -6,8 +6,8 @@ from datetime import datetime
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-from .models import Child, DailyReport, Diapering
-from .forms import ChildForm, DailyReportForm, DiaperingForm
+from .models import Child, DailyReport, Diapering, Sleeping
+from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -178,7 +178,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
             return redirect('diapering')
         else:
             form = DiaperingCreateView()
-        return render(request, 'diapering.html',
+        return render(request, 'diapering_form.html',
                       {'form': form})
 
     def get_success_url(self):
@@ -191,4 +191,50 @@ class DiaperingUpdateView(DiaperingMixin, UpdateView):
 
 
 class DiaperingDetailView(DiaperingMixin, DetailView):
-    model = Child
+    model = Diapering
+
+""" SLEEPING TABLES """
+
+
+class SleepingMixin(object):
+    fields = ('dailyreport_id', 'time_slp_start', 'time_slp_end')
+
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(SleepingMixin, self).form_valid(form)
+
+
+class SleepingCreateView(SleepingMixin, CreateView):
+
+    model = Sleeping
+    success_msg = "Sleeping recorded"
+
+    def sleeping(request):
+        '''
+        Opens the Sleeping activity panel.
+        '''
+        if request.method == 'POST':
+            form = SleepingForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('sleeping')
+        else:
+            form = SleepingCreateView()
+        return render(request, 'sleeping_form.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('sleeping')
+
+
+class SleepingUpdateView(SleepingMixin, UpdateView):
+    model = Sleeping
+    success_msg = "Sleeping recorded"
+
+
+class SleepingDetailView(SleepingMixin, DetailView):
+    model = Sleeping
