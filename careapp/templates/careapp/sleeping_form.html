@@ -5,16 +5,13 @@
 {% bootstrap_css %}
 {% block content %}
 
-<h1>Add A Diaper Change</h1>
-<form action="{% url "diapering" %}" method="POST">
+<h1>Recording Nap Times</h1>
+<form action="{% url "sleeping" %}" method="POST">
   {% csrf_token %}
   <ul>
     <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-    <li><label for="id_time_diaper">Diaper Time:</label>{{form.time_diaper}}</li>
-    <li><label for="id_num_one">Number one:</label>{{form.num_one}}</li>
-
-    <li><label for="id_num_two">Number two:</label>{{form.num_two}}</li>
-    <li><label for="id_comments">Comments:</label>{{form.comments}}</li>
+    <li><label for="id_time_slp_start">Nap start:</label>{{form.time_slp_start}}</li>
+    <li><label for="id_time_slp_end">Nap end:</label>{{form.time_slp_end}}</li>
   </ul>
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
