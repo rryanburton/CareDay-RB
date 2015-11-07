@@ -1,7 +1,7 @@
 from django import forms
 # from django.contrib.auth.models import User
 
-from .models import Child, DailyReport, Diapering, Sleeping
+from .models import Child, DailyReport, Diapering, Sleeping, Eating
 # Create the form class.
 
 
@@ -33,3 +33,10 @@ class SleepingForm(forms.ModelForm):
     class Meta:
         model = Sleeping
         fields = ('time_slp_start', 'time_slp_end')
+
+
+class EatingForm(forms.ModelForm):
+
+    class Meta:
+        model = Eating
+        fields = ('time_eat', 'food', 'leftover')
