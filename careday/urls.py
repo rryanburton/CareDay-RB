@@ -22,8 +22,10 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, Daily
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='careday_login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': reverse_lazy('index')}, name='careday_logout'),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'},
+        name='careday_login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': reverse_lazy('index')},
+        name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list',),
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
     url(r'^dailyintake$', DailyReportCreateView.as_view(),
