@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.shortcuts import render, redirect
 from datetime import datetime
-
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 from .models import Child, DailyReport, Diapering
