@@ -62,3 +62,44 @@ class Diapering(models.Model):
     num_one = models.BooleanField()  # default is None when empty
     num_two = models.BooleanField()
     comments = models.CharField(max_length=100, blank=True, null=True)
+
+
+class Sleeping(models.Model):
+    # assumed sleeping_id
+    dailyreport = models.ForeignKey(DailyReport)
+    time_slp_start = models.TimeField(blank=True, null=True)
+    time_slp_end = models.TimeField(blank=True, null=True)
+
+
+class Eating(models.Model):
+    # assumed eating_id
+    BOTTLE = 'BOTTLE'
+    NURSED = 'NURSED'
+    FOOD = 'FOOD'
+    NONE = 'NONE'
+    ONE_QUARTER = '1_QUARTER'
+    ONE_HALF = '1_HALF'
+    THREE_QUARTER = '3_QUARTER'
+    ALL = 'ALL'
+    FOOD_CHOICE = (
+        (BOTTLE, 'Bottle'),
+        (NURSED, 'Nursed'),
+        (FOOD, 'Food'),
+    )
+    LEFTOVER = (
+        (NONE, 'None leftover'),
+        (ONE_QUARTER, '1/4 leftover'),
+        (ONE_HALF, '1/2 leftover'),
+        (THREE_QUARTER, '3/4 leftover'),
+        (ALL, 'All leftover'),
+    )
+    dailyreport = models.ForeignKey(DailyReport)
+    time_eat = models.TimeField(blank=True, null=True)
+    food = models.CharField(max_length=6,
+                            choices=FOOD_CHOICE,
+                            blank=True,
+                            null=True)
+    leftover = models.CharField(max_length=9,
+                                choices=LEFTOVER,
+                                blank=True,
+                                null=True)
