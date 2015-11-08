@@ -75,7 +75,11 @@
       <input type="submit" id="save_child" value="Save"/>
       <button type="reset" class="btn btn-default">Clear</button>
   </form> -->
-  <h1>Add A Diaper Change</h1>
+  {% block diapering_form %}
+      {% include "diapering_form.html" %}
+      {% endblock %}
+
+  <!-- <h1>Add A Diaper Change</h1>
   <form action="{% url "diapering" %}" method="POST">
     {% csrf_token %}
     <ul>
@@ -88,7 +92,7 @@
     </ul>
     <button type="reset" class="btn btn-default">Clear</button>
     <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-  </form>
+  </form> -->
   <table>
 			<thead>
 				<tr>
