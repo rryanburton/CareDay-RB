@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load bootstrap3 %}
+<!-- {% load bootstrap3 %}
 
 {% bootstrap_javascript jquery=1 %}
-{% bootstrap_css %}
+{% bootstrap_css %} -->
 {% block content %}
 <!-- <script type="text/javascript" src="/static/DateTimeShortcuts.js"></script> -->
 <!-- {% if messages %}
@@ -14,20 +14,25 @@
   {% endfor %}
 </ul>
 {% endif %} -->
-<h1>Add A Child</h1>
-<form action="{% url "child-new" %}" method="POST">
-  {% csrf_token %}
-  <ul>
-    <li><label for="id_first_name">First name:</label>{{ form.first_name }}</li>
-    <li><label for="id_gender">Gender:</label>{{form.gender}}</li>
-    <li><label for="id_birthday">Birthday:</label>{{form.birthday}}</li>
+<section id="calendar-form2">
+ <h1>Add A Child</h1>
+<form id="new-child" action="/child/new" method="POST">
+  <input type='hidden' name='csrfmiddlewaretoken' value='H6F7ftvLpanatvQdtScFZFG1DWtXah9K' />
+  <ul class="add-child">
+    <li><label for="id_first_name">First name:</label><input id="id_first_name" maxlength="20" name="first_name" type="text" /></li>
+    <li><label for="id_gender">Gender:</label><select id="id_gender" name="gender">
+<option value="B" selected="selected">Boy</option>
+<option value="G">Girl</option>
+</select></li>
+    <li><label for="id_birthday">Birthday:</label><input id="id_birthday" name="birthday" type="text" /></li>
 
-    <li><label for="id_parent_name">Parent name:</label>{{form.parent_name}}</li>
-    <li><label for="id_parent_email">Parent email:</label>{{form.parent_email}}</li>
-    <li><label for="id_parent_phone">Parent phone:</label>{{form.parent_phone}}</li>
+    <li><label for="id_parent_name">Parent name:</label><input id="id_parent_name" maxlength="20" name="parent_name" type="text" /></li>
+    <li><label for="id_parent_email">Parent email:</label><input id="id_parent_email" maxlength="254" name="parent_email" type="email" /></li>
+    <li><label for="id_parent_phone">Parent phone:</label><input id="id_parent_phone" maxlength="15" name="parent_phone" type="text" /></li>
   </ul>
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
 </form>
-<a href="{% url "childs-list" %}">back to list</a>
+<a href="/child"> <button>back to list</button></a>
+</section>
 {% endblock %}

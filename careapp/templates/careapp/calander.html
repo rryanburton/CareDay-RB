@@ -10,4 +10,18 @@
     </div>
      <img id="girl" src="{% static 'img/girl.jpg' %}" width:"150"; height="350";/>
    </form>
+   <section id="add">
+    <h1>Children</h1>
+    <ul class="add-child">
+      {% for child in object_list %}
+      <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{% url "child-new" %}"> <button type="button" name="button">add child</button></a>
+
+    {# <a href="{% url "childs_new" %}">childs_new</a>#}
+  </section>
+  <section>
+
+  </section>
 {% endblock %}

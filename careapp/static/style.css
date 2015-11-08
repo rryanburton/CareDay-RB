@@ -364,13 +364,45 @@
 
         /*position: relative;*/
                         }
+      #calendar-form2 {
+        max-width: 96%;
+        margin: 2% auto;
+        background-color: #539EC4;
+        border-radius: 5px;
+      }
+      #calendar-form2 h1 {
+        padding: 1em;
+      }
+      #calendar-form2 button {
+        margin-bottom: 1em;
+        margin-left: 2%;
+      }
+      ul.add-child {
+        list-style: none;
 
-      /*main.container:after{
-        background:#7f7f7f;
-        background:rgba(0,0,0,0.5);
-        overflow: auto;
-      }*/
-
+      }
+      #new-child {
+        margin-left: 2%;
+      }
+      #new-child button {
+        margin: 0;
+      }
+      button {
+        background-color: #F1D79F;
+        border-radius: 5px;
+      }
+      input {
+        border: 2px #F1D79F solid;
+        border-radius: 5px;
+        
+      }
+      #add {
+        width: 93%;
+        margin: 3% auto;
+        background-color: #539EC4;
+        border-radius: 5px;
+        padding: 1em;
+      }
       /* ==========================================================================
          Helper classes
          ========================================================================== */
