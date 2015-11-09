@@ -1,12 +1,8 @@
-{% extends "base.html" %}
-{% load bootstrap3 %}
-
-{% bootstrap_javascript jquery=1 %}
-{% bootstrap_css %}
+{#{% load bootstrap3 %}#}
 {% block content %}
 
 <h1>Add A Diaper Change</h1>
-<form action="{% url "diapering" %}" method="POST">
+<form id="diaper" action="{% url "diapering" %}" method="POST">
   {% csrf_token %}
   <ul>
     <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
@@ -19,5 +15,15 @@
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
 </form>
-
-{% endblock %}
+<!-- <h2>Diapers</h2>
+<form id="diaper" action="{% url "diapering" %}" name="diaper-form" method="post">
+  {% csrf_token %}
+  <h3>Please select childs potty details</h3>
+    Time:<input type="time" for="id_time_diaper"/>
+    #1: <input type="checkbox" for="id_num_one" name="potty" value="number one"/>
+    #2: <input type="checkbox" for="id_num_two" name="potty" value="number two"/>
+    <p><textarea for="id_comments" name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+    <input type="submit" id="save_child" value="Save"/>
+    <button type="reset" class="btn btn-default">Clear</button>
+</form>
+{% endblock %} -->

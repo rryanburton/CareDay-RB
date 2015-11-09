@@ -6,20 +6,20 @@
   {% csrf_token %}
   <ul class="mood">
     <li>
-      <label for="id_date">Date:</label>
-      <input id="id_date" name="date" type="date">
-      <!-- {{form.date}} -->
-    </li>
-    <li>
+      <!-- <label for="id_date">Date:</label>
+      <input id="id_date" name="date" type="date"> -->
+      <!-- {{form.date}}
+    </li> -->
+    <!-- <li>
       <label for="id_child">Child:</label>
-      <!--<select id="id_child" name="child">
+      <select id="id_child" name="child">
       <option value="" selected="selected">---------</option>
       <option value="1">Bobby</option>
       <option value="2">Julie</option>
       <option value="3">Terry</option>
-    </select> -->
+    </select>
     {{form.child}}
-    </li>
+    </li> -->
     <li>
       <label for="id_arrival_time">Arrival time:</label>
       <input type="time" id="id_arrival_time" name="arrival_time"/>
@@ -63,9 +63,9 @@
 </nav>
 </section>
 
-<div class="daily-report">
-  <!-- <h2>Diapers</h2>
-  <form id="diaper" action="{% url "diapering" %}" name="diaper-form" method="post">
+<div class="daily-report" id="report1">
+  <h2>Diapers</h2>
+  <!-- <form id="diaper" action="{% url "diapering" %}" name="diaper-form" method="post">
     {% csrf_token %}
     <h3>Please select childs potty details</h3>
       Time:<input type="time" for="id_time_diaper"/>
@@ -75,9 +75,6 @@
       <input type="submit" id="save_child" value="Save"/>
       <button type="reset" class="btn btn-default">Clear</button>
   </form> -->
-  {% block diapering_form %}
-      {% include "diapering_form.html" %}
-      {% endblock %}
 
   <!-- <h1>Add A Diaper Change</h1>
   <form action="{% url "diapering" %}" method="POST">
@@ -112,16 +109,16 @@
 			</tbody>
  </table>
 </div>
-<div class="daily-report">
+<div class="daily-report" id="report2">
   <h2>Sleeping</h2>
-  <form id="sleeping" name="diaper-form" method="post">
+  <!-- <form id="sleeping" name="diaper-form" method="post">
     <h3>Nap time</h3>
     Time:<input type="time"/>
     slept: <input type="checkbox" name="slept" value="slept"/>
     did not sleep: <input type="checkbox" name="did not sleep" value="no sleep"/><br/>
     <p><textarea name="myTextArea" cols="40" rows="1">Duration of sleep</textarea></p><br/>
     <input type="submit" value="Save"/>
-  </form>
+  </form> -->
   <table>
 			<thead>
 				<tr>
