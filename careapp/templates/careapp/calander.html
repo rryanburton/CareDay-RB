@@ -1,13 +1,29 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
 {% block content %}
 <!-- <div id=calander><img src="{% static 'img/calander.jpg' %}" alt="calander"/></div> -->
    <form id="calendar-form">
      <img id="boy" src="{% static 'img/boy.jpg' %}"  width:"150"; height="350";/>
      <div id="calendar-page">
      <input id="datepicker" placeholder="Pick a day"/>
+     <button type="button">save</button>
      <h2>Pick a day to see the list of children</h2>
     </div>
      <img id="girl" src="{% static 'img/girl.jpg' %}" width:"150"; height="350";/>
    </form>
+   <section id="add">
+    <h1>Children</h1>
+    <ul class="add-child">
+      {% for child in object_list %}
+      <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{% url "child-new" %}"> <button type="button" name="button">add child</button></a>
+
+    {# <a href="{% url "childs_new" %}">childs_new</a>#}
+  </section>
+  <section>
+
+  </section>
 {% endblock %}

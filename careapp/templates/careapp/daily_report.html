@@ -6,20 +6,20 @@
   {% csrf_token %}
   <ul class="mood">
     <li>
-      <label for="id_date">Date:</label>
-      <input id="id_date" name="date" type="date">
-      <!-- {{form.date}} -->
-    </li>
-    <li>
+      <!-- <label for="id_date">Date:</label>
+      <input id="id_date" name="date" type="date"> -->
+      <!-- {{form.date}}
+    </li> -->
+    <!-- <li>
       <label for="id_child">Child:</label>
-      <!--<select id="id_child" name="child">
+      <select id="id_child" name="child">
       <option value="" selected="selected">---------</option>
       <option value="1">Bobby</option>
       <option value="2">Julie</option>
       <option value="3">Terry</option>
-    </select> -->
+    </select>
     {{form.child}}
-    </li>
+    </li> -->
     <li>
       <label for="id_arrival_time">Arrival time:</label>
       <input type="time" id="id_arrival_time" name="arrival_time"/>
@@ -53,7 +53,6 @@
       {{form.mood_pm}}
     </li>
   </ul>
-
   <input id="save_daily_report" type="submit" value="Save"/>
   <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
 </form>​
@@ -63,51 +62,63 @@
   <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
 </nav>
 </section>
-<div class="daily-report">
+
+<div class="daily-report" id="report1">
   <h2>Diapers</h2>
-  <form id="diaper" name="diaper-form" method="post">
+  <!-- <form id="diaper" action="{% url "diapering" %}" name="diaper-form" method="post">
+    {% csrf_token %}
     <h3>Please select childs potty details</h3>
-      Time:<input type="time"/>
-      #1: <input type="checkbox" name="potty" value="number one"/>
-      #2: <input type="checkbox" name="potty" value="number two"/>
-      <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
-      <input type="submit" value="Submit"/>
-  </form>
+      Time:<input type="time" for="id_time_diaper"/>
+      #1: <input type="checkbox" for="id_num_one" name="potty" value="number one"/>
+      #2: <input type="checkbox" for="id_num_two" name="potty" value="number two"/>
+      <p><textarea for="id_comments" name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
+      <input type="submit" id="save_child" value="Save"/>
+      <button type="reset" class="btn btn-default">Clear</button>
+  </form> -->
+
+  <!-- <h1>Add A Diaper Change</h1>
+  <form action="{% url "diapering" %}" method="POST">
+    {% csrf_token %}
+    <ul>
+      <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
+      <li><label for="id_time_diaper">Diaper Time:</label>{{form.time_diaper}}</li>
+      <li><label for="id_num_one">Number one:</label>{{form.num_one}}</li>
+
+      <li><label for="id_num_two">Number two:</label>{{form.num_two}}</li>
+      <li><label for="id_comments">Comments:</label>{{form.comments}}</li>
+    </ul>
+    <button type="reset" class="btn btn-default">Clear</button>
+    <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
+  </form> -->
   <table>
 			<thead>
 				<tr>
-					<th>Time</th>
-					<th>#1</th>
-					<th>#2</th>
+					<th>Diaper Time</th>
+					<th>Number one</th>
+					<th>Number two</th>
 					<th>Comments</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>9:45am</td>
-					<td>X</td>
-					<td>X</td>
-					<td>had issues</td>
+					<td>{{form.time_diaper}}</td>
+					<td>{{form.num_one}}</td>
+					<td>{{form.num_two}}</td>
+					<td>{{form.comments}}</td>
 				</tr>
-        <tr>
-         <td>1:00pm</td>
-         <td></td>
-         <td>X</td>
-         <td>none</td>
-       </tr>
 			</tbody>
  </table>
 </div>
-<div class="daily-report">
+<div class="daily-report" id="report2">
   <h2>Sleeping</h2>
-  <form id="sleeping" name="diaper-form" method="post">
+  <!-- <form id="sleeping" name="diaper-form" method="post">
     <h3>Nap time</h3>
     Time:<input type="time"/>
     slept: <input type="checkbox" name="slept" value="slept"/>
     did not sleep: <input type="checkbox" name="did not sleep" value="no sleep"/><br/>
     <p><textarea name="myTextArea" cols="40" rows="1">Duration of sleep</textarea></p><br/>
-    <input type="submit" value="Submit"/>
-  </form>
+    <input type="submit" value="Save"/>
+  </form> -->
   <table>
 			<thead>
 				<tr>
@@ -135,7 +146,7 @@
     Type: <input type="text" name="type" value="type of food"/><br/>
     Amount: <input type="text" name="amount" value="amount of food"/>
     <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
-    <p><input type="submit" value="Submit"/></p>
+    <p><input type="submit" value="Save"/></p>
   </form>
   <table>
 			<thead>
