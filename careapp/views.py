@@ -125,7 +125,7 @@ class DailyReportListView(ListView):
 class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
     model = DailyReport
-    template_name = 'careapp/daily_report.html'
+    template_name = 'careapp/daily_report_initial.html'
     success_msg = "Daily Report created"
 
 # @login_required
@@ -137,7 +137,7 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
             form = DailyReportForm(request.POST)
             if form.is_valid():
                 form.save()
-            return redirect('daily-report')
+            return redirect('dailyreport-new')
         else:
             form = DailyReportCreateView()
         return render(request, 'daily_report.html',

@@ -1,11 +1,29 @@
- <h1>DailyReport-Initial Intake</h1>
 
-<form action="{% url "daily-report-initial" %}" method="POST">
-  {% csrf_token %}
-  <ul>
-    {{ form.as_ul }}
-  </ul>
-  <input id="save_daily_report" type="submit" value="Save" />
-</form>
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
 
-<a href="{% url "daily-report-initial" %}">back to list</a>
+<form class="activities" action="{% url "dailyreport-new" %}" method="POST">
+ {% csrf_token %}
+
+   <li>
+     <label for="id_date">Date:</label>
+     <input id="id_date" name="date" type="date">
+
+   </li>
+   <li>
+     <label for="id_child">Child:</label>
+
+     {{form.child}}
+   </li>
+
+
+
+ </ul>
+
+ <input id="save_daily_report" type="submit" value="Save"/>
+ <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
+</form>​
+
+{% endblock %}
