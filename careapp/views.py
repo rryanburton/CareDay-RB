@@ -99,14 +99,28 @@ def add_child(request):
     return render(request, 'careapp/edit_child.html',
                   {'form': form})
 
+#########
+'''  DAILY REPORT PANELS '''
 
-class DailyReportCreateView(CreateView):
 
-    model = DailyReport
-    template_name = 'careapp/daily_report.html'
+class DailyReportActionMixin(object):
     fields = ('date', 'child', 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super(DailyReportActionMixin, self).form_valid(form)
+
+
+class DailyReportCreateView(DailyReportActionMixin, CreateView):
+
+    model = DailyReport
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Daily Report created"
 
 # @login_required
     def daily_report(request):
@@ -126,21 +140,29 @@ class DailyReportCreateView(CreateView):
     def get_success_url(self):
         return reverse('daily-report')
 
+class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
 
-# @login_required
-# def daily_ending(request):
-#     '''
-#     opens the end-of-day part of the Daily sign-in form.
-#     '''
-#     if request.method == 'POST':
-#         form = DailyEndingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('daily-report-ending')
-#     else:
-#         form = DailyEndingCreateView()
-#     return render(request, 'daily_report_ending.html',
-#                   {'form': form})
+    model = DailyReport
+    template_name_suffix = '_update_form'
+    success_msg = "Daily Report updated!"
+
+    def get(self, request, **kwargs):
+        self.object = DailyReport.objects.get(id=self.kwargs['id'])
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        context = self.get_context_data(object=self.object, form=form)
+        return self.render_to_response(context)
+
+    def get_object(self, queryset=None):
+        obj = DailyReport.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def get_success_url(self):
+        return reverse('daily-report')
+
+
+class DailyReportDetailView(DailyReportActionMixin, DetailView):
+    model = DailyReport
 
 """ DIAPERING TABLES """
 
