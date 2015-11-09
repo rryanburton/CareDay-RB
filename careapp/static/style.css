@@ -377,9 +377,11 @@
         margin-bottom: 1em;
         margin-left: 2%;
       }
-      ul.add-child {
+      /*ul.add-child {
         list-style: none;
-
+      }*/
+      ul {
+        list-style: none;
       }
       #new-child {
         margin-left: 2%;
@@ -394,7 +396,7 @@
       input {
         border: 2px #F1D79F solid;
         border-radius: 5px;
-        
+
       }
       #add {
         width: 93%;
@@ -403,6 +405,17 @@
         border-radius: 5px;
         padding: 1em;
       }
+
+     #report1 {
+       background-color: #539EC4;
+       border-radius: 5px;
+       width: 45%;
+       height: auto;}
+     #report2 {
+       background-color: #539EC4;
+       border-radius: 5px;
+       width: 45%;
+       height: auto;}
       /* ==========================================================================
          Helper classes
          ========================================================================== */
