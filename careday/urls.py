@@ -17,7 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
-from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, DailyReportCreateView, add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView
+from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
+     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
+     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView
 
 
 urlpatterns = [
@@ -28,10 +30,14 @@ urlpatterns = [
         name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list',),
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
-    url(r'^dailyintake$', DailyReportCreateView.as_view(),
-        name='daily-report',),
     url(r'^child/update/(?P<id>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
+    url(r'^dailyreport$', DailyReportListView.as_view(), name='dailyreport-list',),
+    url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
+        name='dailyreport-new',),
+    url(r'^dailyreport/update/(?P<id>\d+)/$',
+        DailyReportUpdateView.as_view(), name='dailyreport-update'),
+
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
     # url(r'^$', index, name='index'),

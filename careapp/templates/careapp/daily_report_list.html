@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+<!-- {% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <p id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+   {{ message }}
+</p>
+  {% endfor %}
+</ul>
+{% endif %} -->
+
+<h1>Daily Report List</h1>
+<ul>
+  {% for dailyreport in object_list %}
+  <li class="dailyreport"> {{ dailyreport }} </li>
+  {% endfor %}
+</ul>
+<!-- <a href="{% url "child-new" %}">add child</a>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#} -->
+{% endblock %}
+
+<!-- ul>
+  {% for child in object_list %}
+  <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
+  {% endfor %}
+</ul>
+<a href="{% url "child-new" %}">add child</a>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#}

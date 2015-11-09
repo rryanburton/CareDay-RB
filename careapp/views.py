@@ -116,6 +116,12 @@ class DailyReportActionMixin(object):
         return super(DailyReportActionMixin, self).form_valid(form)
 
 
+class DailyReportListView(ListView):
+
+    model = DailyReport
+    template_name = 'careapp/daily_report_list.html'
+
+
 class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
     model = DailyReport
@@ -138,7 +144,8 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
                       {'form': form})
 
     def get_success_url(self):
-        return reverse('daily-report')
+        return reverse('dailyreport-new')
+
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
 
@@ -158,7 +165,7 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('daily-report')
+        return reverse('dailyreport-update')
 
 
 class DailyReportDetailView(DailyReportActionMixin, DetailView):
