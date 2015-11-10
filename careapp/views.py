@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-# Create your views here.
+
 def index(request):
     '''
     returns current time in html
@@ -22,7 +22,8 @@ def index(request):
         now)
     return HttpResponse(html)
 
-
+###############################################################################
+#   Child
 class ChildActionMixin(object):
     fields = ('first_name', 'gender', 'birthday',
               'parent_name', 'parent_email', 'parent_phone')
@@ -45,9 +46,6 @@ class ChildListView(ListView):
 class ChildCreateView(ChildActionMixin, CreateView):
 
     model = Child
-    # fields = ('first_name', 'gender', 'birthday',
-    #           'parent_name', 'parent_email', 'parent_phone')
-    #
     template_name = 'careapp/edit_child.html'
     success_msg = "Child created!"
 
@@ -56,10 +54,8 @@ class ChildCreateView(ChildActionMixin, CreateView):
 
 
 class ChildUpdateView(ChildActionMixin, UpdateView):
-    # form_class = ChildForm
+
     model = Child
-    # fields = ('first_name', 'gender', 'birthday',
-    #           'parent_name', 'parent_email', 'parent_phone')
     template_name_suffix = '_update_form'
     success_msg = "Child updated!"
 
@@ -82,7 +78,7 @@ class ChildDetailView(DetailView):
     model = Child
 
 
-# @login_required
+
 def add_child(request):
     if request.method == 'POST':
         form = ChildForm(request.POST)
@@ -99,8 +95,8 @@ def add_child(request):
     return render(request, 'careapp/edit_child.html',
                   {'form': form})
 
-#########
-'''  DAILY REPORT PANELS '''
+###############################################################################
+#  DAILY REPORT PANELS
 
 
 class DailyReportActionMixin(object):
@@ -120,6 +116,11 @@ class DailyReportListView(ListView):
 
     model = DailyReport
     template_name = 'careapp/daily_report_list.html'
+    # template_name_suffix = '_list'
+
+    def get_queryset(self):
+        preload = DailyReport.objects.all().select_related('child')
+        return preload.order_by('-date')
 
 
 class DailyReportCreateView(DailyReportActionMixin, CreateView):
@@ -128,7 +129,7 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
     template_name = 'careapp/daily_report_initial.html'
     success_msg = "Daily Report created"
 
-# @login_required
+
     def daily_report(request):
         '''
         Opens the Daily sign-in form.
@@ -144,7 +145,7 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
                       {'form': form})
 
     def get_success_url(self):
-        return reverse('dailyreport-new')
+        return reverse('dailyreport-list')
 
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
@@ -165,13 +166,15 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('dailyreport-update')
+        return reverse('dailyreport-list')
 
 
 class DailyReportDetailView(DailyReportActionMixin, DetailView):
     model = DailyReport
 
-""" DIAPERING TABLES """
+
+###############################################################################
+# DIAPERING TABLES
 
 
 class DiaperingMixin(object):
@@ -197,9 +200,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
     #     return reverse('childs-list')
 
     def diapering(request):
-        '''
-        Opens the Diapering activity panel.
-        '''
+
         if request.method == 'POST':
             form = DiaperingForm(request.POST)
             if form.is_valid():
@@ -207,7 +208,7 @@ class DiaperingCreateView(DiaperingMixin, CreateView):
             return redirect('diapering')
         else:
             form = DiaperingCreateView()
-        return render(request, 'diapering_form.html',
+        return render(request, 'careapp/diapering_form.html',
                       {'form': form})
 
     def get_success_url(self):
@@ -222,7 +223,8 @@ class DiaperingUpdateView(DiaperingMixin, UpdateView):
 class DiaperingDetailView(DiaperingMixin, DetailView):
     model = Diapering
 
-""" SLEEPING TABLES """
+###############################################################################
+# SLEEPING TABLES
 
 
 class SleepingMixin(object):
@@ -268,8 +270,8 @@ class SleepingUpdateView(SleepingMixin, UpdateView):
 class SleepingDetailView(SleepingMixin, DetailView):
     model = Sleeping
 
-
-""" EATING TABLES """
+###############################################################################
+#  EATING TABLES
 
 
 class EatingMixin(object):
