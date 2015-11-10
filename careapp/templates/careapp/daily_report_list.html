@@ -12,8 +12,7 @@
       <section id="kids">
         <div>
             <a href="#daily-report"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a>
-            <p>{{ dailyreport.child.first_name }}<br>{{ dailyreport.child.gender }}</p>
-            <p>Bday:{{ dailyreport.child.birthday}}</p>
+            <p>{{ dailyreport.child.first_name }}<br>{{ dailyreport.date }}</p>
             <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a>
         </div>
       </section>
