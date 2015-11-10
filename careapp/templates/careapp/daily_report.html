@@ -6,20 +6,20 @@
   {% csrf_token %}
   <ul class="mood">
     <li>
-      <!-- <label for="id_date">Date:</label>
-      <input id="id_date" name="date" type="date"> -->
-      <!-- {{form.date}}
-    </li> -->
-    <!-- <li>
+      <label for="id_date">Today's Date:</label>
+      <!-- <input id="id_date" name="date" type="date"> -->
+      {{form.date}}
+    </li>
+    <li>
       <label for="id_child">Child:</label>
-      <select id="id_child" name="child">
+      <!-- <select id="id_child" name="child">
       <option value="" selected="selected">---------</option>
       <option value="1">Bobby</option>
       <option value="2">Julie</option>
-      <option value="3">Terry</option>
+      <option value="3">Terry</option> -->
     </select>
     {{form.child}}
-    </li> -->
+    </li>
     <li>
       <label for="id_arrival_time">Arrival time:</label>
       <input type="time" id="id_arrival_time" name="arrival_time"/>

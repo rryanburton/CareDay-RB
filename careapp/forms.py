@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.models import inlineformset_factory
 # from django.contrib.auth.models import User
 
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
@@ -40,3 +41,10 @@ class EatingForm(forms.ModelForm):
     class Meta:
         model = Eating
         fields = ('time_eat', 'food', 'leftover')
+
+
+DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
+                                         fields=('time_diaper',
+                                                 'num_one',
+                                                 'num_two',
+                                                 'comments'))

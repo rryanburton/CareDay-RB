@@ -8,7 +8,8 @@
 <h1>Daily Report List</h1>
 <ul>
   {% for dailyreport in object_list %}
-  <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a></li>
+  <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a> <a href="/dailyreport/diapering/update/{{ dailyreport.id }}/"> * diapering</a></li>
+  <!-- <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a></li> -->
   {% endfor %}
 </ul>
 
