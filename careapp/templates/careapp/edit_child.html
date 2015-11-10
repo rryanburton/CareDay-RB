@@ -17,7 +17,7 @@
 <section id="calendar-form2">
  <h1>Add A Child</h1>
 <form id="new-child" action="/child/new" method="POST">
-  <input type='hidden' name='csrfmiddlewaretoken' value='H6F7ftvLpanatvQdtScFZFG1DWtXah9K' />
+  {% csrf_token %}
   <ul class="add-child">
     <li><label for="id_first_name">First name:</label><input id="id_first_name" maxlength="20" name="first_name" type="text" /></li>
     <li><label for="id_gender">Gender:</label><select id="id_gender" name="gender">
