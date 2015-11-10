@@ -32,6 +32,10 @@ urlpatterns = [
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
     url(r'^child/update/(?P<id>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
+
+    url(r'^dailyintake$', DailyReportCreateView.as_view(),
+        name='daily-report',),
+
     url(r'^dailyreport$', DailyReportListView.as_view(), name='dailyreport-list',),
     url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
         name='dailyreport-new',),
