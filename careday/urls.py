@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
-     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
-     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView
+    DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
+    add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView
 
 
 urlpatterns = [

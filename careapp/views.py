@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-
 def index(request):
     '''
     returns current time in html
@@ -24,6 +23,8 @@ def index(request):
 
 ###############################################################################
 #   Child
+
+
 class ChildActionMixin(object):
     fields = ('first_name', 'gender', 'birthday',
               'parent_name', 'parent_email', 'parent_phone')
@@ -78,7 +79,6 @@ class ChildDetailView(DetailView):
     model = Child
 
 
-
 def add_child(request):
     if request.method == 'POST':
         form = ChildForm(request.POST)
@@ -130,7 +130,6 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
     model = DailyReport
     template_name = 'careapp/daily_report_initial.html'
     success_msg = "Daily Report created"
-
 
     def daily_report(request):
         '''
