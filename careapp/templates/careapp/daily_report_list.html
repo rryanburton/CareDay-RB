@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+
+<h1>Daily Report List</h1>
+<ul>
+  {% for dailyreport in object_list %}
+  <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
