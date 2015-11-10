@@ -165,7 +165,7 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('dailyreport-update')
+        return reverse('dailyreport-list')
 
 
 class DailyReportDetailView(DailyReportActionMixin, DetailView):
