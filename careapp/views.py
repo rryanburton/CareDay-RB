@@ -119,9 +119,9 @@ class DailyReportListView(ListView):
     # template_name_suffix = '_list'
 
     def get_queryset(self):
-        filterdate = '2015-11-08'
+        filterdate = '2015-11-10'
         preload = DailyReport.objects.all().select_related('child')
-        return preload.filter(date=filterdate)
+        return preload.filter(date=filterdate).order_by('arrival_time')
         # return preload.order_by('-date')
 
 
