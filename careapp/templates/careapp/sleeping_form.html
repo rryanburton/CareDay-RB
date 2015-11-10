@@ -2,7 +2,7 @@
 {% bootstrap_javascript jquery=1 %}
 {% block content %}
 
-<h1>Recording Nap Times</h1>
+<!-- <h1>Recording Nap Times</h1>
 <form action="{% url "sleeping" %}" method="POST">
   {% csrf_token %}
   <ul>
@@ -12,6 +12,17 @@
   </ul>
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
+</form> -->
+<form id="sleeping" name="diaper-form" method="post">
+  {% csrf_token %}
+  <h3>Nap time</h3>
+  <label for="id_dailyreport">DailyReport:</label>
+  Time:<input type="time"/>
+  slept: <input type="checkbox" name="slept" value="slept"/>
+  did not sleep: <input type="checkbox" name="no-sleep" value="no-sleep"/><br/>
+  <p><textarea name="myTextArea" cols="40" rows="1">Duration of sleep</textarea></p><br/>
+  <button type="submit" value="Save">Save</button>
+  <button type="reset" class="btn btn-default">Clear</button>
 </form>
 
 {% endblock %}
