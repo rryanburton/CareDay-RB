@@ -2,13 +2,15 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.shortcuts import render, redirect
-from datetime import datetime
+from datetime import datetime, date
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm, EatingForm
+from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm, \
+    EatingForm
 from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 
@@ -20,6 +22,7 @@ def index(request):
     html = "<html><body>Welcome to CareDay! <br> The current time is: {} local server time.</body></html>".format(
         now)
     return HttpResponse(html)
+
 
 ###############################################################################
 #   Child
@@ -39,13 +42,11 @@ class ChildActionMixin(object):
 
 
 class ChildListView(ListView):
-
     model = Child
-    template_name = 'careapp/childs_list.html'
+    template_name = 'careapp/childs_list2.html'
 
 
 class ChildCreateView(ChildActionMixin, CreateView):
-
     model = Child
     template_name = 'careapp/edit_child.html'
     success_msg = "Child created!"
@@ -55,7 +56,6 @@ class ChildCreateView(ChildActionMixin, CreateView):
 
 
 class ChildUpdateView(ChildActionMixin, UpdateView):
-
     model = Child
     template_name_suffix = '_update_form'
     success_msg = "Child updated!"
@@ -95,6 +95,7 @@ def add_child(request):
     return render(request, 'careapp/edit_child.html',
                   {'form': form})
 
+
 ###############################################################################
 #  DAILY REPORT PANELS
 
@@ -113,9 +114,9 @@ class DailyReportActionMixin(object):
 
 
 class DailyReportListView(ListView):
-
     model = DailyReport
     template_name = 'careapp/daily_report_list.html'
+
     # template_name_suffix = '_list'
 
     def get_queryset(self):
@@ -126,7 +127,6 @@ class DailyReportListView(ListView):
 
 
 class DailyReportCreateView(DailyReportActionMixin, CreateView):
-
     model = DailyReport
     template_name = 'careapp/daily_report_initial.html'
     success_msg = "Daily Report created"
@@ -150,13 +150,14 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
-
     model = DailyReport
     template_name_suffix = '_update_form'
     success_msg = "Daily Report updated!"
 
     def get(self, request, **kwargs):
-        self.object = DailyReport.objects.get(id=self.kwargs['id'])
+        self.object, created = DailyReport.objects.get_or_create(
+            child_id=self.kwargs['child_id'],
+            date=date.today(), )
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         context = self.get_context_data(object=self.object, form=form)
@@ -192,9 +193,8 @@ class DiaperingMixin(object):
 
 
 class DiaperingCreateView(DiaperingMixin, CreateView):
-
     model = Diapering
-#    template_name = 'careapp/edit_child.html'
+    #    template_name = 'careapp/edit_child.html'
     success_msg = "Diapering completed"
 
     # def get_success_url(self):
@@ -224,6 +224,7 @@ class DiaperingUpdateView(DiaperingMixin, UpdateView):
 class DiaperingDetailView(DiaperingMixin, DetailView):
     model = Diapering
 
+
 ###############################################################################
 # SLEEPING TABLES
 
@@ -241,7 +242,6 @@ class SleepingMixin(object):
 
 
 class SleepingCreateView(SleepingMixin, CreateView):
-
     model = Sleeping
     success_msg = "Sleeping recorded"
 
@@ -271,6 +271,7 @@ class SleepingUpdateView(SleepingMixin, UpdateView):
 class SleepingDetailView(SleepingMixin, DetailView):
     model = Sleeping
 
+
 ###############################################################################
 #  EATING TABLES
 
@@ -288,7 +289,6 @@ class EatingMixin(object):
 
 
 class EatingCreateView(EatingMixin, CreateView):
-
     model = Eating
     success_msg = "Food Intake recorded"
 
