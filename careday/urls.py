@@ -22,24 +22,32 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, TerryCreateView
 
 
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'},
+    url(r'^login/$', 'django.contrib.auth.views.login',
+        {'template_name': 'login.html'},
         name='careday_login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': reverse_lazy('index')},
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+        {'next_page': reverse_lazy('index')},
         name='careday_logout'),
-    url(r'^child$', ChildListView.as_view(), name='childs-list',),
-    url(r'^child/new$', ChildCreateView.as_view(), name='child-new',),
+    url(r'^child$', ChildListView.as_view(), name='childs-list', ),
+    url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^child/update/(?P<id>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
-    url(r'^dailyreport$', DailyReportListView.as_view(), name='dailyreport-list',),
+    url(r'^dailyreport$', DailyReportListView.as_view(),
+        name='dailyreport-list', ),
     url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
-        name='dailyreport-new',),
-    url(r'^dailyreport/update/(?P<id>\d+)/$',
+        name='dailyreport-new', ),
+    # url(r'^dailyreport/update/(?P<id>\d+)/$',
+    #     DailyReportUpdateView.as_view(), name='dailyreport-update'),
+
+    # url(r'^dailyreport/update/(?P<date>\d+)/(?P<child_id>\d+)/$',
+    #         DailyReportUpdateView.as_view(),  name='dailyreport-update'),
+
+    url(r'^dailyreport/update/(?P<child_id>\d+)/$',
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
-    url(r'^$', TemplateView.as_view(
-        template_name='careapp/index.html'), name='index',),
     # url(r'^$', index, name='index'),
     url(r'^calander$', TemplateView.as_view(
         template_name='careapp/calander.html'), name='calander',),
@@ -48,4 +56,5 @@ urlpatterns = [
     url(r'^eating/new$', EatingCreateView.as_view(), name='eating',),
     url(r'^dailyintake$', TerryCreateView.as_view(),
         name='daily-report',),
+
 ]

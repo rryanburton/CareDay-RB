@@ -4,6 +4,8 @@ from django import forms
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
 # Create the form class.
 
+from extra_views import InlineFormSet
+
 
 class ChildForm(forms.ModelForm):
 
@@ -21,22 +23,20 @@ class DailyReportForm(forms.ModelForm):
                   'mood_am', 'mood_pm')
 
 
-class DiaperingForm(forms.ModelForm):
+class DiaperingFormSet(InlineFormSet):
 
-    class Meta:
-        model = Diapering
-        fields = ('time_diaper', 'num_one', 'num_two', 'comments')
+    model = Diapering
+    fields = ('time_diaper', 'num_one', 'num_two', 'comments')
+    extra = 1
 
+class SleepingFormSet(InlineFormSet):
 
-class SleepingForm(forms.ModelForm):
+    model = Sleeping
+    fields = ('time_slp_start', 'time_slp_end')
+    extra = 1
 
-    class Meta:
-        model = Sleeping
-        fields = ('time_slp_start', 'time_slp_end')
+class EatingFormSet(InlineFormSet):
 
-
-class EatingForm(forms.ModelForm):
-
-    class Meta:
-        model = Eating
-        fields = ('time_eat', 'food', 'leftover')
+    model = Eating
+    fields = ('time_eat', 'food', 'leftover')
+    extra = 1
