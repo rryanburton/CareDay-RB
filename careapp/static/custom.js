@@ -20,7 +20,7 @@ $(document).ready(function(){
   //   });
   $("#diaper").on('click', function(){
       $("#diaper").addClass('active');
-      
+
   });
 
 
