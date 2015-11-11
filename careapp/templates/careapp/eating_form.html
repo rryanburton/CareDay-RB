@@ -2,7 +2,7 @@
 {% bootstrap_javascript jquery=1 %}
 {% block content %}
 
-<!-- <h1>Recording Food Intake</h1>
+<h2>Recording Food Intake</h2>
 <form action="{% url "eating" %}" method="POST">
   {% csrf_token %}
   <ul>
@@ -14,15 +14,5 @@
   </ul>
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-</form> -->
-<form id="eating" action="{% url "eating" %}"  name="eating" method="post">
-  {% csrf_token %}
-  <h3>Eating schedule</h3>
-  <label for="id_dailyreport">DailyReport:</label>
-  Time:<input for="id_time_eat" type="time"/>
-  Type: <input for="id_food" type="text" name="type" value="type of food"/><br/>
-  Amount: <input for="id_leftover" type="text" name="amount" value="amount of food"/>
-  <p><textarea name="myTextArea" cols="40" rows="1">comments</textarea></p><br/>
-  <p><input type="submit" value="Save"/></p>
 </form>
 {% endblock %}

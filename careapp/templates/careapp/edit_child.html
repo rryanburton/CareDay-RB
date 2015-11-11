@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-<!-- {% load bootstrap3 %}
-
+{% load bootstrap3 %}
 {% bootstrap_javascript jquery=1 %}
-{% bootstrap_css %} -->
+{% bootstrap_css %}
 {% block content %}
-<!-- <script type="text/javascript" src="/static/DateTimeShortcuts.js"></script> -->
-<!-- {% if messages %}
+<script type="text/javascript" src="/static/DateTimeShortcuts.js"></script>
+ {% if messages %}
 <ul class="messages">
   {% for message in messages %}
   <li id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
@@ -13,7 +12,7 @@
   </li>
   {% endfor %}
 </ul>
-{% endif %} -->
+{% endif %}
 <section id="calendar-form2">
  <h1>Add A Child</h1>
 <form id="new-child" action="/child/new" method="POST">

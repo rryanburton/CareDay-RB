@@ -1,7 +1,6 @@
 .idea
 venv
-<<<<<<< HEAD
 *.pyc
 staticfiles
-=======
->>>>>>> eba001c7579a0049b9374b604564fca53f9db986
+node_modules
+npm-debug.log
