@@ -6,8 +6,9 @@ from datetime import datetime, date
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm, DiaperingForm, SleepingForm, \
-    EatingForm
+from .forms import ChildForm, DailyReportForm, DiaperingFormSet, SleepingFormSet, \
+    EatingFormSet
+from extra_views import UpdateWithInlinesView, InlineFormSet
 from django.contrib.auth.decorators import login_required
 
 
@@ -149,8 +150,13 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
         return reverse('childs-list')
 
 
-class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
+class DailyReportUpdateView(UpdateWithInlinesView):
+    fields = ( 'arrival_time',
+              'departure_time', 'mood_am', 'mood_pm')
+
     model = DailyReport
+    form = DailyReportForm
+    inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
     # template_name_suffix = '_update_form'
     template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
@@ -163,6 +169,10 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
     #     form = self.get_form(form_class)
     #     context = self.get_context_data(object=self.object, form=form)
     #     return self.render_to_response(context)
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super().form_valid(form)
 
     def get_object(self, queryset=None):
         obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],

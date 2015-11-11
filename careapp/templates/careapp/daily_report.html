@@ -19,10 +19,23 @@
 -->
 
          {%  bootstrap_form form %}
+          {% for formset in inlines %}
+
+
+            {% bootstrap_formset formset %}
+
+    {% endfor %}
   <input id="save_daily_report" type="submit" value="Save"/>
   <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
+
+
+
 </form>​
 </section>
+
+
+
+
 
 <div class="daily-report" id="report1">
   <h2>Diapers</h2>
