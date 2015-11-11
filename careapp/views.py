@@ -123,96 +123,96 @@ class DailyReportListView(ListView):
         return preload.order_by('-date')
 
 
-# class DailyReportCreateView(DailyReportActionMixin, CreateView):
-#
-#     model = DailyReport
-#     template_name = 'careapp/daily_report_initial.html'
-#     success_msg = "Daily Report created"
-#
-#     def daily_report(request):
-#         '''
-#         Opens the Daily sign-in form.
-#         '''
-#         if request.method == 'POST':
-#             form = DailyReportForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#             return redirect('dailyreport-new')
-#         else:
-#             form = DailyReportCreateView()
-#         return render(request, 'daily_report.html',
-#                       {'form': form})
-#
-#     def get_success_url(self):
-#         return reverse('dailyreport-list')
+class DailyReportCreateView(DailyReportActionMixin, CreateView):
+
+    model = DailyReport
+    template_name = 'careapp/daily_report_initial.html'
+    success_msg = "Daily Report created"
+
+    def daily_report(request):
+        '''
+        Opens the Daily sign-in form.
+        '''
+        if request.method == 'POST':
+            form = DailyReportForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('dailyreport-new')
+        else:
+            form = DailyReportCreateView()
+        return render(request, 'daily_report.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('dailyreport-list')
 
         ''' ######## - Inline Form Replacement - ########'''
 
 
-class DailyReportCreateView(CreateView):
-    # template_name = 'dailyreport_add.html'
-    model = DailyReport
-    form_class = DailyReportForm
-    fields = ('date', 'child', 'arrival_time',
-              'departure_time', 'mood_am', 'mood_pm')
-#    success_url = 'success/'
-
-    def get(self, request, *args, **kwargs):
-        """
-        Handles GET requests and instantiates blank versions of the form
-        and its inline formsets.
-        """
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        diapering_form = DiaperingFormSet()
-#        instruction_form = InstructionFormSet()
-        return self.render_to_response(
-            self.get_context_data(form=form,
-                                  diapering_form=diapering_form,))
-#                                  instruction_form=instruction_form))
-
-    def post(self, request, *args, **kwargs):
-        """
-        Handles POST requests, instantiating a form instance and its inline
-        formsets with the passed POST variables and then checking them for
-        validity.
-        """
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        diapering_form = DiaperingFormSet(self.request.POST)
-#        instruction_form = InstructionFormSet(self.request.POST)
-        if (form.is_valid() and diapering_form.is_valid()):
-            # and
-            # instruction_form.is_valid()
-            # ):
-            return self.form_valid(form, diapering_form)
-        else:
-            return self.form_invalid(form, diapering_form)
-
-    def form_valid(self, form, diapering_form):
-        """
-        Called if all forms are valid. Creates a Recipe instance along with
-        associated Ingredients and Instructions and then redirects to a
-        success page.
-        """
-        self.object = form.save()
-        diapering_form.instance = self.object
-        diapering_form.save()
-        # instruction_form.instance = self.object
-        # instruction_form.save()
-        return HttpResponseRedirect(self.get_success_url())
-
-    def form_invalid(self, form, diapering_form):
-        """
-        Called if a form is invalid. Re-renders the context data with the
-        data-filled forms and errors.
-        """
-        return self.render_to_response(
-            self.get_context_data(form=form,
-                                  diapering_form=diapering_form,))
-#                                  instruction_form=instruction_form))
+# class DailyReportCreateView(CreateView):
+#     # template_name = 'dailyreport_add.html'
+#     model = DailyReport
+#     form_class = DailyReportForm
+#     # fields = ('date', 'child', 'arrival_time',
+#     #           'departure_time', 'mood_am', 'mood_pm')
+# #    success_url = 'success/'
+#
+#     def get(self, request, *args, **kwargs):
+#         """
+#         Handles GET requests and instantiates blank versions of the form
+#         and its inline formsets.
+#         """
+#         self.object = None
+#         form_class = self.get_form_class()
+#         form = self.get_form(form_class)
+#         diapering_form = DiaperingFormSet()
+# #        instruction_form = InstructionFormSet()
+#         return self.render_to_response(
+#             self.get_context_data(form=form,
+#                                   diapering_form=diapering_form,))
+# #                                  instruction_form=instruction_form))
+#
+#     def post(self, request, *args, **kwargs):
+#         """
+#         Handles POST requests, instantiating a form instance and its inline
+#         formsets with the passed POST variables and then checking them for
+#         validity.
+#         """
+#         self.object = None
+#         form_class = self.get_form_class()
+#         form = self.get_form(form_class)
+#         diapering_form = DiaperingFormSet(self.request.POST)
+# #        instruction_form = InstructionFormSet(self.request.POST)
+#         if (form.is_valid() and diapering_form.is_valid()):
+#             # and
+#             # instruction_form.is_valid()
+#             # ):
+#             return self.form_valid(form, diapering_form)
+#         else:
+#             return self.form_invalid(form, diapering_form)
+#
+#     def form_valid(self, form, diapering_form):
+#         """
+#         Called if all forms are valid. Creates a Recipe instance along with
+#         associated Ingredients and Instructions and then redirects to a
+#         success page.
+#         """
+#         self.object = form.save()
+#         diapering_form.instance = self.object
+#         diapering_form.save()
+#         # instruction_form.instance = self.object
+#         # instruction_form.save()
+#         return HttpResponseRedirect(self.get_success_url())
+#
+#     def form_invalid(self, form, diapering_form):
+#         """
+#         Called if a form is invalid. Re-renders the context data with the
+#         data-filled forms and errors.
+#         """
+#         return self.render_to_response(
+#             self.get_context_data(form=form,
+#                                   diapering_form=diapering_form,))
+# #                                  instruction_form=instruction_form))
 
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):

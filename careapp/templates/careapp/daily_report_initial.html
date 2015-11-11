@@ -1,29 +1,24 @@
-
 {% load bootstrap3 %}
 {% block content %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
 
-<form class="activities" action="{% url "dailyreport-new" %}" method="POST">
- {% csrf_token %}
 
-   <li>
-     <label for="id_date">Date:</label>
-     <input id="id_date" name="date" type="date">
+<h1>Daily Intake Form</h1>
+<form action="{% url "dailyreport-new" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    <li><label for="id_date">Date:</label>{{form.date}}</li>
+    <li><label for="id_child">Child:</label>{{form.child}}</li>
+    <li><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</li>
+    <li><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</li>
+    <li><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</li>
+    <li><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</li>
+  </ul>
+  <button type="reset" class="btn btn-default">Cancel</button>
+  <input id="save_daily_report" type="submit" value="Save" />
+</form>
 
-   </li>
-   <li>
-     <label for="id_child">Child:</label>
-
-     {{form.child}}
-   </li>
-
-
-
- </ul>
-
- <input id="save_daily_report" type="submit" value="Save"/>
- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
-</form>​
+<a href="{% url 'dailyreport-new' %}">NEXT CHILD INTAKE</a>
 
 {% endblock %}
