@@ -142,7 +142,12 @@
           color: #BBBBAF;
           text-decoration: none;
           padding: .5em; }
+#main-login {
+  margin: 0 auto;
+  padding: .5em;
+  margin-right: 1em;
 
+}
       form.admin-login {
         float: left;
         position: absolute;
@@ -214,7 +219,7 @@
         margin-top: 1%;
         margin-bottom: 1%;
         margin-right: 1%;
-        margin-left: 2%; }
+        margin-left: 3%; }
         div.daily-report h2 {
           text-align: center; }
 
@@ -327,6 +332,7 @@
         overflow:auto;
         background-color: #539EC4;
         margin-top: 2em;
+        padding-bottom: 2em;
         border-radius: 5px;
         margin: 3%;
         display: block; }
@@ -403,19 +409,23 @@
         margin: 3% auto;
         background-color: #539EC4;
         border-radius: 5px;
-        padding: 1em;
-      }
+        padding: 1em; }
 
      #report1 {
        background-color: #539EC4;
        border-radius: 5px;
        width: 45%;
-       height: auto;}
+       height: auto; }
      #report2 {
        background-color: #539EC4;
        border-radius: 5px;
        width: 45%;
-       height: auto;}
+       height: auto; }
+     #report3 {
+       background-color: #539EC4;
+       border-radius: 5px;
+       width: 45%;
+       height: auto; }
       /* ==========================================================================
          Helper classes
          ========================================================================== */

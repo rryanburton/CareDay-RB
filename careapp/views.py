@@ -329,3 +329,32 @@ class EatingUpdateView(EatingMixin, UpdateView):
 
 class EatingDetailView(EatingMixin, DetailView):
     model = Eating
+
+
+###############################################################################
+
+class TerryCreateView(CreateView):
+
+    model = DailyReport
+    template_name = 'careapp/daily_report.html'
+    fields = ('date', 'child', 'arrival_time',
+              'departure_time', 'mood_am', 'mood_pm')
+
+
+# @login_required
+    def daily_report(request):
+        '''
+        Opens the Daily sign-in form.
+        '''
+        if request.method == 'POST':
+            form = DailyReportForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('daily-report')
+        else:
+            form = DailyReportCreateView()
+        return render(request, 'daily_report.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('daily-report')
