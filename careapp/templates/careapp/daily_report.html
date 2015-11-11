@@ -4,8 +4,8 @@
 <h1 id="activities">Daily Activity Updates</h1>
     <p>{{ dailyreport.date }}</p>
   <p>{{ dailyreport.child }}</p>
-{#<form action="" method="post">#}
-    <!-- {#<form class="activities" action="{% url "dailyreport-update" %}" method="POST">#} -->
+<!--{#<form action="" method="post">#}
+     {#<form class="activities" action="{% url "dailyreport-update" %}" method="POST">#} -->
   <form class="activities" action="/dailyreport/new" method="POST">
     {% csrf_token %}
 
