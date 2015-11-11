@@ -1,0 +1,144 @@
+body {
+  font-family: sans-serif;
+
+}
+header.main-header {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: block;
+  background-color: #585858;
+  height: 8em;
+  overflow: auto;
+   h1 {
+    padding: .2em;
+    margin: 0;
+    margin-top: .4em;
+    margin-left: .8em;
+    display: block;
+    float: left;
+    color: #fff;
+  }
+  nav#main-login {
+      float: right;
+      margin: 1em;
+      margin-top: .3em;
+      margin-right: 5em;
+      // width: 30%;
+      a {
+        text-decoration: none;
+      }
+      form.form-login div.form-group {
+        display: inline-block;
+      }
+      ul.dropdown-menu  {
+        float: right;
+        padding: 0;
+      }
+     ul.form-login{
+       display: inline;
+       text-decoration: none;
+     }
+     li {
+       list-style: none;
+     }
+    li a.dropdown-toggle {
+       display: inline;
+       margin-right: 1em;
+       color: #fff;
+     }
+     #logout a {
+       margin-top: 0;
+
+     }
+ }
+  }
+  main.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0;
+    // background-color: #F0F0F0;
+    background-color: #D8D8D8;
+    overflow: auto;
+  }
+#list {
+  width:320px;
+  font-size:15px;
+}
+  #list ul.add-child {
+    list-style: none; }
+    #list ul.add-child li.child { }
+    #list ul.add-child li.child a { display:block;
+     text-decoration:none;
+     color:#000;
+     background-color:#FFFFFF;
+     line-height:30px;
+     border-bottom-style:solid;
+     border-bottom-width:1px;
+     border-bottom-color:#CCCCCC;
+     padding-left:10px;
+     cursor:pointer;
+     &:hover {
+      background-color: #585858;
+   }
+ }
+   #list ul.add-child li.child a:hover {
+    color:#fff;
+    background-repeat:repeat-x;
+   }
+ #list ul.add-child li.child a strong {
+   margin-right:10px;
+ }
+#datepicker {
+  margin: 1em;
+}
+#calendar-form {
+  margin-left: 2em;
+}
+#add {
+  margin-left: 2em;
+  margin-bottom: 2em;
+}
+select {
+  width: 125px;
+
+}
+button {
+  color: #000;
+}
+section#wrap {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  h2 {
+    padding: .5em;
+    text-align: center;
+    margin-top: 0;
+  }
+}
+section#activity-moods {
+  background: #585858;
+
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  margin-top: 1em;
+}
+#report1 {
+   background: #585858;
+   border-radius: 5px;
+   width: 100%;
+   height: auto; }
+#report2 {
+   background: #585858;
+   border-radius: 5px;
+   width: 100%;
+   height: auto; }
+#report3 {
+   background-color: #585858;
+   border-radius: 5px;
+   width: 100%;
+   height: auto; }
+form {
+  margin: 1em;
+  padding: 1em;
+}

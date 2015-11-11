@@ -1,549 +1,130 @@
-/*.body-content {
-  padding-top: 60px
-}
-.badge {
-  margin-left: 7px;
-  margin-right: 7px;
-}
-.navbar-text {
-  float: left;
-  padding: 0px 0px;
-  font-size: 18px;
-  line-height: 20px;
-}
-.body-content {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 14px;
-      line-height: 1.42857143;
-      color: #333;
-      background-color: #fff;}*/
-      /*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
-      /*
-       * What follows is the result of much research on cross-browser styling.
-       * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
-       * Kroc Camen, and the H5BP dev community and team.
-       */
-      /* ==========================================================================
-         Base styles: opinionated defaults
-         ========================================================================== */
-      html {
-        color: #222;
-        font-size: 1em;
-        line-height: 1.4; }
+body {
+  font-family: sans-serif; }
 
-      /*
-       * Remove text-shadow in selection highlight:
-       * https://twitter.com/miketaylr/status/12228805301
-       *
-       * These selection rule sets have to be separate.
-       * Customize the background color to match your design.
-       */
-      ::-moz-selection {
-        background: #b3d4fc;
-        text-shadow: none; }
-
-      ::selection {
-        background: #b3d4fc;
-        text-shadow: none; }
-
-      /*
-       * A better looking default horizontal rule
-       */
-      hr {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid #ccc;
-        margin: 1em 0;
-        padding: 0; }
-
-      /*
-       * Remove the gap between audio, canvas, iframes,
-       * images, videos and the bottom of their containers:
-       * https://github.com/h5bp/html5-boilerplate/issues/440
-       */
-      audio,
-      canvas,
-      iframe,
-      img,
-      svg,
-      video {
-        vertical-align: middle; }
-
-      /*
-       * Remove default fieldset styles.
-       */
-      fieldset {
-        border: 0;
-        margin: 0;
-        padding: 0; }
-
-      /*
-       * Allow only vertical resizing of textareas.
-       */
-      textarea {
-        resize: vertical; }
-
-      /* ==========================================================================
-         Browser Upgrade Prompt
-         ========================================================================== */
-      .browserupgrade {
-        margin: 0.2em 0;
-        background: #ccc;
-        color: #000;
-        padding: 0.2em 0; }
-
-      /* ==========================================================================
-         Author's custom styles
-         ========================================================================== */
-      body {
-        font-family: sans-serif; }
-
-      header.main-header {
-        max-width: 1140px;
-        margin: 0 auto;
-        display: block;
-        background-color: #539EC4;
-        height: 7em;
-        overflow: auto; }
-        header.main-header h1 {
-          padding: .2em;
-          margin: 0;
-          margin-left: .8em;
-          display: block;
-          float: left;
-          color: #BBBBAF;
-          font: 50pt 'ChunkFiveRegular';
-          -webkit-box-sizing: content-box;
-          -moz-box-sizing: content-box;
-          box-sizing: content-box;
-          cursor: pointer;
-          border: none;
-          color: white;
-          text-align: center;
-          -o-text-overflow: clip;
-          text-overflow: clip;
-          color: #BBBBAF;
-          text-shadow: 0 1px 0 white, 0 2px 0 white, 0 3px 0 white, 0 4px 0 white, 0 5px 0 white, 0 6px 1px rgba(0, 0, 0, 0.0980392), 0 0 5px rgba(0, 0, 0, 0.0980392), 0 1px 3px rgba(0, 0, 0, 0.298039), 0 3px 5px rgba(0, 0, 0, 0.2), 0 -5px 10px rgba(0, 0, 0, 0.247059), 0 -7px 10px rgba(0, 0, 0, 0.2), 0 -15px 20px rgba(0, 0, 0, 0.14902);
-          -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-          -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-          -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-          transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms; }
-
-      nav {
-        float: right;
-        margin-right: 2em;
-        margin-top: 4%;
-        font-size: 15pt; }
-        nav:hover button {
-          color: gray;
-          margin-left: 1.5em; }
-        nav a {
-          color: #BBBBAF;
-          text-decoration: none;
-          padding: .5em; }
-#main-login {
+header.main-header {
+  max-width: 1140px;
   margin: 0 auto;
-  padding: .5em;
-  margin-right: 1em;
+  display: block;
+  background-color: #585858;
+  height: 8em;
+  overflow: auto; }
+  header.main-header h1 {
+    padding: .2em;
+    margin: 0;
+    margin-top: .4em;
+    margin-left: .8em;
+    display: block;
+    float: left;
+    color: #fff; }
+  header.main-header nav#main-login {
+    float: right;
+    margin: 1em;
+    margin-top: .3em;
+    margin-right: 5em; }
+    header.main-header nav#main-login a {
+      text-decoration: none; }
+    header.main-header nav#main-login form.form-login div.form-group {
+      display: inline-block; }
+    header.main-header nav#main-login ul.dropdown-menu {
+      float: right;
+      padding: 0; }
+    header.main-header nav#main-login ul.form-login {
+      display: inline;
+      text-decoration: none; }
+    header.main-header nav#main-login li {
+      list-style: none; }
+    header.main-header nav#main-login li a.dropdown-toggle {
+      display: inline;
+      margin-right: 1em;
+      color: #fff; }
+    header.main-header nav#main-login #logout a {
+      margin-top: 0; }
 
-}
-      form.admin-login {
-        float: left;
-        position: absolute;
-        top: 0;
-        right: 1;
-        bottom: 0;
-        left: 0;
-        margin-top: 2%;
-        background: transparent; }
-        form.admin-login input {
-          border-radius: 5px;
-          margin-left: 1em;
-          border: 2px solid #F1D79F; }
-        form.admin-login button {
-          background-color: #F1D79F;
-          border-radius: 5px;
-          border: 2px solid #F1D79F; }
+main.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #D8D8D8;
+  overflow: auto; }
 
-      main.container {
-        max-width: 1140px;
-        margin: 0 auto;
-        background-color: #DCDCDC;
-        padding: 0;
-        overflow: auto; }
+#list {
+  width: 320px;
+  font-size: 15px; }
 
-      div.main-image {
-        max-width: 100%;
-        margin: 0 auto;
-        text-align: center;
-        background: #7f7f7f;
-        background: rgba(0, 0, 0, 0.5);
-        overflow: auto;
-        position: relative;
-        height: auto; }
+#list ul.add-child {
+  list-style: none; }
 
-      section#kids {
-        max-width: 100%;
-        margin: 0 auto;
-        margin-left: 2%;
-        background-color: #E6E6E6; }
-        section#kids div {
-          border: 4px solid gray;
-          border-radius: 5px;
-          margin: 1em;
-          width: 16%;
-          height: 220px;
-          float: left; }
-        section#kids div input {
-          border-radius: 5px;
-          text-align: center;
-          margin-left: 2%;
-          margin-top: 1.5%;
-          max-width: 100%;
-          height: auto; }
+#list ul.add-child li.child a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: #FFFFFF;
+  line-height: 30px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #CCCCCC;
+  padding-left: 10px;
+  cursor: pointer; }
+  #list ul.add-child li.child a:hover {
+    background-color: #585858; }
 
-      p {
-        font-size: 14pt;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 5px;
-        padding-bottom: 5%;
-        margin: 0; }
+#list ul.add-child li.child a:hover {
+  color: #fff;
+  background-repeat: repeat-x; }
 
-      div.daily-report {
-        width: 46%;
-        height: 600px;
-        float: left;
-        display: inline-block;
-        margin-top: 1%;
-        margin-bottom: 1%;
-        margin-right: 1%;
-        margin-left: 3%; }
-        div.daily-report h2 {
-          text-align: center; }
+#list ul.add-child li.child a strong {
+  margin-right: 10px; }
 
-      form#diaper {
-        text-align: center;
-        background-color: #539EC4;
-        overflow: auto;
-        padding-bottom: 1em;
-        border-radius: 5px; }
-        form#diaper input {
-          margin-right: 1em;
-          margin-bottom: 1em; }
+#datepicker {
+  margin: 1em; }
 
-      form#sleeping {
-        text-align: center;
-        background-color: #539EC4;
-        overflow: auto;
-        padding-bottom: 1em;
-        border-radius: 5px; }
-        form#sleeping input {
-          margin-right: 1em;
-          margin-bottom: 1em; }
+#calendar-form {
+  margin-left: 2em; }
 
-      form#eating {
-        text-align: center;
-        background-color: #539EC4;
-        overflow: auto;
-        padding-bottom: 1em;
-        border-radius: 5px; }
-        form#eating input {
-          margin-right: 1em;
-          margin-bottom: 1em; }
+#add {
+  margin-left: 2em;
+  margin-bottom: 2em; }
 
-      table {
-        border: 1px solid #000;
-        width: 100%;
-        margin: 0 auto;
-        background-color: #BABABA;
-        border-radius: 5px; }
+select {
+  width: 125px; }
 
-      thead th {
-        border: 1px solid #000;
-        padding: .5em;
-        border-radius: 5px; }
+button {
+  color: #000; }
 
-      tr {
-        border: 1px solid #000; }
+section#wrap {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%; }
+  section#wrap h2 {
+    padding: .5em;
+    text-align: center;
+    margin-top: 0; }
 
-      td {
-        border: 1px solid #000;
-        padding: .5em; }
+section#activity-moods {
+  background: #585858;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  margin-top: 1em; }
 
-      section.arrival {
-        width: 100%;
-        text-align: center;
-        margin-top: 1em; }
-        section.arrival input {
-          border: 2px solid #F1D79F;
-          border-radius: 5px;
-          margin-left: 1em; }
+#report1 {
+  background: #585858;
+  border-radius: 5px;
+  width: 100%;
+  height: auto; }
 
-      nav.daily-form {
-        text-decoration: none;
-        margin-right: 2em;
-        vertical-align: top; }
+#report2 {
+  background: #585858;
+  border-radius: 5px;
+  width: 100%;
+  height: auto; }
 
-      #activities {
-        text-align: center; }
+#report3 {
+  background-color: #585858;
+  border-radius: 5px;
+  width: 100%;
+  height: auto; }
 
-      ul.mood {
-        list-style: none;
-        padding-left: 10%; }
-        ul.mood li {
-          display: inline;
-          margin: 1em; }
-        ul.mood input {
-          border: 2px #F1D79F solid;
-          border-radius: 5px; }
-
-      li.mood-am select {
-        margin-top: 1em;
-        text-align: center;
-        border: 2px #F1D79F solid; }
-
-      li.mood-pm select {
-        margin-top: 1em;
-        text-align: center;
-        border: 2px #F1D79F solid; }
-
-      #save_daily_report {
-        float: right;
-        margin-right: 41%;
-        width: 200px;
-        margin-bottom: 0.5em;
-        background-color: #F1D79F;
-        border-radius: 5px; }
-
-      #daily-report-reset {
-        float: right;
-        margin-right: 41%;
-        width: 200px;
-        margin-bottom: 0.5em;
-        background-color: #F1D79F;
-        border-radius: 5px; }
-
-      #daily-report {
-        margin-right: 25%; }
-
-      #sub-header-daily {
-        overflow:auto;
-        background-color: #539EC4;
-        margin-top: 2em;
-        padding-bottom: 2em;
-        border-radius: 5px;
-        margin: 3%;
-        display: block; }
-
-      #calendar-form {
-        width: 96%;
-        margin: 2% auto;
-        margin-top: 2%;
-        background-color: #F1D79F;
-        border-radius: 5px;
-        position: relative;
-      }
-      #calendar-form #boy {
-        float: left;
-
-      }
-      #calendar-form #girl {
-        float: right;
-        vertical-align: top;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      #calendar-page h2 {
-        margin: 0 auto;
-        margin-top:7%;
-        color: #fff;
-        padding: 2em;
-      }
-      #calendar-page {
-        width: 600px;
-        height: 350px;
-        /*background-color: #539EC4;*/
-        margin: 0 auto;
-
-        /*position: relative;*/
-                        }
-      #calendar-form2 {
-        max-width: 96%;
-        margin: 2% auto;
-        background-color: #539EC4;
-        border-radius: 5px;
-      }
-      #calendar-form2 h1 {
-        padding: 1em;
-      }
-      #calendar-form2 button {
-        margin-bottom: 1em;
-        margin-left: 2%;
-      }
-      /*ul.add-child {
-        list-style: none;
-      }*/
-      ul {
-        list-style: none;
-      }
-      #new-child {
-        margin-left: 2%;
-      }
-      #new-child button {
-        margin: 0;
-      }
-      button {
-        background-color: #F1D79F;
-        border-radius: 5px;
-      }
-      input {
-        border: 2px #F1D79F solid;
-        border-radius: 5px;
-
-      }
-      #add {
-        width: 93%;
-        margin: 3% auto;
-        background-color: #539EC4;
-        border-radius: 5px;
-        padding: 1em; }
-
-     #report1 {
-       background-color: #539EC4;
-       border-radius: 5px;
-       width: 45%;
-       height: auto; }
-     #report2 {
-       background-color: #539EC4;
-       border-radius: 5px;
-       width: 45%;
-       height: auto; }
-     #report3 {
-       background-color: #539EC4;
-       border-radius: 5px;
-       width: 45%;
-       height: auto; }
-      /* ==========================================================================
-         Helper classes
-         ========================================================================== */
-      /*
-       * Hide visually and from screen readers:
-       */
-      .hidden {
-        display: none !important; }
-
-      /*
-       * Hide only visually, but have it available for screen readers:
-       * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-       */
-      .visuallyhidden {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px; }
-
-      /*
-       * Extends the .visuallyhidden class to allow the element
-       * to be focusable when navigated to via the keyboard:
-       * https://www.drupal.org/node/897638
-       */
-      .visuallyhidden.focusable:active,
-      .visuallyhidden.focusable:focus {
-        clip: auto;
-        height: auto;
-        margin: 0;
-        overflow: visible;
-        position: static;
-        width: auto; }
-
-      /*
-       * Hide visually and from screen readers, but maintain layout
-       */
-      .invisible {
-        visibility: hidden; }
-
-      /*
-       * Clearfix: contain floats
-       *
-       * For modern browsers
-       * 1. The space content is one way to avoid an Opera bug when the
-       *    `contenteditable` attribute is included anywhere else in the document.
-       *    Otherwise it causes space to appear at the top and bottom of elements
-       *    that receive the `clearfix` class.
-       * 2. The use of `table` rather than `block` is only necessary if using
-       *    `:before` to contain the top-margins of child elements.
-       */
-      .clearfix:before,
-      .clearfix:after {
-        content: " ";
-        /* 1 */
-        display: table;
-        /* 2 */ }
-
-      .clearfix:after {
-        clear: both; }
-
-      /* ==========================================================================
-         EXAMPLE Media Queries for Responsive Design.
-         These examples override the primary ('mobile first') styles.
-         Modify as content requires.
-         ========================================================================== */
-      /* ==========================================================================
-         Print styles.
-         Inlined to avoid the additional HTTP request:
-         http://www.phpied.com/delay-loading-your-print-css/
-         ========================================================================== */
-      @media print {
-        *,
-        *:before,
-        *:after {
-          background: transparent !important;
-          color: #000 !important;
-          /* Black prints faster:
-                                         http://www.sanbeiji.com/archives/953 */
-          box-shadow: none !important;
-          text-shadow: none !important; }
-        a,
-        a:visited {
-          text-decoration: underline; }
-        a[href]:after {
-          content: " (" attr(href) ")"; }
-        abbr[title]:after {
-          content: " (" attr(title) ")"; }
-        /*
-           * Don't show links that are fragment identifiers,
-           * or use the `javascript:` pseudo protocol
-           */
-        a[href^="#"]:after,
-        a[href^="javascript:"]:after {
-          content: ""; }
-        pre,
-        blockquote {
-          border: 1px solid #999;
-          page-break-inside: avoid; }
-        /*
-           * Printing Tables:
-           * http://css-discuss.incutio.com/wiki/Printing_Tables
-           */
-        thead {
-          display: table-header-group; }
-        tr,
-        img {
-          page-break-inside: avoid; }
-        img {
-          max-width: 100% !important; }
-        p,
-        h2,
-        h3 {
-          orphans: 3;
-          widows: 3; }
-        h2,
-        h3 {
-          page-break-after: avoid; } }
+form {
+  margin: 1em;
+  padding: 1em; }
