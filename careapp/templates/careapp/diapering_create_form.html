@@ -1,8 +1,9 @@
 {#{% load bootstrap3 %}#}
 {% block content %}
 
+
 <h2>Diapers</h2>
-<form id="diaper" action="{% url "diapering-create" %}" name="diaper-form" method="POST">
+<form id="diaper" action="{% url "diapering-create" %}" name="diapering-create" method="POST">
   {% csrf_token %}
   <h3>Please select childs potty details</h3>
     <label for="id_dailyreport">DailyReport:</label>
@@ -10,7 +11,7 @@
     #1: <input type="checkbox" for="id_num_one" value="number one"/>
     #2: <input type="checkbox" for="id_num_two" value="number two"/>
     <p><textarea for="id_comments" name="myTextArea" cols="40" rows="1">comments</textarea></p></br>
-    <p id="sendwrapper"><button type="submit" id="save_child" value="Save">Save</button></p>
+    <p id="sendwrapper"><button type="submit" id="save_diapering" value="Save">Save</button></p>
     <button type="reset" class="btn btn-default">Clear</button>
 </form>
 {% endblock %}

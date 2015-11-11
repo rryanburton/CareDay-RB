@@ -260,26 +260,29 @@ class DiaperingMixin(object):
 class DiaperingCreateView(DiaperingMixin, CreateView):
 
     model = Diapering
-#    template_name = 'careapp/edit_child.html'
+    template_name = 'careapp/diapering_create_form.html'
     success_msg = "Diapering completed"
 
     # def get_success_url(self):
     #     return reverse('childs-list')
 
-    def diapering(request):
+    def diapering_create(request):
+        '''
+        Opens the initial diapering page
+        '''
 
         if request.method == 'POST':
             form = DiaperingForm(request.POST)
             if form.is_valid():
                 form.save()
-            return redirect('diapering')
+            return redirect('diapering-create')
         else:
             form = DiaperingCreateView()
-        return render(request, 'careapp/diapering_form.html',
+        return render(request, 'daily_report.html',
                       {'form': form})
 
     def get_success_url(self):
-        return reverse('careapp/diapering_update_form.html')
+        return reverse('dailyreport-list')
 
 
 class DiaperingUpdateView(DiaperingMixin, UpdateView):
@@ -299,7 +302,7 @@ class DiaperingUpdateView(DiaperingMixin, UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('diapering')
+        return reverse('dailyreport-list')
 
 
 class DiaperingDetailView(DiaperingMixin, DetailView):
