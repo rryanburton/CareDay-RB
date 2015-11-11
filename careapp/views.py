@@ -142,11 +142,11 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
             return redirect('dailyreport-new')
         else:
             form = DailyReportCreateView()
-        return render(request, 'daily_report.html',
+        return render(request, 'careapp/daily_report.html',
                       {'form': form})
 
     def get_success_url(self):
-        return reverse('dailyreport-list')
+        return reverse('childs-list')
 
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
