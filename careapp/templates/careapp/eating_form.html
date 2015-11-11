@@ -17,8 +17,8 @@
 </form> -->
 <form id="eating" action="{% url "eating" %}"  name="eating" method="post">
   {% csrf_token %}
-  <h3>Eating schedule</h3>
-  <label for="id_dailyreport">DailyReport:</label>
+  <h3>Eating schedule {{ Child.object.first_name }}</h3>
+  <label for="id_dailyreport">DailyReport:{{ Child.first_name }}{{ DailyReport.date }}</label>
   Time:<input for="id_time_eat" type="time"/>
   Type: <input for="id_food" type="text" name="type" value="type of food"/><br/>
   Amount: <input for="id_leftover" type="text" name="amount" value="amount of food"/>

@@ -351,6 +351,20 @@ class SleepingUpdateView(SleepingMixin, UpdateView):
     model = Sleeping
     success_msg = "Sleeping recorded"
 
+    def get(self, request, **kwargs):
+        self.object = Sleeping.objects.get(id=self.kwargs['id'])
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        context = self.get_context_data(object=self.object, form=form)
+        return self.render_to_response(context)
+
+    def get_object(self, queryset=None):
+        obj = Sleeping.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def get_success_url(self):
+        return reverse('dailyreport-list')
+
 
 class SleepingDetailView(SleepingMixin, DetailView):
     model = Sleeping
@@ -398,6 +412,19 @@ class EatingUpdateView(EatingMixin, UpdateView):
     model = Eating
     success_msg = "Food Intake recorded"
 
+    def get(self, request, **kwargs):
+        self.object = Eating.objects.get(id=self.kwargs['id'])
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        context = self.get_context_data(object=self.object, form=form)
+        return self.render_to_response(context)
+
+    def get_object(self, queryset=None):
+        obj = Eating.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def get_success_url(self):
+        return reverse('dailyreport-list')
 
 class EatingDetailView(EatingMixin, DetailView):
     model = Eating

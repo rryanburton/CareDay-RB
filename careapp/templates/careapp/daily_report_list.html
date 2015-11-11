@@ -10,7 +10,9 @@
   {% for dailyreport in object_list %}
   <li class="dailyreport"> {{ dailyreport }}
     <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a>
-    <a href="/dailyreport/diapering/create/{{ dailyreport.id }}/"> * diapering</a>
+    <a href="/dailyreport/diapering/create/{{ dailyreport.id }}/"> * create diapering event</a>
+    <a href="/dailyreport/sleeping/new/{{ dailyreport.id }}/"> * create sleeping event</a>
+    <a href="/dailyreport/eating/new/{{ dailyreport.id }}/"> * create eating event</a>
     <!-- <a href="/dailyreport/diapering/update/{{ dailyreport.id }}/"> * diapering</a> -->
   </li>
   <!-- <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a></li> -->
