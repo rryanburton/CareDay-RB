@@ -2,65 +2,14 @@
 {% block content %}
 <section id="sub-header-daily">
 <h1 id="activities">Daily Activity Updates</h1>
-<form class="activities" action="{% url "daily-report" %}" method="POST">
+<form action="" method="post">
+<!-- {#    <form class="activities" action="{% url "dailyreport-update" %}" method="POST">#} -->
   {% csrf_token %}
-  <ul class="mood">
-    <li>
-      <!-- <label for="id_date">Date:</label>
-      <input id="id_date" name="date" type="date"> -->
-      <!-- {{form.date}}
-    </li> -->
-    <!-- <li>
-      <label for="id_child">Child:</label>
-      <select id="id_child" name="child">
-      <option value="" selected="selected">---------</option>
-      <option value="1">Bobby</option>
-      <option value="2">Julie</option>
-      <option value="3">Terry</option>
-    </select>
-    {{form.child}}
-    </li> -->
-    <li>
-      <label for="id_arrival_time">Arrival time:</label>
-      <input type="time" id="id_arrival_time" name="arrival_time"/>
-    <!-- {{form.arrival_time}} -->
-  </li>
-    <li>
-      <label for="id_departure_time">Departure time:</label>
-      <input type="time" id="id_departure_time" name="departure_time"/>
-      <!-- {{form.departure_time}} -->
-    </li><br/>
-
-    <li class="mood-am"><label for="id_mood_am">Mood am:</label>
-      <!-- <select id="id_mood_am" name="mood_am">
-      <option value="HA" selected="selected">Happy</option>
-      <option value="FI">Fine</option>
-      <option value="LF">A Little Fussy</option>
-      <option value="VF">Very Fussy</option>
-      <option value="NW">Not Well</option>
-      </select> -->
-      {{form.mood_am}}
-    </li>
-    <li class="mood-pm">
-      <label for="id_mood_pm">Mood pm:</label>
-      <!-- <select id="id_mood_pm" name="mood_pm">
-      <option value="HA" selected="selected">Happy</option>
-      <option value="FI">Fine</option>
-      <option value="LF">A Little Fussy</option>
-      <option value="VF">Very Fussy</option>
-      <option value="NW">Not Well</option>
-      </select> -->
-      {{form.mood_pm}}
-    </li>
-  </ul>
+  {{ form.as_p }}
   <input id="save_daily_report" type="submit" value="Save"/>
   <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
 </form>​
-<nav id="daily-report">
-  <a href="{% url 'daily-report' %}">NEXT CHILD INTAKE</a>
-  <a href="{% url 'childs-list' %}">CHILD LIST</a>
-  <a href="{% url 'child-new' %}">NEW CHILD FORM</a>
-</nav>
+
 </section>
 
 <div class="daily-report" id="report1">

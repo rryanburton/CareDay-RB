@@ -151,7 +151,8 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
 class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
     model = DailyReport
-    template_name_suffix = '_update_form'
+    # template_name_suffix = '_update_form'
+    template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
 
     def get(self, request, **kwargs):
@@ -164,11 +165,12 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
         return self.render_to_response(context)
 
     def get_object(self, queryset=None):
-        obj = DailyReport.objects.get(id=self.kwargs['id'])
+        obj = DailyReport.objects.get(child_id=self.kwargs['child_id'],
+            date=date.today(), )
         return obj
 
     def get_success_url(self):
-        return reverse('dailyreport-list')
+        return reverse('childs-list')
 
 
 class DailyReportDetailView(DailyReportActionMixin, DetailView):
