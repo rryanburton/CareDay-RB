@@ -5,7 +5,7 @@ from .models import Child, DailyReport, Diapering, Sleeping, Eating
 
 class ChildAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'gender', 'birthday',
-                    'parent_name', 'parent_email', 'parent_phone']
+                    'parent_name', 'parent_email', 'parent_phone', 'child_image']
 
 
 class DailyReportAdmin(admin.ModelAdmin):

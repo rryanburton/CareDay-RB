@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load bootstrap3 %}
 {% block content %}
 {% bootstrap_css %}
@@ -6,10 +7,14 @@
 
 
 <h1>Daily Report List</h1>
-<ul>
+    <input type="date" class="form-control" placeholder="Date input" style="width: 226px;">
   {% for dailyreport in object_list %}
-  <li class="dailyreport"> {{ dailyreport }} <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a></li>
+      <section id="kids">
+        <div>
+            <a href="#daily-report"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a>
+            <p>{{ dailyreport.child.first_name }}<br>{{ dailyreport.date }}</p>
+            <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a>
+        </div>
+      </section>
   {% endfor %}
-</ul>
-
 {% endblock %}

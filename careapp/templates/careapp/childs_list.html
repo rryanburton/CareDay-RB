@@ -12,15 +12,25 @@
 </p>
   {% endfor %}
 </ul>
+<<<<<<< HEAD
 {% endif %}
-
+=======
+{% endif %} -->
+<section id="kids">
 <h1>Children</h1>
+{% for child in object_list %}
+    <div><a href="#daily-report"><input type="image" src="{{ child.child_image }}" name="image" width="170" height="170"></a><p>{{ child }}</p></div><a href="/child/update/{{ child.id }}/">  update child</a>
+  <div><a href="#daily-report"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a><p>Kadence</p></div>
+ {% endfor %}
+
+
+
+
 <ul class="add-child">
-  {% for child in object_list %}
-  <li class="child">{{ child }} birthday: {{ child.birthday}}  <a href="/child/update/{{ child.id }}/">  update child</a></li>
-  {% endfor %}
+
+
 </ul>
-<a href="{% url "child-new" %}">add child</a>
+    </section>
 
 {# <a href="{% url "childs_new" %}">childs_new</a>#}
 {% endblock %} -->
