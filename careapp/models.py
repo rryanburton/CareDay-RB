@@ -1,11 +1,16 @@
+import os
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 # Create your models here.
 
 
 # Assume 'dailyreport_id' is defined.
+def get_image_path(instance, filename):
+    return os.path.join('photos', str(instance.id), filename)
+
+
 class Child(models.Model):
     BOY = 'B'
     GIRL = 'G'
@@ -22,6 +27,7 @@ class Child(models.Model):
     parent_name = models.CharField(max_length=20, blank=True, null=True)
     parent_email = models.EmailField(max_length=254, blank=True, null=True)
     parent_phone = models.CharField(max_length=15, blank=True, null=True)
+    child_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     def __str__(self):
         return ("{} : {}".format(self.first_name, self.gender))

@@ -101,7 +101,7 @@ def add_child(request):
 
 
 class DailyReportActionMixin(object):
-    fields = ('date', 'child', 'arrival_time',
+    fields = ( 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     @property
@@ -154,18 +154,18 @@ class DailyReportUpdateView(DailyReportActionMixin, UpdateView):
     # template_name_suffix = '_update_form'
     template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
-
-    def get(self, request, **kwargs):
-        self.object, created = DailyReport.objects.get_or_create(
-            child_id=self.kwargs['child_id'],
-            date=date.today(), )
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        context = self.get_context_data(object=self.object, form=form)
-        return self.render_to_response(context)
+    #
+    # def get(self, request, **kwargs):
+    #     self.object, created = DailyReport.objects.get_or_create(
+    #         child_id=self.kwargs['child_id'],
+    #         date=date.today(), )
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+    #     context = self.get_context_data(object=self.object, form=form)
+    #     return self.render_to_response(context)
 
     def get_object(self, queryset=None):
-        obj = DailyReport.objects.get(child_id=self.kwargs['child_id'],
+        obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
             date=date.today(), )
         return obj
 
