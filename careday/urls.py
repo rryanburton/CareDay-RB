@@ -21,6 +21,7 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
     TerryCreateView
+from django.contrib.auth.views import logout
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

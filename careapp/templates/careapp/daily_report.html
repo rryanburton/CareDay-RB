@@ -19,13 +19,19 @@
     <p><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</p>
 -->
 
-         {%  bootstrap_form form %}
+        <div id="dailytopform"> {%  bootstrap_form form %}</div>
           {% for formset in inlines %}
+              <div id="FormSet{{ formset.prefix }}">
+                  {% for subform in formset.forms %}
+                    <table>
+                    {{ subform.as_table }}
+                    </table>
+                  {% endfor %}
+              </div>
+{#            {% bootstrap_formset formset %}#}
 
+          {% endfor %}
 
-            {% bootstrap_formset formset %}
-
-    {% endfor %}
   <input id="save_daily_report" type="submit" value="Save"/>
   <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
 
