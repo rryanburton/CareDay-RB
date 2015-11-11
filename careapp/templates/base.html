@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
-
+{% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
 
 
@@ -19,15 +19,9 @@
 <script src="/static/custom.js"></script>
   <header class="main-header">
       <h1>Careday</h1>
-      {% block toggle_login %}
-      {% include "toggle_login.html" %}
-      {% endblock %}
-      <nav>
-        <a href="/">Home</a>
-        <a href="/calander">Calendar</a>
-        <a href="/child">The Kids</a>
-        <a href="dailyreport">Child detail</a>
-      </nav>
+        {% block toggle_login %}
+        {% include "toggle_login.html" %}
+        {% endblock %}
   </header>
   <main class="container">
   {% block content %}
