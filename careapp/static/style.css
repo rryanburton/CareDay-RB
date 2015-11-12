@@ -1,3 +1,284 @@
+/*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4; }
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; }
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical; }
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+#child-name-date {
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center; }
+  #child-name-date p {
+    display: inline;
+    font-family: fantasy;
+    color: #fff;
+    font-size: 25pt;
+    margin: 5em; }
+
+form.activities {
+  display: none; }
+
+.active {
+  padding: 1em;
+  background: rgba(216, 216, 216, 0.5);
+  border-radius: 10px;
+  margin: 1em;
+  width: 60%;
+  margin: 0 auto;
+  display: block; }
+
+div#act {
+  width: 80%;
+  margin: 0 auto;
+  height: 500px;
+  font-size: 8em;
+  /*background-color: gray;*/
+  text-align: center;
+  position: relative;
+  border-radius: 5px; }
+  #act img {
+    border-radius: 10px;
+  }
+div#act h2 {
+  color: #fff;
+  font-size: .3em;
+  font-weight: 600;
+  font-family: fantasy;
+  position: absolute;
+  /*bottom: 1em;
+  left: 4em; */
+  top:5%;
+  right:0;
+  left:0;
+  bottom:0;
+  }
+
+div#report1 {
+  /*background-color: #D8D8D8;*/
+  border-radius: 5px;
+  width: 100%;
+  height: 230px;
+  padding: .2em;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  display: block; }
+  div#report1 input, div#report1 select {
+    margin: .3em; }
+
+div#FormSetdiapering_set {
+  /*background-color: rgba(0, 0, 0, 0.2);*/
+  /*background-color: #D8D8D8;*/
+  border-radius: 5px;
+  width: 100%;
+  height: 230px;
+  padding: .2em;
+  margin-bottom: 3em;
+  display: block; }
+
+div#FormSetsleeping_set {
+  /*background-color: #D8D8D8;*/
+  border-radius: 5px;
+  width: 100%;
+  height: 150px;
+  padding: .2em;
+  margin-bottom: 3em;
+  display: block; }
+
+div#FormSeteating_set {
+  /*background-color: #D8D8D8;*/
+  border-radius: 5px;
+  width: 100%;
+  height: 180px;
+  padding: .2em;
+  margin-bottom: 3em;
+  display: block; }
+
+form {
+  margin: 1em;
+  padding: 1em; }
+
+div.form-group {
+  margin: 2em; }
+
+body {
+  font-family: sans-serif; }
+
+header.main-header {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: block;
+  background-color: #585858;
+  height: 8em;
+  overflow: auto; }
+  header.main-header h1 {
+    padding: .2em;
+    margin: 0;
+    margin-top: .4em;
+    margin-left: .8em;
+    display: block;
+    float: left;
+    color: #fff; }
+  header.main-header nav#main-login {
+    float: right;
+    margin: 1em;
+    margin-top: .3em;
+    margin-right: 5em; }
+    header.main-header nav#main-login a {
+      text-decoration: none; }
+    header.main-header nav#main-login form.form-login div.form-group {
+      display: inline-block; }
+    header.main-header nav#main-login ul.dropdown-menu {
+      float: right;
+      padding: 0; }
+    header.main-header nav#main-login ul.form-login {
+      display: inline;
+      text-decoration: none; }
+    header.main-header nav#main-login li {
+      list-style: none; }
+    header.main-header nav#main-login li a.dropdown-toggle {
+      display: inline;
+      margin-right: 1em;
+      color: #fff; }
+    header.main-header nav#main-login #logout a {
+      margin-top: 0; }
+
+main.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #D8D8D8;
+  background-image: url('img/background.jpg');
+  /*background-repeat: no-repeat;*/
+  overflow: auto; }
+
+#list {
+  width: 320px;
+  font-size: 15px; }
+
+#list ul.add-child {
+  list-style: none; }
+
+#list ul.add-child li.child a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: #FFFFFF;
+  line-height: 30px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #CCCCCC;
+  padding-left: 10px;
+  cursor: pointer; }
+  #list ul.add-child li.child a:hover {
+    background-color: #585858; }
+
+#list ul.add-child li.child a:hover {
+  color: #fff;
+  background-repeat: repeat-x; }
+
+#list ul.add-child li.child a strong {
+  margin-right: 10px; }
+
+#datepicker {
+  margin: 1em; }
+
+#calendar-form {
+  margin-left: 2em; }
+
+#add {
+  margin-left: 2em;
+  margin-bottom: 2em; }
+
+select {
+  width: 125px; }
+
+button {
+  color: #000; }
+
+section#wrap {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%; }
+  section#wrap h2 {
+    padding: .5em;
+    text-align: center;
+    margin-top: 0; }
+
 body {
   font-family: sans-serif; }
 
@@ -99,32 +380,108 @@ section#wrap {
     padding: .5em;
     text-align: center;
     margin-top: 0; }
-
-section#activity-moods {
-  background: #585858;
-  border-radius: 5px;
-  width: 100%;
-  height: auto;
-  margin-top: 1em; }
-
-#report1 {
-  background: #585858;
-  border-radius: 5px;
-  width: 100%;
-  height: auto; }
-
-#report2 {
-  background: #585858;
-  border-radius: 5px;
-  width: 100%;
-  height: auto; }
-
-#report3 {
-  background-color: #585858;
-  border-radius: 5px;
-  width: 100%;
-  height: auto; }
-
 form {
   margin: 1em;
   padding: 1em; }
+
+body {
+  font-family: sans-serif; }
+
+header.main-header {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: block;
+  background-color: #585858;
+  height: 8em;
+  overflow: auto; }
+  header.main-header h1 {
+    padding: .2em;
+    margin: 0;
+    margin-top: .4em;
+    margin-left: .8em;
+    display: block;
+    float: left;
+    color: #fff; }
+  header.main-header nav#main-login {
+    float: right;
+    margin: 1em;
+    margin-top: .3em;
+    margin-right: 5em; }
+    header.main-header nav#main-login a {
+      text-decoration: none; }
+    header.main-header nav#main-login form.form-login div.form-group {
+      display: inline-block; }
+    header.main-header nav#main-login ul.dropdown-menu {
+      float: right;
+      padding: 0; }
+    header.main-header nav#main-login ul.form-login {
+      display: inline;
+      text-decoration: none; }
+    header.main-header nav#main-login li {
+      list-style: none; }
+    header.main-header nav#main-login li a.dropdown-toggle {
+      display: inline;
+      margin-right: 1em;
+      color: #fff; }
+    header.main-header nav#main-login #logout a {
+      margin-top: 0; }
+
+main.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #D8D8D8;
+  overflow: auto; }
+
+#list {
+  width: 320px;
+  font-size: 15px; }
+
+#list ul.add-child {
+  list-style: none; }
+
+#list ul.add-child li.child a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: #FFFFFF;
+  line-height: 30px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #CCCCCC;
+  padding-left: 10px;
+  cursor: pointer; }
+  #list ul.add-child li.child a:hover {
+    background-color: #585858; }
+
+#list ul.add-child li.child a:hover {
+  color: #fff;
+  background-repeat: repeat-x; }
+
+#list ul.add-child li.child a strong {
+  margin-right: 10px; }
+
+#datepicker {
+  margin: 1em; }
+
+#calendar-form {
+  margin-left: 2em; }
+
+#add {
+  margin-left: 2em;
+  margin-bottom: 2em; }
+
+select {
+  width: 125px; }
+
+button {
+  color: #000; }
+
+section#wrap {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%; }
+  section#wrap h2 {
+    padding: .5em;
+    text-align: center;
+    margin-top: 0; }
