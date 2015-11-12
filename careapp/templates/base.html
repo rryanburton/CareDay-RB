@@ -13,13 +13,24 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
     <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}"/>
+    <style>
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:white; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:none}
+a:active  {color:white; background-color:transparent; text-decoration:none}
+</style>
 </head>
 <body>
     <script src="/static/jquery/jquery-ui.min.js"></script>
     <script src="/static/custom.js"></script>
     <div class="container-fluid" >
     <header class="main-header">
-      <h1>Careday</h1>
+
+{% if user.is_authenticated %}
+        <h1><a href="child">Careday</a></h1>
+{% else %}
+        <h1>Careday</h1>
+{% endif %}
 
         {% block toggle_login %}
         {% include "toggle_login.html" %}
