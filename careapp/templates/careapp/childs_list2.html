@@ -4,13 +4,22 @@
 {% block content %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
-
 <section id="kids">
+
+
     <h2>Children</h2>
+    <div class="row">
 {% for child in object_list %}
 
-  <div><a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a><p>{{ child }}</p></div>
+
+  <div class="col-lg-2 col-md-3 col-sm-3 ">
+      <a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+      <p>{{ child }}</p>
+  </div>
+
  {% endfor %}
+    </div>
+
 </section>
 
 

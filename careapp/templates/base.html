@@ -17,6 +17,7 @@
 <body>
     <script src="../static/jquery/jquery-ui.min.js"></script>
     <script src="../static/custom.js"></script>
+    <div class="container-fluid" >
     <header class="main-header">
       <h1>Careday</h1>
 
@@ -24,11 +25,11 @@
         {% include "toggle_login.html" %}
         {% endblock %}
 
-    </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main> <!-- end main.container -->
+  </header></div>
+  <main class="container">
+  {% block content %}
+  {% endblock %}
+  </main> <!-- end main.container -->
 <br>
 <footer></footer>
 </body>
