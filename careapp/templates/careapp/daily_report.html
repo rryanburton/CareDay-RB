@@ -1,145 +1,25 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
-
+{% load staticfiles %}
 {% block content %}
-<section id="sub-header-daily">
-<h1 id="activities">Daily Activity Updates</h1>
-    <p>{{ dailyreport.date }}</p>
-  <p>{{ dailyreport.child }}</p>
-{#<form action="" method="post">#}
+<section id="sub-header-daily" <img src="{% static 'img/babygirl.jpg' %}">
+    <div id="child-name-date">
+      <p>{{ dailyreport.date }}</p>
+      <p>{{ dailyreport.child }}</p>
+   </div>
+   <div id="act"><h2>DAILY REPORT INSIDE!!!</h2> <img src="{% static 'img/clickme.png' %}" alt="click me botton" /> </div>
      <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
-{#  <form class="activities" action="/dailyreport/new" method="POST">#}
     {% csrf_token %}
 
-   <!--  <input type="hidden" name="date" id="id_date" value="{{ form.date }}">
-    <input type="hidden" name="child" id="id_child" value="{{ dailyreport.child.id }}">
-    <p><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</p>
-    <p><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</p>
-    <p><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</p>
-    <p><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</p>
--->
+        <div id="report1"> {%  bootstrap_form form layout='horizontal' %}</div>
+        {% for formset in inlines %}
+          <div id="FormSet{{ formset.prefix }}">
+            {% bootstrap_formset formset layout='horizontal' %}
+          </div>
 
-        <div id="dailytopform"> {%  bootstrap_form form %}</div>
-          {% for formset in inlines %}
-              <div id="FormSet{{ formset.prefix }}">
-                  {% for subform in formset.forms %}
-                    <table>
-                    {{ subform.as_table }}
-                    </table>
-                  {% endfor %}
-              </div>
-{#            {% bootstrap_formset formset %}#}
-
-          {% endfor %}
-
-  <input id="save_daily_report" type="submit" value="Save"/>
+        {% endfor %}
+  <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
   <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
-
-
-
 </form>​
-
-</section>
-
-
-<div class="daily-report" id="report1">
-  <h2>Diapers</h2>
-  <!-- <form id="diaper" action="{% url "diapering" %}" method="POST">
-    {% csrf_token %}
-    <ul>
-      <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-      <li><label for="id_time_diaper">Diaper Time:</label>{{form.time_diaper}}</li>
-      <li><label for="id_num_one">Number one:</label>{{form.num_one}}</li>
-
-      <li><label for="id_num_two">Number two:</label>{{form.num_two}}</li>
-      <li><label for="id_comments">Comments:</label>{{form.comments}}</li>
-    </ul>
-    <button type="reset" class="btn btn-default">Clear</button>
-    <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-  </form> -->
-  <!-- <table>
-			<thead>
-				<tr>
-					<th>Diaper Time</th>
-					<th>Number one</th>
-					<th>Number two</th>
-					<th>Comments</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>{{form.time_diaper}}</td>
-					<td>{{form.num_one}}</td>
-					<td>{{form.num_two}}</td>
-					<td>{{form.comments}}</td>
-				</tr>
-			</tbody>
- </table> -->
-</div>
-<div class="daily-report" id="report2">
-  <h2>Sleeping</h2>
-  <!-- <form action="{% url "sleeping" %}" method="POST">
-    {% csrf_token %}
-    <ul>
-      <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-      <li><label for="id_time_slp_start">Nap start:</label>{{form.time_slp_start}}</li>
-      <li><label for="id_time_slp_end">Nap end:</label>{{form.time_slp_end}}</li>
-    </ul>
-    <button type="reset" class="btn btn-default">Clear</button>
-    <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-  </form> -->
-  <!-- <table>
-			<thead>
-				<tr>
-					<th>Time</th>
-					<th>Yes</th>
-					<th>No</th>
-					<th>Duration</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1:00pm</td>
-					<td>X</td>
-					<td></td>
-					<td>2 hours</td>
-				</tr>
-      </tbody>
- </table> -->
-  </div>
-  <div id="report3" class="daily-report">
-    <h2>Eating</h2>
-    <!-- <form action="{% url "eating" %}" method="POST">
-      {% csrf_token %}
-      <ul>
-        <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-        <li><label for="id_time_eat">Feeding start:</label>{{form.time_eat}}</li>
-        <li><label for="id_food">Food:</label>{{form.food}}</li>
-        <li><label for="id_leftover">Leftover:</label>{{form.leftover}}</li>
-
-      </ul>
-      <button type="reset" class="btn btn-default">Clear</button>
-      <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-    </form> -->
-    <!-- <table>
-  			<thead>
-  				<tr>
-  					<th>Time</th>
-  					<th>Type</th>
-  					<th>Amount</th>
-  					<th>Comments</th>
-  				</tr>
-  			</thead>
-  			<tbody>
-  				<tr>
-  					<td>1:00pm</td>
-  					<td>bottle</td>
-  					<td>2 oz</td>
-  					<td>ate very well</td>
-  				</tr>
-        </tbody>
-   </table> -->
-  </div>
-  <div class="daily-report"></div>
 </section>
 {% endblock %}
