@@ -78,7 +78,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 #child-name-date {
-  margin-top: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
   font-size: 16pt;
   font-weight: bold;
   text-align: center; }
@@ -96,7 +97,7 @@ form.activities {
   margin: 1em;
   width: 60%;
   margin: 0 auto;
-  
+
   display: block; }
 
 div#act {
@@ -107,19 +108,22 @@ div#act {
   /*background-color: gray;*/
   text-align: center;
   position: relative;
-  border-radius: 20px; }
+  border-radius: 5px; }
 div#act h2 {
   color: #000;
-  font-size: .4em;
+  font-size: .3em;
   font-weight: 600;
   font-family: fantasy;
   position: absolute;
   /*bottom: 1em;
   left: 4em; */
-  top:80%;
+  top:5%;
   right:0;
   left:0;
   bottom:0;
+  }
+  img {
+    border-radius: 10px;
   }
 div#report1 {
   background-color: #D8D8D8;
