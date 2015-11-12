@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+###############################################################################
+#   Index
 
 def index(request):
     '''
@@ -21,7 +23,7 @@ def index(request):
     '''
     now = datetime.now()
     html = "<html><body>Welcome to CareDay! <br> The current time is: {} local server time.</body></html>".format(
-        now)
+            now)
     return HttpResponse(html)
 
 
