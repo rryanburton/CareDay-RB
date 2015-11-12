@@ -7,18 +7,18 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CareDay</title>
-
- <link rel="stylesheet" href="{% static 'style.css' %}"/>
- <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CareDay</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}"/>
 </head>
 <body>
-<script src="/static/jquery/jquery-ui.min.js"></script>
-<script src="/static/custom.js"></script>
-<div class="container-fluid" >
-<header class="main-header">
+    <script src="../static/jquery/jquery-ui.min.js"></script>
+    <script src="../static/custom.js"></script>
+    <div class="container-fluid" >
+    <header class="main-header">
       <h1>Careday</h1>
 
         {% block toggle_login %}
