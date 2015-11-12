@@ -1,0 +1,47 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CareDay</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}"/>
+    <style>
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:white; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:none}
+a:active  {color:white; background-color:transparent; text-decoration:none}
+</style>
+</head>
+<body>
+    <script src="/static/jquery/jquery-ui.min.js"></script>
+    <script src="/static/custom.js"></script>
+    <div class="container-fluid" >
+    <header class="main-header">
+
+{% if user.is_authenticated %}
+        <h1><a href="child">Careday</a></h1>
+{% else %}
+        <h1>Careday</h1>
+{% endif %}
+
+        {% block toggle_login %}
+        {% include "toggle_login.html" %}
+        {% endblock %}
+
+  </header></div>
+  <main class="container">
+  {% block content %}
+  {% endblock %}
+  </main> <!-- end main.container -->
+<br>
+<footer></footer>
+</body>
+</html>

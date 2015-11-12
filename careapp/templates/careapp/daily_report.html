@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block content %}
+
+<section id="sub-header-daily" <img src="{% static 'img/babygirl.jpg' %}">
+    <div id="child-name-date">
+      <p>{{ dailyreport.date }}</p>
+      <p>{{ dailyreport.child }}</p>
+   </div>
+   <div id="act"></div>
+     <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
+    {% csrf_token %}
+
+        <div id="report1"> {%  bootstrap_form form layout='horizontal' %}</div>
+        {% for formset in inlines %}
+          <div id="FormSet{{ formset.prefix }}">
+            {% bootstrap_formset formset layout='horizontal' %}
+          </div>
+
+        {% endfor %}
+  <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
+  <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
+</form>​
+</section>
+{% endblock %}
+<!-- <img src="{% static 'img/clickme.jpeg' %}" width:500px; height:500px; alt="click me botton" /> -->
+<!-- <h2>DAILY REPORT INSIDE!</h2> -->

@@ -1,0 +1,6 @@
+.idea
+venv
+*.pyc
+staticfiles
+node_modules
+npm-debug.log

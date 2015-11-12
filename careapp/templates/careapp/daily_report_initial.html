@@ -1,0 +1,28 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+{% block content %}
+
+
+<form class="activities" action="{% url "dailyreport-new" %}" method="POST">
+ {% csrf_token %}
+
+   {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+
+
+
+
+ <input id="save_daily_report" type="submit" value="Save"/>
+ <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button>
+</form>​
+
+{% endblock %}

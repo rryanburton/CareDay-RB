@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_css %}
+{% block content %}
+<script type="text/javascript" src="/static/DateTimeShortcuts.js"></script>
+ {% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+  {{ message }}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+<section id="calendar-form2">
+ <h1>Add A Child</h1>
+<form id="new-child" action="/child/new" method="POST">
+  {% csrf_token %}
+  <ul class="add-child">
+    <li><label for="id_first_name">First name:</label><input id="id_first_name" maxlength="20" name="first_name" type="text" /></li>
+    <li><label for="id_gender">Gender:</label><select id="id_gender" name="gender">
+<option value="B" selected="selected">Boy</option>
+<option value="G">Girl</option>
+</select></li>
+    <li><label for="id_birthday">Birthday:</label><input id="id_birthday" name="birthday" type="text" /></li>
+
+    <li><label for="id_parent_name">Parent name:</label><input id="id_parent_name" maxlength="20" name="parent_name" type="text" /></li>
+    <li><label for="id_parent_email">Parent email:</label><input id="id_parent_email" maxlength="254" name="parent_email" type="email" /></li>
+    <li><label for="id_parent_phone">Parent phone:</label><input id="id_parent_phone" maxlength="15" name="parent_phone" type="text" /></li>
+  </ul>
+  <button type="reset" class="btn btn-default">Clear</button>
+  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
+</form>
+<a href="/child"> <button>back to list</button></a>
+</section>
+{% endblock %}
