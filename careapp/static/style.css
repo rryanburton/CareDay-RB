@@ -189,6 +189,22 @@ div#FormSeteating_set {
 /*form {
   margin: 1em;
   padding: 1em; }*/
+form#admin-fail-login {
+  margin: 0.5em;
+  padding: 2em;
+  background: #D8D8D8;
+  border-radius: 5px;
+  display: block;
+  width: 290px;
+  margin-left: 38%;
+  margin-top: 15%;
+}
+div.fieldWrapper {
+  /*color: #fff;*/
+}
+div.fieldWrapper li {
+  list-style: none;
+}
 
 div.form-group {
   margin: 0.5em; }

@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-  <form action="{% url "careday_login" %}" method="post" accept-charset="utf-8">
+  <form id="admin-fail-login" action="{% url "careday_login" %}" method="post" accept-charset="utf-8">
       {% for field in form %}
         <div class="fieldWrapper">
             {{ field.errors }}
@@ -25,4 +25,3 @@
     <input class="btn btn-default" type="submit" value="Login">
   </form>
 {% endblock %}
-
