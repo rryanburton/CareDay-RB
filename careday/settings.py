@@ -108,6 +108,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Login and Logout urls
-LOGIN_URL = 'mysite_login'
-LOGOUT_URL = 'mysite_logout'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'careday_login'
+LOGOUT_URL = 'careday_logout'
+LOGIN_REDIRECT_URL = 'childs-list'
+
