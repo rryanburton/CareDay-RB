@@ -17,14 +17,15 @@
 <body>
 <script src="/static/jquery/jquery-ui.min.js"></script>
 <script src="/static/custom.js"></script>
-  <header class="main-header">
+<div class="container-fluid" >
+<header class="main-header">
       <h1>Careday</h1>
 
         {% block toggle_login %}
         {% include "toggle_login.html" %}
         {% endblock %}
 
-  </header>
+  </header></div>
   <main class="container">
   {% block content %}
   {% endblock %}
