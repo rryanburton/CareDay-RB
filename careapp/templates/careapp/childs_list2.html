@@ -9,7 +9,7 @@
     <h2>Children</h2>
 {% for child in object_list %}
 
-  <div><a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a><p>{{ child }}</p></div>
+  <div><a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a><p>{{ child }}</p></div>
  {% endfor %}
 </section>
 
