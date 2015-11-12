@@ -6,18 +6,12 @@
 <h1 id="activities">Daily Activity Updates</h1>
     <p>{{ dailyreport.date }}</p>
   <p>{{ dailyreport.child }}</p>
-{#<form action="" method="post">#}
+
      <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
-{#  <form class="activities" action="/dailyreport/new" method="POST">#}
+
     {% csrf_token %}
 
-   <!--  <input type="hidden" name="date" id="id_date" value="{{ form.date }}">
-    <input type="hidden" name="child" id="id_child" value="{{ dailyreport.child.id }}">
-    <p><label for="id_arrival_time">Arrival time:</label>{{form.arrival_time}}</p>
-    <p><label for="id_departure_time">Departure time:</label>{{form.departure_time}}</p>
-    <p><label for="id_mood_am">Mood am:</label>{{form.mood_am}}</p>
-    <p><label for="id_mood_pm">Mood pm:</label>{{form.mood_pm}}</p>
--->
+
 
         <div id="dailytopform"> {%  bootstrap_form form %}</div>
           {% for formset in inlines %}
@@ -28,7 +22,7 @@
                     </table>
                   {% endfor %}
               </div>
-{#            {% bootstrap_formset formset %}#}
+
 
           {% endfor %}
 
