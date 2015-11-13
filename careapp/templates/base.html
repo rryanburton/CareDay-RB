@@ -21,9 +21,9 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
 </style>
 </head>
 <body>
-    <script src="{% static '' %}jquery/jquery-ui.min.js"></script>
+    <script src="/static/jquery/jquery-ui.min.js"></script>
+    <script src="/static/custom.js"></script>
     <script type="text/javascript" src="{% static 'moment.js' %}"></script>
-    <script src="{% static '' %}custom.js"></script>
     <div class="container-fluid" >
     <header class="main-header">
 
@@ -37,12 +37,13 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
         {% include "toggle_login.html" %}
         {% endblock %}
 
-  </header></div>
+  </header>
   <main class="container">
   {% block content %}
   {% endblock %}
   </main> <!-- end main.container -->
 <br>
 <footer></footer>
+    </div>
 </body>
 </html>
