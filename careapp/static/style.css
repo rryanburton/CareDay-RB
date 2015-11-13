@@ -396,7 +396,12 @@ section#wrap {
     margin-top: 0; }
 section#kids h2 {
   color: #fff;
+  margin: 0 auto;
   text-align: center;
+}
+div.row {
+margin: 0 auto;
+
 }
 div.col-lg-2.col-md-3.col-sm-3 p {
   color:#fff;
@@ -404,13 +409,13 @@ div.col-lg-2.col-md-3.col-sm-3 p {
   font-size: 14pt;
   text-align: center;
   }
-div.col-lg-2.col-md-3.col-sm-3 {
+/*div.col-lg-2.col-md-3.col-sm-3 {
   margin: 0 auto;
-  width: 18%;
-
+  width: 23%;
+  display: block;*/
 }
-div.col-lg-2.col-md-3.col-sm-3  {
-  margin-left: 2%;
+div.col-lg-2.col-md-3.col-sm-3 input {
+  margin: 0 auto;
 }
 .container-fluid {
   padding: 0 !important;
