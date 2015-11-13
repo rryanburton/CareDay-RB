@@ -220,16 +220,16 @@ header.main-header {
   clear: both;
   overflow: auto; }
 header.main-header h1 {
-
+  font-size: 30pt;
   margin: 0;
-  margin-top: .4em;
+  margin-top: .3em;
   margin-left: .8em;
   display: block;
   float: left;
   color: #fff; }
 nav#main-login {
   width: 22%;
-  padding: 1em;
+  padding: 1.5em;
   position: absolute;
   background: rgba(216, 216, 216, 0.5);
   margin: 1em;
@@ -241,7 +241,7 @@ nav#main-login {
   right: 0;
   bottom: 0;
   left: 38%;
-  height: 185px;
+  height: 190px;
 }
 nav#main-login a {
   text-decoration: none; }
@@ -273,7 +273,7 @@ nav#main-nav {
   float: right;
   margin: 1em;
   padding: .5em;
-  font-size: 16pt;
+  font-size: 13pt;
   margin-top: .5em;
 }
 nav#main-nav a {
