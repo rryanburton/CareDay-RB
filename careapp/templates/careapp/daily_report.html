@@ -12,45 +12,24 @@
   <p>{{ dailyreport.child }}</p>
 </div>
    <!-- <div id="act"> -->
-<div>
+
  <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
-{% csrf_token %}
-    <div class="jumbotron" id="daily-report-top">
+<div class="row">
+  {% csrf_token %}
+  <div class="col-sm-6" id="daily-report-top">
+      <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
+      <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
+      <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
+      <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
+  </div>
 
-    <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
-    <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
-    <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
-    <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
-    <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    {{ form.arrival_time }}
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
-            });
-        </script>
-    </div>
-</div>
-    </div>
 
-    <div id="daily-report-bottom">
-        {% for formset in inlines %}
-        <div class="jumbotron" id="daily-report-3activities">
-            <table id="formset" class="form">
-            {{ formset.non_form_errors.as_ul }}
-            {{ formset.management_form }}
-            {% for form in formset %}
+        <div class="col-sm-6">
+          <h1>Diapering</h1>
+            <table id="diapering_formset" class="form">
+            {{ diapering_formset.non_form_errors.as_ul }}
+            {{ diapering_formset.management_form }}
+            {% for form in diapering_formset %}
                 {% if forloop.first %}
                     <thead><tr>
                         {% for field in form.visible_fields %}
@@ -75,13 +54,14 @@
             {% endfor %}
             </table>
         </div>
-        {% endfor %}
+        {# endfor #}
         <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
         <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
-    </div>
+
 <!-- </section> -->
 
     </div>
+  </form>
 {% endblock %}
 <!-- <img src="{% static 'img/clickme.jpeg' %}" width:500px; height:500px; alt="click me botton" /> -->
 <!-- <h2>DAILY REPORT INSIDE!</h2> -->

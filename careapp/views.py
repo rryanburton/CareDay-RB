@@ -6,10 +6,11 @@ from datetime import datetime, date
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm, DiaperingFormSet, SleepingFormSet, \
-    EatingFormSet
+from .forms import ChildForm, DailyReportForm
 from extra_views import UpdateWithInlinesView, InlineFormSet
 from django.contrib.auth.decorators import login_required
+from django.forms import inlineformset_factory
+from django import forms
 
 
 # Create your views here.
@@ -152,13 +153,26 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
         return reverse('childs-list')
 
 
-class DailyReportUpdateView(UpdateWithInlinesView):
+class DailyReportUpdateView(UpdateView):
     fields = ( 'arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     model = DailyReport
     form = DailyReportForm
-    inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
+
+    DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
+                                             fields=('time_diaper', 'num_one', 'num_two', 'comments'),
+                                             widgets={
+                                                'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                             },
+                                             labels={
+                                                'time_diaper': 'Potty time'
+                                             },
+                                             extra=1)
+
+
+    # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
+    # inlines = [DiaperingFormSet]
     # template_name_suffix = '_update_form'
     template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
@@ -171,6 +185,17 @@ class DailyReportUpdateView(UpdateWithInlinesView):
     #     form = self.get_form(form_class)
     #     context = self.get_context_data(object=self.object, form=form)
     #     return self.render_to_response(context)
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
+            context['sleeping_formset'] = None # TODO
+        else:
+            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+        return context
+
 
     def form_valid(self, form):
         messages.info(self.request, self.success_msg)
