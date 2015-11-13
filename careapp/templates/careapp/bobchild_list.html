@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+
+<section id="kids">
+<h1>Children</h1>
+{% for child in object_list %}
+    <div>
+      <a href="#daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+      <p>{{ child }}</p>
+    </div>
+      <a href="/child/update/{{ child.id }}/"> update child</a>
+      <a href="/bobchilddelete/{{ child.id }}"> DELETE child</a>
+
+
+{% endfor %}
+
+<ul class="add-child">
+
+
+</ul>
+    </section>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#}
+{% endblock %}
+      <!-- <a href="/child/update/{{ child.id }}/"> DELETE child</a> -->
+      <!-- <a href="{% url bobdelete_child.html %}"> DELETE child</a> -->

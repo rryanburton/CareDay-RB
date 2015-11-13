@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.shortcuts import render, redirect
 from datetime import datetime, date
 from django.contrib.auth import authenticate, login
@@ -47,6 +47,27 @@ class ChildActionMixin(object):
 class ChildListView(ListView):
     model = Child
     template_name = 'careapp/childs_list2.html'
+
+
+class BobChildListView(ListView):
+    model = Child
+    template_name = 'careapp/bobchild_list.html'
+
+
+class BobChildDeleteView(ChildActionMixin, DeleteView):
+    model = Child
+    success_url = reverse_lazy('bob-child')  # re-directs user here.
+    template_name = 'careapp/bobdelete_child.html'
+
+    # def get_object(self, queryset=None):
+    #     obj = Child.objects.get(id=self.kwargs['id'])
+    #     obj.delete()
+    #     return HttpResponse("Deleted Child")
+
+    # def delete(request):
+    #     query = Child.objects.get(pk=id)
+    #     query.delete()
+    #     return HttpResponse("Deleted Child!")
 
 
 class ChildCreateView(ChildActionMixin, CreateView):
