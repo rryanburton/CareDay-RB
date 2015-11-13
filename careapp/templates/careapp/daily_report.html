@@ -2,27 +2,86 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 {% block content %}
+{% bootstrap_javascript jquery=1 %}
+{% bootstrap_css %}
 
-<section id="sub-header-daily" <img src="{% static 'img/babygirl.jpg' %}">
-    <div id="child-name-date">
-      <p>{{ dailyreport.date }}</p>
-      <p>{{ dailyreport.child }}</p>
-   </div>
-   <div id="act"></div>
-     <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
-    {% csrf_token %}
+<!-- <section id="sub-header-daily"> -->
+<div id="child-name-date">
+  <p>{{ dailyreport.date }}</p>
+    <img src="{% static '' %}{{  dailyreport.child.image }}" width="64" height="64">
+  <p>{{ dailyreport.child }}</p>
+</div>
+   <!-- <div id="act"> -->
+<div>
+ <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
+{% csrf_token %}
+    <div class="jumbotron" id="daily-report-top">
 
-        <div id="report1"> {%  bootstrap_form form layout='horizontal' %}</div>
+    <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
+    <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
+    <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
+    <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
+    <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    {{ form.arrival_time }}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>
+</div>
+    </div>
+
+    <div id="daily-report-bottom">
         {% for formset in inlines %}
-          <div id="FormSet{{ formset.prefix }}">
-            {% bootstrap_formset formset layout='horizontal' %}
-          </div>
-
+        <div class="jumbotron" id="daily-report-3activities">
+            <table id="formset" class="form">
+            {{ formset.non_form_errors.as_ul }}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {% if forloop.first %}
+                    <thead><tr>
+                        {% for field in form.visible_fields %}
+                        <th>{{ field.label|capfirst }}
+                        {% endfor %}
+                    </tr></thead>
+                {% endif %}
+                <tr class="{% cycle row1,row2 %}">
+                {% for field in form.visible_fields %}
+                    <td>
+                    {# Include the hidden fields in the form #}
+                    {% if forloop.first %}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    {% endif %}
+                  {{ field.errors.as_ul }}
+                  {{ field }}
+                    </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
         {% endfor %}
-  <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
-  <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
-</form>​
-</section>
+        <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
+        <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
+    </div>
+<!-- </section> -->
+
+    </div>
 {% endblock %}
 <!-- <img src="{% static 'img/clickme.jpeg' %}" width:500px; height:500px; alt="click me botton" /> -->
 <!-- <h2>DAILY REPORT INSIDE!</h2> -->

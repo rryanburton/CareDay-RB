@@ -1,3 +1,6 @@
+
+
+
 /*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -537,3 +540,31 @@ div.col-lg-2.col-md-3.col-sm-3  {
     width: 900px;
     margin: 0 auto;
   }
+input {
+    margin: 0;
+    font-family: fantasy;
+    color: red;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 30px;
+    font-weight: 700;
+    padding-right: 10px;
+
+}
+
+td, th {
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000000;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
+
+table {
+    background-color: transparent;
+}
