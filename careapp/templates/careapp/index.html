@@ -3,6 +3,12 @@
 {% block content %}
 <section class="welcome-page">
   <div class="main-image"> <img src="{% static 'img/careday1.jpg' %}" alt="child playing"/>
+    <div id='overlay'></div>
   </div>
+
+          {% block toggle_login %}
+          {% include "toggle_login.html" %}
+          {% endblock %}
+
 </section>
 {% endblock %}
