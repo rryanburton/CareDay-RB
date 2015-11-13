@@ -31,7 +31,7 @@ class Child(models.Model):
     image = models.ImageField(upload_to='static/img/', blank=True, null=True)
 
     def __str__(self):
-        return ("{} : {}".format(self.first_name, self.gender))
+        return ("{}".format(self.first_name))
 
 
 class DailyReport(models.Model):
