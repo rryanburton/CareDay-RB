@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
+{% bootstrap_messages %}
 
 
 <!DOCTYPE html>
@@ -23,7 +24,6 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
 <body>
     <script src="/static/jquery/jquery-ui.min.js"></script>
     <script src="/static/custom.js"></script>
-    <script type="text/javascript" src="{% static 'moment.js' %}"></script>
     <div class="container-fluid" >
     <header class="main-header">
 
@@ -32,10 +32,12 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
 {% else %}
         <h1>Careday</h1>
 {% endif %}
-
-        {% block toggle_login %}
-        {% include "toggle_login.html" %}
-        {% endblock %}
+  <nav id="main-nav">
+    <a href="#">About us</a>
+    <a href="child/new">Add/Update Child</a>
+    <a href="child">Child Roster</a>
+    <a href="calander">Calander History</a>
+  </nav>
 
   </header>
   <main class="container">
@@ -43,7 +45,9 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
   {% endblock %}
   </main> <!-- end main.container -->
 <br>
-<footer></footer>
+<footer>
+
+</footer>
     </div>
 </body>
 </html>
