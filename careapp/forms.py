@@ -25,27 +25,26 @@ class DailyReportForm(forms.ModelForm):
                   'mood_am', 'mood_pm')
 
 
-class DiaperingFormSet(InlineFormSet):
-
-    model = Diapering
-    fields = ('time_diaper', 'num_one', 'num_two', 'comments')
-    extra = 1
-    widgets = {
-        'time_diaper': TimeInput(attrs={'length': 6}),
-    }
-
-class SleepingFormSet(InlineFormSet):
-
-    model = Sleeping
-    fields = ('time_slp_start', 'time_slp_end')
-    extra = 1
-    class Meta:
-        labels = {
-            'time_slp_start': 'Nap Start',
-        }
-
-class EatingFormSet(InlineFormSet):
-
-    model = Eating
-    fields = ('time_eat', 'food', 'leftover')
-    extra = 1
+# class DiaperingFormSet(InlineFormSet):
+#
+#     model = Diapering
+#     fields = ('time_diaper', 'num_one', 'num_two', 'comments')
+#     extra = 1
+#     widgets = {
+#         'time_diaper': TimeInput(attrs={'length': 6}),
+#     }
+#
+# class SleepingFormSet(InlineFormSet):
+#
+#     model = Sleeping
+#     fields = ('time_slp_start', 'time_slp_end')
+#     extra = 1
+#     labels = {
+#         'time_slp_start': 'Nap Start',
+#     }
+#
+# class EatingFormSet(InlineFormSet):
+#
+#     model = Eating
+#     fields = ('time_eat', 'food', 'leftover')
+#     extra = 1
