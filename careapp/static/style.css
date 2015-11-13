@@ -409,7 +409,9 @@ div.col-lg-2.col-md-3.col-sm-3 {
 div.col-lg-2.col-md-3.col-sm-3  {
   margin-left: 2%;
 }
-
+.container-fluid {
+  padding: 0 !important;
+}
 
 
 /*media queries*/
