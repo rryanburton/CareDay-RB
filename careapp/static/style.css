@@ -145,7 +145,6 @@ form.activities {
     text-align: center;
     padding: .5em;
   }
-
 div#report1 {
   /*background-color: #D8D8D8;*/
   border-radius: 5px;
@@ -210,57 +209,110 @@ div.form-group {
   margin: 0.5em; }
 
 body {
-  font-family: sans-serif; }
+  font-family: 'lato'; }
 
 header.main-header {
-  max-width: 1140px;
+  min-width: 100%;
   margin: 0 auto;
   display: block;
-  background-color: #585858;
-  height: 8em;
+  background-color: #4A4A4A;
+  height: 5em;
+  clear: both;
   overflow: auto; }
-  header.main-header h1 {
-    padding: .2em;
-    margin: 0;
-    margin-top: .4em;
-    margin-left: .8em;
-    display: block;
-    float: left;
-    color: #fff; }
-  header.main-header nav#main-login {
-    float: right;
-    margin: 1em;
-    margin-top: .3em;
-    margin-right: 5em; }
-    header.main-header nav#main-login a {
-      text-decoration: none; }
-    header.main-header nav#main-login form.form-login div.form-group {
-      display: inline-block; }
-    header.main-header nav#main-login ul.dropdown-menu {
-      float: right;
-      padding: 0; }
-    header.main-header nav#main-login ul.form-login {
-      display: inline;
-      text-decoration: none; }
-    header.main-header nav#main-login li {
-      list-style: none; }
-    header.main-header nav#main-login li a.dropdown-toggle {
-      display: inline;
-      margin-right: 1em;
-      color: #fff; }
-    header.main-header nav#main-login #logout a {
-      margin-top: 0; }
+header.main-header h1 {
 
+  margin: 0;
+  margin-top: .4em;
+  margin-left: .8em;
+  display: block;
+  float: left;
+  color: #fff; }
+nav#main-login {
+  width: 22%;
+  padding: 1em;
+  position: absolute;
+  background: rgba(216, 216, 216, 0.5);
+  margin: 1em;
+  margin-top: .3em;
+  margin-right: 5em;
+  display: inline;
+  border-radius: 3px;
+  top: 22%;
+  right: 0;
+  bottom: 0;
+  left: 38%;
+  height: 185px;
+}
+nav#main-login a {
+  text-decoration: none; }
+nav#main-login form.form-login div.form-group {
+  display: block;
+  margin: 1em;
+}
+nav#main-login form.form-login button {
+  margin-left: 15px;
+}
+nav#main-login ul.dropdown-menu {
+  float: right;
+  padding: 0; }
+nav#main-login ul.form-login {
+  display: inline;
+  text-decoration: none; }
+nav#main-login li {
+  list-style: none; }
+nav#main-login li a.dropdown-toggle {
+  display: inline;
+  margin-right: 1em;
+  color: #fff; }
+nav#main-login #logout a {
+    margin-top: 0; }
+  .container-fluid {
+    padding: 0;
+}
+nav#main-nav {
+  float: right;
+  margin: 1em;
+  padding: .5em;
+  font-size: 16pt;
+  margin-top: .5em;
+}
+nav#main-nav a {
+  margin: 1em;
+}
+nav#main-nav a:hover {
+  color: pink;
+  text-decoration: none;
+}
 main.container {
-  max-width: 1140px;
+  min-width: 100%;
   margin: 0 auto;
   padding: 0;
   min-height: 800px;
-  background-color: #D8D8D8;
-  background-image: url('img/background.jpg');
+  /*background-color: #D8D8D8;*/
+  /*background-image: url('img/background.jpg');*/
   /*background-repeat: no-repeat;*/
-  overflow: auto; }
-
+  overflow: auto;
+  position: relative;}
+div.main-image img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  /*background:#7f7f7f;
+  background:rgba(0,0,0,0.5);*/
+}
+ div.main-image:after {
+  content: " ";
+  /*z-index: 10;*/
+  display: block;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
 #list {
   width: 320px;
   font-size: 15px; }
@@ -314,170 +366,6 @@ section#wrap {
     text-align: center;
     margin-top: 0; }
 
-body {
-  font-family: sans-serif; }
-
-header.main-header {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: block;
-  background-color: #585858;
-  height: 8em;
-  overflow: auto; }
-  header.main-header h1 {
-    padding: .2em;
-    margin: 0;
-    margin-top: .4em;
-    margin-left: .8em;
-    display: block;
-    float: left;
-    color: #fff; }
-  header.main-header nav#main-login {
-    float: right;
-    margin: 1em;
-    margin-top: .3em;
-    margin-right: 5em; }
-    header.main-header nav#main-login a {
-      text-decoration: none; }
-    header.main-header nav#main-login form.form-login div.form-group {
-      display: inline-block; }
-    header.main-header nav#main-login ul.dropdown-menu {
-      float: right;
-      padding: 0; }
-    header.main-header nav#main-login ul.form-login {
-      display: inline;
-      text-decoration: none; }
-    header.main-header nav#main-login li {
-      list-style: none; }
-    header.main-header nav#main-login li a.dropdown-toggle {
-      display: inline;
-      margin-right: 1em;
-      color: #fff; }
-    header.main-header nav#main-login #logout a {
-      margin-top: 0; }
-
-#list {
-  width: 320px;
-  font-size: 15px; }
-
-#list ul.add-child {
-  list-style: none; }
-
-#list ul.add-child li.child a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-  background-color: #FFFFFF;
-  line-height: 30px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #CCCCCC;
-  padding-left: 10px;
-  cursor: pointer; }
-  #list ul.add-child li.child a:hover {
-    background-color: #585858; }
-
-#list ul.add-child li.child a:hover {
-  color: #fff;
-  background-repeat: repeat-x; }
-
-#list ul.add-child li.child a strong {
-  margin-right: 10px; }
-
-#datepicker {
-  margin: 1em; }
-
-#calendar-form {
-  margin-left: 2em; }
-
-#add {
-  margin-left: 2em;
-  margin-bottom: 2em; }
-
-select {
-  width: 125px; }
-
-button {
-  color: #000; }
-
-section#wrap {
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%; }
-  section#wrap h2 {
-    padding: .5em;
-    text-align: center;
-    margin-top: 0; }
-
-body {
-  font-family: sans-serif; }
-
-header.main-header {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: block;
-  background-color: #585858;
-  height: 8em;
-  overflow: auto; }
-  header.main-header h1 {
-    padding: .2em;
-    margin: 0;
-    margin-top: .4em;
-    margin-left: .8em;
-    display: block;
-    float: left;
-    color: #fff; }
-  header.main-header nav#main-login {
-    float: right;
-    margin: 1em;
-    margin-top: .3em;
-    margin-right: 5em; }
-    header.main-header nav#main-login a {
-      text-decoration: none; }
-    header.main-header nav#main-login form.form-login div.form-group {
-      display: inline-block; }
-    header.main-header nav#main-login ul.dropdown-menu {
-      float: right;
-      padding: 0; }
-    header.main-header nav#main-login ul.form-login {
-      display: inline;
-      text-decoration: none; }
-    header.main-header nav#main-login li {
-      list-style: none; }
-    header.main-header nav#main-login li a.dropdown-toggle {
-      display: inline;
-      margin-right: 1em;
-      color: #fff; }
-    header.main-header nav#main-login #logout a {
-      margin-top: 0; }
-
-#list {
-  width: 320px;
-  font-size: 15px; }
-
-#list ul.add-child {
-  list-style: none; }
-
-#list ul.add-child li.child a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-  background-color: #FFFFFF;
-  line-height: 30px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #CCCCCC;
-  padding-left: 10px;
-  cursor: pointer; }
-  #list ul.add-child li.child a:hover {
-    background-color: #585858; }
-
-#list ul.add-child li.child a:hover {
-  color: #fff;
-  background-repeat: repeat-x; }
-
-#list ul.add-child li.child a strong {
-  margin-right: 10px; }
 
 #datepicker {
   margin: 1em; }
@@ -525,15 +413,15 @@ div.col-lg-2.col-md-3.col-sm-3  {
 
 
 /*media queries*/
-
+/*
 @media (max-width: 1201px) {
   header.main-header {
-    /*max-width: 82.3%;*/
+    max-width: 82.3%;
     width: 900px;
     margin: 0 auto;
   }
   main.container {
-    /*width: 80%;*/
+    width: 80%;
     width: 900px;
     margin: 0 auto;
-  }
+  }*/
