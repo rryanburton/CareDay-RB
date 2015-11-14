@@ -6,7 +6,7 @@ from datetime import datetime, date
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm
+from .forms import ChildForm, DailyReportForm, DiaperingFormSet
 from extra_views import UpdateWithInlinesView, InlineFormSet
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
@@ -154,57 +154,20 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
 
 class DailyReportUpdateView(UpdateView):
-    fields = ( 'arrival_time',
+    fields = ('arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     model = DailyReport
     form = DailyReportForm
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Daily Report updated!"
 
-    DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
-                                             fields=('time_diaper', 'num_one', 'num_two', 'comments'),
-                                             widgets={
-                                                'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
-                                             },
-                                             labels={
-                                                'time_diaper': 'Potty time',
-                                                'num_one': 'Wet',
-                                                'num_two': 'BM',
-                                             },
-                                             extra=1
-                                             )
-
-
-    SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
-                                             fields=('time_slp_start', 'time_slp_end'),
-                                             widgets={
-                                                'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
-                                                'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
-                                             },
-                                             labels={
-                                                'time_slp_start': 'Nap time start',
-                                                'time_slp_end': 'Nap time finish',
-
-                                             },
-                                             extra=1)
-
-
-
-    EatingFormSet = inlineformset_factory(DailyReport, Eating,
-                                             fields=('time_eat', 'food', 'leftover'),
-                                             widgets={
-                                                'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
-                                             },
-                                             labels={
-                                                'time_eat': 'Meal time',
-                                             },
-                                             extra=1)
 
 
     # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
     # inlines = [DiaperingFormSet]
     # template_name_suffix = '_update_form'
-    template_name = 'careapp/daily_report.html'
-    success_msg = "Daily Report updated!"
+
     #
     # def get(self, request, **kwargs):
     #     self.object, created = DailyReport.objects.get_or_create(
@@ -216,17 +179,16 @@ class DailyReportUpdateView(UpdateView):
     #     return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(DailyReportUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
-            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
-            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
-            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
+            context['diapering_formset'] = DiaperingFormSet(self.request.POST, instance=context['object'])
+            # context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            # context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
         else:
-            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
-            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
-            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
+            context['diapering_formset'] = DiaperingFormSet(instance=context['object'])
+            # context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            # context['eating_formset'] = self.EatingFormSet(instance=context['object'])
         return context
-
 
     def form_valid(self, form):
         messages.info(self.request, self.success_msg)

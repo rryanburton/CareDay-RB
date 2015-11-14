@@ -30,6 +30,11 @@ class Child(models.Model):
     # child_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     image = models.ImageField(upload_to='static/img/', blank=True, null=True)
 
+    class Meta:
+            verbose_name = 'Child'
+            verbose_name_plural = 'Children'
+            ordering = ['first_name']
+
     def __str__(self):
         return ("{}".format(self.first_name))
 
@@ -58,6 +63,11 @@ class DailyReport(models.Model):
                                choices=MOOD_CHOICE,
                                default=HAPPY)
 
+    class Meta:
+        verbose_name = 'Daily Report'
+        verbose_name_plural = 'Daily Reports'
+        ordering = ['-date']
+
     def __str__(self):
         return ("{} : {}".format(self.child.first_name, self.date))
 
@@ -70,6 +80,10 @@ class Diapering(models.Model):
     num_two = models.BooleanField()
     comments = models.CharField(max_length=100, blank=True, null=True)
 
+    class Meta:
+                verbose_name = 'Diapering'
+                verbose_name_plural = 'Diapering'
+                ordering = ['dailyreport', 'time_diaper']
 
 class Sleeping(models.Model):
     # assumed sleeping_id
@@ -77,6 +91,10 @@ class Sleeping(models.Model):
     time_slp_start = models.TimeField(blank=True, null=True)
     time_slp_end = models.TimeField(blank=True, null=True)
 
+    class Meta:
+                verbose_name = 'Sleeping'
+                verbose_name_plural = 'Sleeping'
+                ordering = ['dailyreport', 'time_slp_start']
 
 class Eating(models.Model):
     # assumed eating_id
@@ -110,3 +128,7 @@ class Eating(models.Model):
                                 choices=LEFTOVER,
                                 blank=True,
                                 null=True)
+    class Meta:
+                verbose_name = 'Eating'
+                verbose_name_plural = 'Eating'
+                ordering = ['dailyreport', 'time_eat']
