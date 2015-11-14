@@ -166,7 +166,36 @@ class DailyReportUpdateView(UpdateView):
                                                 'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
                                              },
                                              labels={
-                                                'time_diaper': 'Potty time'
+                                                'time_diaper': 'Potty time',
+                                                'num_one': 'Wet',
+                                                'num_two': 'BM',
+                                             },
+                                             extra=1
+                                             )
+
+
+    SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
+                                             fields=('time_slp_start', 'time_slp_end'),
+                                             widgets={
+                                                'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                                'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
+                                             },
+                                             labels={
+                                                'time_slp_start': 'Nap time start',
+                                                'time_slp_end': 'Nap time finish',
+
+                                             },
+                                             extra=1)
+
+
+
+    EatingFormSet = inlineformset_factory(DailyReport, Eating,
+                                             fields=('time_eat', 'food', 'leftover'),
+                                             widgets={
+                                                'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                             },
+                                             labels={
+                                                'time_eat': 'Meal time',
                                              },
                                              extra=1)
 
@@ -186,14 +215,16 @@ class DailyReportUpdateView(UpdateView):
     #     context = self.get_context_data(object=self.object, form=form)
     #     return self.render_to_response(context)
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.POST:
             context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
-            context['sleeping_formset'] = None # TODO
+            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
         else:
             context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
         return context
 
 

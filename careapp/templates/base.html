@@ -24,19 +24,20 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
 <body>
     <script src="/static/jquery/jquery-ui.min.js"></script>
     <script src="/static/custom.js"></script>
-    <div class="container-fluid" >
+   <div class="container-fluid">
+   <!--  <div>  -->
     <header class="main-header">
 
 {% if user.is_authenticated %}
         <h1><a href="child">CareDay</a></h1>
 {% else %}
-        <h1>Careday</h1>
+        <h1>CareDay</h1>
 {% endif %}
   <nav id="main-nav">
     <a id="scroll" href="#">About us</a>
     <a href="child/new">Child management</a>
     <a href="child">Child Roster</a>
-    <a href="calander">Archive</a>
+    <a href="calendar">Archive</a>
   </nav>
 
   </header></div>
