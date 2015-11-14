@@ -18,9 +18,11 @@
         <div class="col-sm-6" id="daily-report-top">
           <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
           <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
-          <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
-          <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
+          <li><label for="id_mood_am">Morning Mood:</label>{{ form.mood_am }}</li>
+          <li><label for="id_mood_pm">Afternoon Mood:</label>{{ form.mood_pm }}</li>
         </div>
+
+     <!--  Diapering   -->
         <div class="col-sm-6">
           <h1>Diapering</h1>
             <table id="diapering_formset" class="form">
@@ -53,10 +55,80 @@
             {% endfor %}
             </table>
         </div>
-        {# endfor #}
-        <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
+
+     <!--  Sleeping   -->
+
+    <div class="col-sm-6">
+        <h1>Sleeping</h1>
+        <table id="sleeping_formset" class="form">
+        {{ sleeping_formset.non_form_errors.as_ul }}
+        {{ sleeping_formset.management_form }}
+        {% for form in sleeping_formset %}
+            {% if forloop.first %}
+                <thead>
+                    <tr>
+                        {% for field in form.visible_fields %}
+                        <th>{{ field.label|capfirst }}
+                        {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+            <tr class="{% cycle row1,row2 %}">
+            {% for field in form.visible_fields %}
+                <td>
+                {# Include the hidden fields in the form #}
+                {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                {% endif %}
+                  {{ field.errors.as_ul }}
+                  {{ field }}
+                </td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+      <!--  Eating   -->
+
+    <div class="col-sm-6">
+        <h1>Eating</h1>
+        <table id="eating_formset" class="form">
+        {{ eating_formset.non_form_errors.as_ul }}
+        {{ eating_formset.management_form }}
+        {% for form in eating_formset %}
+            {% if forloop.first %}
+                <thead>
+                    <tr>
+                        {% for field in form.visible_fields %}
+                        <th>{{ field.label|capfirst }}
+                        {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+            <tr class="{% cycle row1,row2 %}">
+            {% for field in form.visible_fields %}
+                <td>
+                {# Include the hidden fields in the form #}
+                {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                {% endif %}
+                  {{ field.errors.as_ul }}
+                  {{ field }}
+                </td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
         <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
     </div>
+<button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
 </form>
 {% endblock %}
 
