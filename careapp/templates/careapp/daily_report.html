@@ -5,25 +5,22 @@
 {% bootstrap_javascript jquery=1 %}
 {% bootstrap_css %}
 
-<!-- <section id="sub-header-daily"> -->
 <div id="child-name-date">
   <p>{{ dailyreport.date }}</p>
     <img src="{% static '' %}{{  dailyreport.child.image }}" width="64" height="64">
   <p>{{ dailyreport.child }}</p>
 </div>
-   <!-- <div id="act"> -->
-
- <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
-<div class="row">
-  {% csrf_token %}
-  <div class="col-sm-6" id="daily-report-top">
-      <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
-      <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
-      <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
-      <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
-  </div>
 
 
+<form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
+    <div class="row">
+      {% csrf_token %}
+        <div class="col-sm-6" id="daily-report-top">
+          <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
+          <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
+          <li><label for="id_mood_am">Mood am:</label>{{ form.mood_am }}</li>
+          <li><label for="id_mood_pm">Mood pm:</label>{{ form.mood_pm }}</li>
+        </div>
         <div class="col-sm-6">
           <h1>Diapering</h1>
             <table id="diapering_formset" class="form">
@@ -31,11 +28,13 @@
             {{ diapering_formset.management_form }}
             {% for form in diapering_formset %}
                 {% if forloop.first %}
-                    <thead><tr>
-                        {% for field in form.visible_fields %}
-                        <th>{{ field.label|capfirst }}
-                        {% endfor %}
-                    </tr></thead>
+                    <thead>
+                        <tr>
+                            {% for field in form.visible_fields %}
+                            <th>{{ field.label|capfirst }}
+                            {% endfor %}
+                        </tr>
+                    </thead>
                 {% endif %}
                 <tr class="{% cycle row1,row2 %}">
                 {% for field in form.visible_fields %}
@@ -46,8 +45,8 @@
                             {{ hidden }}
                         {% endfor %}
                     {% endif %}
-                  {{ field.errors.as_ul }}
-                  {{ field }}
+                      {{ field.errors.as_ul }}
+                      {{ field }}
                     </td>
                 {% endfor %}
                 </tr>
@@ -57,11 +56,7 @@
         {# endfor #}
         <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
         <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
-
-<!-- </section> -->
-
     </div>
-  </form>
+</form>
 {% endblock %}
-<!-- <img src="{% static 'img/clickme.jpeg' %}" width:500px; height:500px; alt="click me botton" /> -->
-<!-- <h2>DAILY REPORT INSIDE!</h2> -->
+
