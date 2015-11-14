@@ -240,6 +240,10 @@ header.main-header h1 {
   display: block;
   float: left;
   color: #fff; }
+  header.main-header h1 a:hover {
+    text-decoration: none;
+    color: #E0E0E0;;
+  }
 nav#main-login {
   width: 22%;
   padding: 1.5em;
@@ -358,6 +362,9 @@ div.main-image img {
   margin: 1em; }
 
 #calendar-form {
+  width: 30%;
+  height: auto;
+  background-color: #E0E0E0;
   margin-left: 2em; }
 
 #add {
@@ -379,22 +386,6 @@ section#wrap {
     text-align: center;
     margin-top: 0; }
 
-
-#datepicker {
-  margin: 1em; }
-
-#calendar-form {
-  margin-left: 2em; }
-
-#add {
-  margin-left: 2em;
-  margin-bottom: 2em; }
-
-select {
-  width: 125px; }
-
-button {
-  color: #000; }
 input {
   border: none;
 
@@ -405,7 +396,9 @@ input {
 }
 
 
+
 /*child grid section*/
+
 section#wrap {
   width: 60%;
   margin-left: 20%;
@@ -442,8 +435,100 @@ div.col-lg-2.col-md-3.col-sm-3 input {
 #roster-images input {
   border-radius: 100px;
   text-align: center;
+}
+
+/*About us page*/
+
+#about-us {
+  height: 100%;
+  background-color: #333;
+}
+ #about-us {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+#about-us a {
 
 }
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+
+ border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
 
 
 
