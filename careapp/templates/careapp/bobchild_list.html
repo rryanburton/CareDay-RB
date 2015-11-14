@@ -6,18 +6,19 @@
 
 <section id="kids">
 <h1>Children</h1>
+ <div class="row">
 {% for child in object_list %}
-    <div>
-      <a href="#daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
-      <p>{{ child }}</p>
-    </div>
-      <a href="/child/update/{{ child.id }}/"> update child</a>
-      <a href="/bobchilddelete/{{ child.id }}"> DELETE child</a>
+  <div class="col-lg-2 col-md-3 col-sm-3 ">
+    <a href="/child/update/{{ child.id }}/"> UPDATE child </a>
+    <a href="./daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+    <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a>
+    <p>{{ child }}</p>
 
 
+  </div>
 {% endfor %}
-
-<ul class="add-child">
+</div>
+<ul class="bob-child">
 
 
 </ul>
