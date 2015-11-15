@@ -280,7 +280,9 @@ nav#main-login li {
 nav#main-login li a.dropdown-toggle {
   display: inline;
   margin-right: 1em;
-  color: #fff; }
+  color: #fff;
+  font-size: 2em;
+}
 nav#main-login #logout a {
     margin-top: 0; }
   .container-fluid {
@@ -336,6 +338,7 @@ div.main-image img {
 
 #list ul.add-child {
   list-style: none; }
+
 
 #list ul.add-child li.child a {
   display: block;
