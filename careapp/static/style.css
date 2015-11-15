@@ -1,3 +1,6 @@
+
+
+
 /*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -82,16 +85,27 @@ textarea {
   margin-bottom: .5em;
   font-size: 16pt;
   font-weight: bold;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1.5em;
+ }
   #child-name-date p {
     display: inline;
     font-family: inherit;
-    color: #fff;
+    color: #000;
     font-size: 25pt;
-    margin: 5em; }
+    margin: 2em; }
+#child-name-date img {
+  border-radius: 100%;
+  float: right;
+  margin-right: 2.5em;
+}
 
-/*form.activities {
-  display: none; }*/
+
+
+
+/*======================================================================
+Daily Report Forms Page
+======================================================================*/
 
 /*.active {
   padding: 1em;
@@ -104,90 +118,89 @@ textarea {
 
 form.activities {
   padding: 1em;
-  background: rgba(216, 216, 216, 0.5);
+  /*background: rgba(216, 216, 216, 0.5);*/
+  /*background: #E0E0E0;*/
   border-radius: 10px;
-  margin: 1em;
-  width: 60%;
+
+  width: 95%;
   margin: 0 auto;
   display: block;
 }
-
-/*div#act {
-  width: 80%;
-  margin: 0 auto;
-  height: 500px;
-  font-size: 8em;
-  /*background-color: gray;
-  /*text-align: center;
-  position: relative;
-  border-radius: 5px; }
-  #act img {
-    border-radius: 10px;
-  }*/
-/*div#act h2 {
-  color: #fff;
-  font-size: .3em;
-  font-weight: 600;
-  font-family: fantasy;*/
-  /*position: absolute;
-  bottom: 1em;
-  left: 4em;
-  top:5%;
-  right:0;
-  left:0;
-  bottom:0;*/
-  /*}*/
+form.activities h2 {
+  text-align: center;
+}
+form.activities th {
+  text-align: center;
+}
+form.activities input {
+  height: 2em;
+  margin: .5em;
+}
+form.activities label {
+  padding: 1em;
+}
+form.activities select {
+  height: 2em;
+  margin: .5em;
+  border: none;
+}
+form.activities button {
+  margin-left: 15px;
+  width: 12em;
+  background: #E0E0E0;
+  margin-top: 1em;
+}
+form.activities .col-sm-6 {
+  /*margin: .1em;*/
+  width: 48%;
+  padding-bottom: 1em;
+  margin-left: 1%
+}
   div#act h2 {
     color: #fff;
     font-size: 3em;
     font-weight: 600;
-    font-family: fantasy;
+
     text-align: center;
     padding: .5em;
   }
-div#report1 {
-  /*background-color: #D8D8D8;*/
-  border-radius: 5px;
-  width: 100%;
-  height: 230px;
-  padding: .2em;
-  margin-top: 1em;
-  margin-bottom: 3em;
-  display: block; }
-  div#report1 input, div#report1 select {
-    margin: .3em; }
+#daily-report-top-left {
+  list-style: none;
+  display: block;
+  background: #E0E0E0;
+  min-height: 300px;
+}
+#daily-report-top-left li  {
+  display: inline-block;
+}
 
-div#FormSetdiapering_set {
-  /*background-color: rgba(0, 0, 0, 0.2);*/
-  /*background-color: #D8D8D8;*/
-  border-radius: 5px;
-  width: 100%;
-  height: 230px;
-  padding: .2em;
-  margin-bottom: 3em;
-  display: block; }
+#daily-report-top-right {
+  background: #E0E0E0;
+  display: block;
+  min-height: 300px;
+}
+#daily-report-top-right {
+  padding: .3em;
+  text-align: center;
 
-div#FormSetsleeping_set {
-  /*background-color: #D8D8D8;*/
-  border-radius: 5px;
-  width: 100%;
-  height: 150px;
-  padding: .2em;
-  margin-bottom: 3em;
-  display: block; }
+}
+#daily-report-bottom-left {
+  background: #E0E0E0;
+  display: block;
+  min-height: 300px;
+  border-top: 1px solid #000;
+}
+#daily-report-bottom-right {
+  background: #E0E0E0;
+  display: block;
+  min-height: 300px;
+  border-top: 1px solid #000;
 
-div#FormSeteating_set {
-  /*background-color: #D8D8D8;*/
-  border-radius: 5px;
-  width: 100%;
-  height: 180px;
-  padding: .2em;
-  margin-bottom: 3em;
-  display: block; }
+}
+/*===========================
+Admin Fail Login
+===========================*/
 
-/*form {
-  margin: 1em;
-  padding: 1em; }*/
 form#admin-fail-login {
   margin: 0.5em;
   padding: 2em;
@@ -206,10 +219,21 @@ div.fieldWrapper li {
 }
 
 div.form-group {
-  margin: 0.5em; }
+  margin: 0.5em;
+  display: inline-block;
+  width: 35%;
+ }
 
+
+
+
+/*============================
+Main Header
+============================*/
 body {
-  font-family: 'lato'; }
+  font-family: 'lato';
+  background-color: #4A4A4A;
+}
 
 header.main-header {
   min-width: 100%;
@@ -220,33 +244,83 @@ header.main-header {
   clear: both;
   overflow: auto; }
 header.main-header h1 {
-
+  font-size: 30pt;
   margin: 0;
-  margin-top: .4em;
+  margin-top: .3em;
   margin-left: .8em;
   display: block;
   float: left;
   color: #fff; }
-nav#main-login {
-  width: 22%;
-  padding: 1em;
+  header.main-header h1 a:hover {
+    text-decoration: none;
+    color: #E0E0E0;;
+  }
+section.welcome-page h2 {
+  color: #fff;
   position: absolute;
-  background: rgba(216, 216, 216, 0.5);
+}
+section.welcome-page p {
+  color: #fff;
+  position: absolute;
+}
+div.main-image {
+  position: relative;
+}
+
+
+  /*
+  ============================
+  Nav Sections
+  ============================*/
+
+  nav#main-nav {
+    float: right;
+    margin: 1em;
+    padding: .5em;
+    font-size: 13pt;
+    margin-top: .8em;
+    height: 1em;
+  }
+  nav#main-nav a {
+    margin: 1em;
+  }
+  nav#main-nav a:hover {
+    color: #000;
+    text-decoration: none;
+    background: #E0E0E0;
+    padding: .3em;
+    border-radius: 5px;
+  }
+#tablet {
+  display: none;
+}
+ a !important {
+  color: #fff;
+}
+/*=============================
+Admin Login
+=============================*/
+
+nav#main-login {
+  width: 40%;
+  padding: 1.5em;
+  position: absolute;
+  /*background: rgba(216, 216, 216, 0.5);*/
   margin: 1em;
   margin-top: .3em;
   margin-right: 5em;
-  display: inline;
+  display: inline-block;
   border-radius: 3px;
-  top: 22%;
+  top: 12%;
   right: 0;
   bottom: 0;
-  left: 38%;
-  height: 185px;
+  left: 30%;
+  height: 190px;
 }
 nav#main-login a {
   text-decoration: none; }
 nav#main-login form.form-login div.form-group {
-  display: block;
+  display: inline-block;
   margin: 1em;
 }
 nav#main-login form.form-login button {
@@ -263,32 +337,57 @@ nav#main-login li {
 nav#main-login li a.dropdown-toggle {
   display: inline;
   margin-right: 1em;
-  color: #fff; }
+  color: #fff;
+  font-size: 2em;
+}
 nav#main-login #logout a {
     margin-top: 0; }
   .container-fluid {
     padding: 0;
 }
-nav#main-nav {
-  float: right;
-  margin: 1em;
-  padding: .5em;
-  font-size: 16pt;
-  margin-top: .5em;
+h3#welcome {
+  position: absolute;
+  display: block;
+  color: #fff;
+font-size: 6em;
+  top: 23%;
+  right: 0;
+  bottom: 0;
+  left: 26%;
 }
-nav#main-nav a {
-  margin: 1em;
+p#instruction {
+  position: absolute;
+  color: #fff;
+  font-size: 2em;
+  top: 39%;
+  right: 0;
+  bottom: 0;
+  left: 24%;
 }
-nav#main-nav a:hover {
-  color: pink;
+p#instruction a {
+  text-decoration: underline;
+}
+p#instruction a:hover {
+  color: #000;
   text-decoration: none;
+  background: #E0E0E0;
+  padding: .3em;
+  border-radius: 5px;
 }
+input webkit-autofill textarea webkit-autofill select webkit-autofill {
+  background-color: #fff;
+}
+
+/*=========================
+Main Conatiner
+=========================*/
+
 main.container {
   min-width: 100%;
   margin: 0 auto;
   padding: 0;
   min-height: 800px;
-  /*background-color: #D8D8D8;*/
+  background-color: #fff;
   /*background-image: url('img/background.jpg');*/
   /*background-repeat: no-repeat;*/
   overflow: auto;
@@ -320,6 +419,7 @@ div.main-image img {
 #list ul.add-child {
   list-style: none; }
 
+
 #list ul.add-child li.child a {
   display: block;
   text-decoration: none;
@@ -345,6 +445,9 @@ div.main-image img {
   margin: 1em; }
 
 #calendar-form {
+  width: 30%;
+  height: auto;
+  background-color: #E0E0E0;
   margin-left: 2em; }
 
 #add {
@@ -366,22 +469,19 @@ section#wrap {
     text-align: center;
     margin-top: 0; }
 
+input {
+  border: none;
 
-#datepicker {
-  margin: 1em; }
+}
 
-#calendar-form {
-  margin-left: 2em; }
 
-#add {
-  margin-left: 2em;
-  margin-bottom: 2em; }
 
-select {
-  width: 125px; }
 
-button {
-  color: #000; }
+
+
+/*==========================
+child grid section
+==========================*/
 
 section#wrap {
   width: 60%;
@@ -392,32 +492,147 @@ section#wrap {
     text-align: center;
     margin-top: 0; }
 section#kids h2 {
-  color: #fff;
+  color: #000;
+  padding: 1em;
+  margin: 0 auto;
   text-align: center;
 }
+div.row {
+margin: 0 auto;
+
+}
 div.col-lg-2.col-md-3.col-sm-3 p {
-  color:#fff;
+  color:#000;
   padding: .5em;
   font-size: 14pt;
   text-align: center;
   }
-div.col-lg-2.col-md-3.col-sm-3 {
-  margin: 0 auto;
-  width: 18%;
-
+#roster-images  {
+text-align: center;
 }
-div.col-lg-2.col-md-3.col-sm-3  {
-  margin-left: 2%;
+div.col-lg-2.col-md-3.col-sm-3 input {
+  margin: 0 auto;
 }
 .container-fluid {
   padding: 0 !important;
 }
+#roster-images input {
+  border-radius: 100px;
+  text-align: center;
+}
 
 
-/*media queries*/
+
+
+/*===========================
+Footer Section
+===========================*/
+
+#about-us {
+  height: 100%;
+  background-color: #4A4A4A;
+  overflow: auto;
+}
+ #about-us {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+#about-us a {
+
+}
+
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.inner {
+  padding: 30px;
+}
+
 /*
-@media (max-width: 1201px) {
-  header.main-header {
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+/*.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}*/
+/*.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+
+ border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);*/
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+.mastfoot {
+  color: #999;
+  color: rgba(255,255,255,.5);
+  display: inline-block;
+}
+.mastfoot li {
+  list-style: none;
+  font-size: 1.5em;
+  color: #fff;
+  text-align: left;
+  display: block;
+}
+.mastfoot ul {
+  display: inline;
+
+}
+
+
+
+/*===============================
+media queries
+===============================*/
+@media (max-width: 800px) {
+
+
+  /*header.main-header {
     max-width: 82.3%;
     width: 900px;
     margin: 0 auto;
@@ -426,4 +641,69 @@ div.col-lg-2.col-md-3.col-sm-3  {
     width: 80%;
     width: 900px;
     margin: 0 auto;
+
+  }
+input {
+    margin: 0;
+    font-family: fantasy;
+    color: red;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 30px;
+    font-weight: 700;
+    padding-right: 10px;
+
+}
+
+td, th {
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000000;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
+
+table {
+    background-color: transparent;
+}*/
+}
+
+
+
+/*=======================
+styles for huge button
+=======================*/
+/*div#act {
+  width: 80%;
+  margin: 0 auto;
+  height: 500px;
+  font-size: 8em;
+  /*background-color: gray;
+  /*text-align: center;
+  position: relative;
+  border-radius: 5px; }
+  #act img {
+    border-radius: 10px;
   }*/
+/*div#act h2 {
+  color: #fff;
+  font-size: .3em;
+  font-weight: 600;
+  font-family: fantasy;*/
+  /*position: absolute;
+  bottom: 1em;
+  left: 4em;
+  top:5%;
+  right:0;
+  left:0;
+  bottom:0;*/
+  /*}*/
+/*
+============================
+stashed styles just in case
+============================*/

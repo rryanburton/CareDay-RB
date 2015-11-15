@@ -3,17 +3,17 @@
 {% load bootstrap3 %}
 {% block content %}
 {% bootstrap_css %}
-{% bootstrap_javascript jquery=1 %}
+
 <section id="kids">
 
 
-    <h2>Our Beautiful Kids</h2>
+    <h2>CareDay Roster</h2>
     <div class="row">
 {% for child in object_list %}
 
 
-  <div class="col-lg-2 col-md-3 col-sm-3 ">
-      <a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+  <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
+      <a href="./dailyreport/update/{{ child.id }}"><input type="image" src="{% static '' %}{{  child.image }}" name="image" width="170" height="170"></a>
       <p>{{ child }}</p>
   </div>
 

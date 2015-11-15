@@ -34,7 +34,7 @@ urlpatterns = [
         name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list', ),
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
-    url(r'^child/update/(?P<id>\d+)/$',
+    url(r'^child/update/(?P<pk>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),
@@ -50,8 +50,8 @@ urlpatterns = [
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
     # url(r'^$', index, name='index'),
-    url(r'^calander$', TemplateView.as_view(
-        template_name='careapp/calander.html'), name='calander', ),
+    url(r'^calendar$', TemplateView.as_view(
+        template_name='careapp/calendar.html'), name='calendar', ),
     url(r'^diapering/new$', DiaperingCreateView.as_view(), name='diapering', ),
     url(r'^sleeping/new$', SleepingCreateView.as_view(), name='sleeping', ),
     url(r'^eating/new$', EatingCreateView.as_view(), name='eating', ),

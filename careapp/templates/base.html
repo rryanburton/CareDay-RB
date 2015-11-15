@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
+{% bootstrap_messages %}
 
 
 <!DOCTYPE html>
@@ -23,19 +24,29 @@ a:active  {color:black; background-color:transparent; text-decoration:none}
 <body>
     <script src="/static/jquery/jquery-ui.min.js"></script>
     <script src="/static/custom.js"></script>
-    <div class="container-fluid" >
+   <div class="container-fluid">
+   <!--  <div>  -->
     <header class="main-header">
 
 {% if user.is_authenticated %}
-        <h1><a href="child">Careday</a></h1>
+        <h1><a href="child">CareDay</a></h1>
 {% else %}
-        <h1>Careday</h1>
+        <h1>CareDay</h1>
 {% endif %}
+<nav id="tablet">
+  <ul class="navigation group">
+      <li><a class="scroll" href="#">About us</a></li>
+        <li><a href="child">Child Roster</a></li>
+        <li><a href="child/new">Child management</a></li>
+        <li><a href="calendar">Archive</a></li>
+    </ul>
+</nav>
   <nav id="main-nav">
-    <a href="#">About us</a>
-    <a href="child/new">Add/Update Child</a>
+    <a class="scroll" href="#">About us</a>
+    <a href="child/new">Child management</a>
     <a href="child">Child Roster</a>
-    <a href="calander">Calander History</a>
+    <a href="calendar">Archive</a>
+    <a href="/">Login/Logout</a>
   </nav>
 
   </header></div>
@@ -44,8 +55,43 @@ a:active  {color:black; background-color:transparent; text-decoration:none}
   {% endblock %}
   </main> <!-- end main.container -->
 <br>
-<footer>
-
+<footer id="about-us">
+   <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+     <div class="cover-container">
+      <div class="masthead clearfix">
+     </div>
+     <div class="inner cover">
+       <h1 class="cover-heading">What is Careday.</h1>
+       <p class="lead">The typical communication tool for day care centers is pen and paper.  We sought to organize the typical tasks into a simple web application.   Day care workers enter data for diapering, sleeping, and eating over the course of a child’s stay.   A summary page can be provided to the parent at the end of the day while capturing activity metrics over time for later use.  We expect the application can be expanded with additional tasks to be tracked and by adding management reports to track day care operation.
+ .</p>
+       <p class="lead">
+         <a href="#" class="btn btn-lg btn-default">Go Back</a>
+       </p>
+     </div>
+      <div class="mastfoot">
+        <ul id="Ryan">
+          <li>Ryan Burton - Python Engineering</li>
+          <li>rryanburton@gmail.com</li>
+          <li>gitgub: rryanburton</li>
+        <ul>
+        <ul id="Bob">
+          <li>Bob Amand - Python Engineering</li>
+          <li>biotmg@nc.rr.com</li>
+          <li>github: BobAmand</li>
+        <ul>
+        <ul id="Terry">
+          <li>Terry Calhoun - Front End Engineering</li>
+          <li>ddc@terrymcalhoun.com</li>
+          <li>github: drumslayert</li>
+        <ul>
+       <div class="inner">
+         <p>created by<a href="#">Ryan</a>,<a href="#">Bob</a>&<a href="https://twitter.com/drumslayert">@drumslayert</a>.</p>
+       </div>
+      </div>
+    </div>
+  </div>
+ </div>
 </footer>
 </body>
 </html>

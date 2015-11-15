@@ -14,6 +14,23 @@ $(document).ready(function(){
   });
   $("#act").hide();
   });
+});
 
-
+$(function() {
+	// the element inside of which we want to scroll
+        var $elem = $('body');
+$('.scroll').click(
+		function (e) {
+  $('html, body').animate({scrollTop: $elem.height()}, 3000);
+		}
+	);
+});
+$(function() {
+	// the element inside of which we want to scroll
+        var $elem = $('body');
+$('.scroll').click(
+		function (e) {
+  $('html, body').animate({scrollTop: $elem.height()}, 3000);
+		}
+	);
 });
