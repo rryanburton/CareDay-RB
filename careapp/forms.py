@@ -24,42 +24,7 @@ class DailyReportForm(forms.ModelForm):
         fields = ('date', 'child', 'arrival_time', 'departure_time',
                   'mood_am', 'mood_pm')
 
-DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
-                                             fields=('time_diaper', 'num_one', 'num_two', 'comments'),
-                                             widgets={
-                                                'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
-                                                # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
-                                             },
-                                             labels={
-                                                'time_diaper': 'Potty time',
-                                                'num_one': 'Wet',
-                                                'num_two': 'BM',
-                                             },
-                                             extra=1
-                                             )
 
-SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
-                                        fields=('time_slp_start', 'time_slp_end'),
-                                        widgets={
-                                            'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
-                                            'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
-                                         },
-                                        labels={
-                                            'time_slp_start': 'Nap time start',
-                                            'time_slp_end': 'Nap time finish',
-
-                                         },
-                                        extra=1)
-
-EatingFormSet = inlineformset_factory(DailyReport, Eating,
-                                         fields=('time_eat', 'food', 'leftover'),
-                                         widgets={
-                                            'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
-                                         },
-                                         labels={
-                                            'time_eat': 'Meal time',
-                                         },
-                                         extra=1)
 
 # class DiaperingFormSet(InlineFormSet):
 #

@@ -2,7 +2,6 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 {% block content %}
-{% bootstrap_javascript jquery=1 %}
 {% bootstrap_css %}
 
 <div id="child-name-date">
@@ -28,7 +27,6 @@
             <table id="diapering_formset" class="form">
             {{ diapering_formset.non_form_errors.as_ul }}
             {{ diapering_formset.management_form }}
-{#            {% bootstrap_formset diapering_formset %}#}
             {% for form in diapering_formset %}
                 {% if forloop.first %}
                     <thead>
@@ -48,8 +46,8 @@
                                 {{ hidden }}
                             {% endfor %}
                         {% endif %}
-                          {{ field.errors.as_ul }}
-                          {{ field }}
+                      {{ field.errors.as_ul }}
+                      {{ field }}
                     </td>
                 {% endfor %}
                 </tr>
