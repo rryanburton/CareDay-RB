@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 {% block content %}
-
+{% bootstrap_javascript jquery=1 %}
 {% bootstrap_css %}
 
 <div id="child-name-date">
@@ -42,14 +42,14 @@
                 <tr class="{% cycle row1,row2 %}">
                 {% for field in form.visible_fields %}
                     <td>
-                    {# Include the hidden fields in the form #}
-                    {% if forloop.first %}
-                        {% for hidden in form.hidden_fields %}
-                            {{ hidden }}
-                        {% endfor %}
-                    {% endif %}
-                      {{ field.errors.as_ul }}
-                      {{ field }}
+                        {# Include the hidden fields in the form #}
+                        {% if forloop.first %}
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+                        {% endif %}
+                          {{ field.errors.as_ul }}
+                          {{ field }}
                     </td>
                 {% endfor %}
                 </tr>

@@ -1,14 +1,14 @@
 from django import forms
 # from django.contrib.auth.models import User
 
-from django.forms import TimeInput
+
 
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
 # Create the form class.
 
 from extra_views import InlineFormSet
 from django.forms import inlineformset_factory
-
+from datetimewidget.widgets import TimeWidget
 class ChildForm(forms.ModelForm):
 
     class Meta:
@@ -28,6 +28,7 @@ DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
                                              fields=('time_diaper', 'num_one', 'num_two', 'comments'),
                                              widgets={
                                                 'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                                # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
                                              },
                                              labels={
                                                 'time_diaper': 'Potty time',
