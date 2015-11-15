@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+
+<h1>Daily Report List</h1>
+    <input type="date" class="form-control" placeholder="Date input" style="width: 226px;">
+  {% for dailyreport in object_list %}
+      <section id="kids">
+        <div>
+           {% for child in object_list %}
+           <div class="col-lg-2 col-md-3 col-sm-3 ">
+            <a href="./daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+            <!-- <a href="#daily-report"><input type="image" src="{% static 'img/kadence.png' %}" name="image" width="170" height="170"></a>
+             -->
+            <p>{{ dailyreport.child.first_name }}<br>{{ dailyreport.date }}</p>
+
+            <a href="/dailyreport/update/{{ dailyreport.id }}/">  update daily report</a>
+            <p>{{ child }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+  {% endfor %}
+{% endblock %}
+
+
+<!-- <div class="row">
+{% for child in object_list %}
+ <div class="col-lg-2 col-md-3 col-sm-3 ">
+   <a href="/child/update/{{ child.id }}/"> UPDATE child </a>
+   <a href="./daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
+   <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a>
+   <p>{{ child }}</p>
+
+
+ </div>
+{% endfor %}
+</div> -->

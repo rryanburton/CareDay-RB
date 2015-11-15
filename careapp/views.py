@@ -150,6 +150,19 @@ class DailyReportListView(ListView):
         # return preload.order_by('-date')
 
 
+class BobDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/bobdaily_report_list.html'
+
+    # template_name_suffix = '_list'
+
+    def get_queryset(self):
+        filterdate = '2015-11-15'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload.filter(date=filterdate).order_by('arrival_time')
+        # return preload.order_by('-date')
+
+
 class DailyReportCreateView(DailyReportActionMixin, CreateView):
     model = DailyReport
     template_name = 'careapp/daily_report_initial.html'
