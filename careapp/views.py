@@ -154,40 +154,40 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
 
 
 class DailyReportUpdateView(UpdateView):
-    fields = ( 'arrival_time',
+    fields = ('arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     model = DailyReport
     form = DailyReportForm
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Daily Report updated!"
 
     DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
-                                             fields=('time_diaper', 'num_one', 'num_two', 'comments'),
-                                             widgets={
-                                                'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
-                                             },
-                                             labels={
-                                                'time_diaper': 'Potty time',
-                                                'num_one': 'Wet',
-                                                'num_two': 'BM',
-                                             },
-                                             extra=1
-                                             )
-
+                                                 fields=('time_diaper', 'num_one', 'num_two', 'comments'),
+                                                 widgets={
+                                                    'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                                    # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
+                                                 },
+                                                 labels={
+                                                    'time_diaper': 'Potty time',
+                                                    'num_one': 'Wet',
+                                                    'num_two': 'BM',
+                                                 },
+                                                 extra=1
+                                                 )
 
     SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
-                                             fields=('time_slp_start', 'time_slp_end'),
-                                             widgets={
+                                            fields=('time_slp_start', 'time_slp_end'),
+                                            widgets={
                                                 'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
                                                 'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
                                              },
-                                             labels={
+                                            labels={
                                                 'time_slp_start': 'Nap time start',
                                                 'time_slp_end': 'Nap time finish',
 
                                              },
-                                             extra=1)
-
-
+                                            extra=1)
 
     EatingFormSet = inlineformset_factory(DailyReport, Eating,
                                              fields=('time_eat', 'food', 'leftover'),
@@ -199,12 +199,10 @@ class DailyReportUpdateView(UpdateView):
                                              },
                                              extra=1)
 
-
     # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
     # inlines = [DiaperingFormSet]
     # template_name_suffix = '_update_form'
-    template_name = 'careapp/daily_report.html'
-    success_msg = "Daily Report updated!"
+
     #
     # def get(self, request, **kwargs):
     #     self.object, created = DailyReport.objects.get_or_create(
@@ -216,7 +214,7 @@ class DailyReportUpdateView(UpdateView):
     #     return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(DailyReportUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
             context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
             context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
@@ -226,7 +224,6 @@ class DailyReportUpdateView(UpdateView):
             context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
             context['eating_formset'] = self.EatingFormSet(instance=context['object'])
         return context
-
 
     def form_valid(self, form):
         messages.info(self.request, self.success_msg)

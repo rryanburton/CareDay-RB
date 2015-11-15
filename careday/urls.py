@@ -33,7 +33,7 @@ urlpatterns = [
         name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list', ),
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
-    url(r'^child/update/(?P<id>\d+)/$',
+    url(r'^child/update/(?P<pk>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),

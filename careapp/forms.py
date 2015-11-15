@@ -1,13 +1,11 @@
 from django import forms
-# from django.contrib.auth.models import User
-
-from django.forms import TimeInput
-
-from .models import Child, DailyReport, Diapering, Sleeping, Eating
-# Create the form class.
-
+from django.contrib.auth.models import User
 from extra_views import InlineFormSet
+from django.forms import inlineformset_factory
+from datetimewidget.widgets import TimeWidget
+from .models import Child, DailyReport, Diapering, Sleeping, Eating
 
+# Create the form class.
 
 class ChildForm(forms.ModelForm):
 
@@ -23,6 +21,7 @@ class DailyReportForm(forms.ModelForm):
         model = DailyReport
         fields = ('date', 'child', 'arrival_time', 'departure_time',
                   'mood_am', 'mood_pm')
+
 
 
 # class DiaperingFormSet(InlineFormSet):
