@@ -15,7 +15,8 @@
 <form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
     <div class="row">
       {% csrf_token %}
-        <div class="col-sm-6" id="daily-report-top">
+        <div class="col-sm-6" id="daily-report-top-left">
+          <h2>Arrival/Departure</h2>
           <li><label for="id_arrival_time">Arrival time:</label>{{ form.arrival_time }}</li>
           <li><label for="id_departure_time">Departure time:</label>{{ form.departure_time }}</li>
           <li><label for="id_mood_am">Morning Mood:</label>{{ form.mood_am }}</li>
@@ -23,8 +24,8 @@
         </div>
 
      <!--  Diapering   -->
-        <div class="col-sm-6">
-          <h1>Diapering</h1>
+        <div class="col-sm-6" id="daily-report-top-right">
+          <h2>Diapering</h2>
             <table id="diapering_formset" class="form">
             {{ diapering_formset.non_form_errors.as_ul }}
             {{ diapering_formset.management_form }}
@@ -58,8 +59,8 @@
 
      <!--  Sleeping   -->
 
-    <div class="col-sm-6">
-        <h1>Sleeping</h1>
+    <div class="col-sm-6" id="daily-report-bottom-left">
+        <h2>Sleeping</h2>
         <table id="sleeping_formset" class="form">
         {{ sleeping_formset.non_form_errors.as_ul }}
         {{ sleeping_formset.management_form }}
@@ -93,8 +94,8 @@
 
       <!--  Eating   -->
 
-    <div class="col-sm-6">
-        <h1>Eating</h1>
+    <div class="col-sm-6" id="daily-report-bottom-right">
+        <h2>Eating</h2>
         <table id="eating_formset" class="form">
         {{ eating_formset.non_form_errors.as_ul }}
         {{ eating_formset.management_form }}
@@ -129,5 +130,6 @@
         <!-- <button id="daily-report-reset" type="reset" class="btn btn-default">Cancel</button> -->
     </div>
 <button id="save_daily_report" type="submit" class="btn btn-default" value="Save">Save</button>
+<button id="save_daily_report" type="submit" class="btn btn-default" value="Cancel">Cancel</button>
 </form>
 {% endblock %}
