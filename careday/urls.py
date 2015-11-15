@@ -63,7 +63,5 @@ urlpatterns = [
         name='bob-child', ),
     url(r'^bobchilddelete/(?P<pk>\d+)/$', BobChildDeleteView.as_view(),
         name='bob-child-delete', ),
-    url(r'^bobdailyreport$', BobDailyReportListView.as_view(),
-        name='bobdailyreport-list', ),
 
 ]

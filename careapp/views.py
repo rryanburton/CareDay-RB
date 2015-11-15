@@ -6,8 +6,8 @@ from datetime import datetime, date
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm, DiaperingFormSet, SleepingFormSet, \
-    EatingFormSet
+from .forms import ChildForm, DailyReportForm
+    # DiaperingFormSet, SleepingFormSet, EatingFormSet
 from extra_views import UpdateWithInlinesView, InlineFormSet
 from django.contrib.auth.decorators import login_required
 
@@ -145,19 +145,6 @@ class DailyReportListView(ListView):
 
     def get_queryset(self):
         filterdate = '2015-11-10'
-        preload = DailyReport.objects.all().select_related('child')
-        return preload.filter(date=filterdate).order_by('arrival_time')
-        # return preload.order_by('-date')
-
-
-class BobDailyReportListView(ListView):
-    model = DailyReport
-    template_name = 'careapp/bobdaily_report_list.html'
-
-    # template_name_suffix = '_list'
-
-    def get_queryset(self):
-        filterdate = ['2015-11-15', '2015-11-14']
         preload = DailyReport.objects.all().select_related('child')
         return preload.filter(date=filterdate).order_by('arrival_time')
         # return preload.order_by('-date')
