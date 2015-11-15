@@ -3,12 +3,12 @@ from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
 from .forms import ChildForm, DailyReportForm
-from extra_views import UpdateWithInlinesView, InlineFormSet
-from django.contrib.auth.decorators import login_required
+# from extra_views import UpdateWithInlinesView, InlineFormSet
+# from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django import forms
 
