@@ -20,8 +20,8 @@ from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
-    TerryCreateView, BobChildListView, BobChildDeleteView, \
-    BobDailyReportListView
+    TerryCreateView, BobChildListView, BobChildDeleteView
+
 from django.contrib.auth.views import logout
 
 urlpatterns = [
