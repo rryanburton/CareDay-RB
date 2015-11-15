@@ -1,14 +1,12 @@
 from django import forms
-# from django.contrib.auth.models import User
-
-
-
-from .models import Child, DailyReport, Diapering, Sleeping, Eating
-# Create the form class.
-
+from django.contrib.auth.models import User
 from extra_views import InlineFormSet
 from django.forms import inlineformset_factory
 from datetimewidget.widgets import TimeWidget
+from .models import Child, DailyReport, Diapering, Sleeping, Eating
+
+# Create the form class.
+
 class ChildForm(forms.ModelForm):
 
     class Meta:
