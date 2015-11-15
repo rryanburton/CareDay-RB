@@ -413,3 +413,30 @@ class TerryCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('daily-report')
+
+
+###############################################################################
+#  ARCHIVE VIEWS
+
+class ArchiveDateDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_date_list.html'
+
+    def get_queryset(self):
+        filterdate = '2015-11-15'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload.filter(date=filterdate).order_by('arrival_time')
+        # return preload.order_by('-date')
+
+
+class ArchiveChildDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_child_list.html'
+
+    def get_queryset(self):
+        filterchild = '1'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload.filter(child=filterchild).order_by('arrival_time')
+        # return preload.order_by('-date')
+
+###############################################################################

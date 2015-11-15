@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+
+<h1>Daily Report List</h1>
+  <br>
+
+  <p>Date: <input type="date" name={{ dailyreport.date }}></p>
+
+    <div>
+
+        <div>
+          {% for child in object_list %}
+           <div class="col-lg-2 col-md-3 col-sm-3 ">
+            <a href="./daily-report"><input type="image" id="datepicker" src="{{ child.image }}" width="170" height="170"></a>
+            <p>{{ child }}</p>
+            <p>{{ dailyreport.child.first_name }}<br>{{ dailyreport.date }}</p>
+           </div>
+          {% endfor %}
+        </div>
+
+   </div>
+{% endblock %}

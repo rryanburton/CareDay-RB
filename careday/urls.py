@@ -20,7 +20,7 @@ from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
-    TerryCreateView
+    TerryCreateView, ArchiveDateDailyReportListView, ArchiveChildDailyReportListView
 from django.contrib.auth.views import logout
 
 urlpatterns = [
@@ -58,5 +58,10 @@ urlpatterns = [
         name='daily-report', ),
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
+
+    url(r'^archive/date$', ArchiveDateDailyReportListView.as_view(),
+        name='archive-list-date', ),
+    url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
+        name='archive-list-child', ),
 
 ]
