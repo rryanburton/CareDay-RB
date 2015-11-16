@@ -425,7 +425,8 @@ class ArchiveDateDailyReportListView(ListView):
     def get_queryset(self):
         filterdate = '2015-11-13'
         preload = DailyReport.objects.all().select_related('child')
-        return preload.filter(date=filterdate).order_by('arrival_time')
+        return preload
+        # return preload.filter(date=filterdate).order_by('arrival_time')
         # return preload.order_by('-date')
 
 class ArchiveChildDailyReportListView(ListView):
@@ -436,7 +437,7 @@ class ArchiveChildDailyReportListView(ListView):
     def get_queryset(self):
         filterdate = '2015-11-10'
         preload = DailyReport.objects.all().select_related('child')
-        return preload.filter(date=filterdate).order_by('arrival_time')
+        return preload.filter(child_id='4').order_by('-date')
         # return preload.order_by('-date')
 
 ###############################################################################
