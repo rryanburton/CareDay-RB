@@ -24,6 +24,8 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
 from django.contrib.auth.views import logout
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(
+        template_name='careapp/index.html'), name='index',),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'},
@@ -32,9 +34,9 @@ urlpatterns = [
         {'next_page': reverse_lazy('index')},
         name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list', ),
-    url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^child/update/(?P<pk>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
+    url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),
     url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
@@ -56,7 +58,6 @@ urlpatterns = [
     url(r'^eating/new$', EatingCreateView.as_view(), name='eating', ),
     url(r'^dailyintake$', TerryCreateView.as_view(),
         name='daily-report', ),
-    url(r'^$', TemplateView.as_view(
-        template_name='careapp/index.html'), name='index',),
+
 
 ]
