@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+
+
+
+
+    <h2>Archive Date</h2>
+    <div class="row"><ul>
+{% for dailyreport in object_list %}
+
+
+  <div id="archive-date">
+     <li> <a href="./dailyreport/update/{{ dailyreport.id }}">{{ dailyreport.child.first_name }}
+{#       <!--   <input type="image" src="{% static '' %}{{  child.image }}" name="image" width="170" height="170"> -->#}
+      </a> {{ dailyreport.date }}
+  </li>
+  </div>
+
+ {% endfor %}
+  </ul>  </div>
+
+
+
+
+{% endblock %}
