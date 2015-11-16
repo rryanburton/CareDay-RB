@@ -254,11 +254,14 @@ header.main-header {
 header.main-header h1 {
   font-size: 30pt;
   margin: 0;
-  margin-top: .3em;
+  margin-top: .1em;
   margin-left: .8em;
   display: block;
   float: left;
   color: #fff; }
+header.main-header h1 img {
+
+}
   header.main-header h1 a:hover {
     text-decoration: none;
     color: #E0E0E0;;
