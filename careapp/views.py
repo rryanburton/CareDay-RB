@@ -87,18 +87,18 @@ class ChildUpdateView(ChildActionMixin, UpdateView):
     success_msg = "Child updated!"
 
     def get(self, request, **kwargs):
-        self.object = Child.objects.get(id=self.kwargs['id'])
+        self.object = Child.objects.get(id=self.kwargs['pk'])
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         context = self.get_context_data(object=self.object, form=form)
         return self.render_to_response(context)
 
     def get_object(self, queryset=None):
-        obj = Child.objects.get(id=self.kwargs['id'])
+        obj = Child.objects.get(id=self.kwargs['pk'])
         return obj
 
     def get_success_url(self):
-        return reverse('childs-list')
+        return reverse('bob-child')
 
 
 class ChildDetailView(DetailView):
