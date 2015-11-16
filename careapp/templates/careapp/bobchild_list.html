@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+
+<section class="kids">
+<h2>Children</h2>
+ <div class="row">
+{% for child in object_list %}
+  <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
+    <a href="/child/update/{{ child.id }}/"> UPDATE child </a>
+    <a href=""><input type="image" src="{% static '' %}{{ child.image }}" name="image" width="170" height="170"></a>
+    <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a>
+    <p>{{ child }}</p>
+
+
+  </div>
+{% endfor %}
+</div>
+
+<ul class="bob-child">
+
+
+</ul>
+    </section>
+
+{# <a href="{% url "childs_new" %}">childs_new</a>#}
+{% endblock %}
+      <!-- <a href="/child/update/{{ child.id }}/"> DELETE child</a> -->
+      <!-- <a href="{% url bobdelete_child.html %}"> DELETE child</a> -->

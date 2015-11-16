@@ -1,11 +1,11 @@
 from django import forms
 # from django.contrib.auth.models import User
-
+# from extra_views import InlineFormSet
+# from django.forms import inlineformset_factory
+# from datetimewidget.widgets import TimeWidget
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
+
 # Create the form class.
-
-from extra_views import InlineFormSet
-
 
 class ChildForm(forms.ModelForm):
 
@@ -23,20 +23,27 @@ class DailyReportForm(forms.ModelForm):
                   'mood_am', 'mood_pm')
 
 
-class DiaperingFormSet(InlineFormSet):
 
-    model = Diapering
-    fields = ('time_diaper', 'num_one', 'num_two', 'comments')
-    extra = 1
-
-class SleepingFormSet(InlineFormSet):
-
-    model = Sleeping
-    fields = ('time_slp_start', 'time_slp_end')
-    extra = 1
-
-class EatingFormSet(InlineFormSet):
-
-    model = Eating
-    fields = ('time_eat', 'food', 'leftover')
-    extra = 1
+# class DiaperingFormSet(InlineFormSet):
+#
+#     model = Diapering
+#     fields = ('time_diaper', 'num_one', 'num_two', 'comments')
+#     extra = 1
+#     widgets = {
+#         'time_diaper': TimeInput(attrs={'length': 6}),
+#     }
+#
+# class SleepingFormSet(InlineFormSet):
+#
+#     model = Sleeping
+#     fields = ('time_slp_start', 'time_slp_end')
+#     extra = 1
+#     labels = {
+#         'time_slp_start': 'Nap Start',
+#     }
+#
+# class EatingFormSet(InlineFormSet):
+#
+#     model = Eating
+#     fields = ('time_eat', 'food', 'leftover')
+#     extra = 1

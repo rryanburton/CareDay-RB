@@ -20,10 +20,14 @@ from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
-    TerryCreateView
+    ArchiveChildDailyReportListView, ArchiveDateDailyReportListView, \
+    TerryCreateView, BobChildListView, BobChildDeleteView
+
 from django.contrib.auth.views import logout
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(
+        template_name='careapp/index.html'), name='index',),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'},
@@ -32,9 +36,9 @@ urlpatterns = [
         {'next_page': reverse_lazy('index')},
         name='careday_logout'),
     url(r'^child$', ChildListView.as_view(), name='childs-list', ),
-    url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
-    url(r'^child/update/(?P<id>\d+)/$',
+    url(r'^child/update/(?P<pk>\d+)/$',
         ChildUpdateView.as_view(), name='child-update'),
+    url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),
     url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
@@ -49,14 +53,25 @@ urlpatterns = [
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
     # url(r'^$', index, name='index'),
-    url(r'^calander$', TemplateView.as_view(
-        template_name='careapp/calander.html'), name='calander', ),
+    url(r'^calendar$', TemplateView.as_view(
+        template_name='careapp/calendar.html'), name='calendar', ),
     url(r'^diapering/new$', DiaperingCreateView.as_view(), name='diapering', ),
     url(r'^sleeping/new$', SleepingCreateView.as_view(), name='sleeping', ),
     url(r'^eating/new$', EatingCreateView.as_view(), name='eating', ),
     url(r'^dailyintake$', TerryCreateView.as_view(),
         name='daily-report', ),
+
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
+    url(r'^bobchild$', BobChildListView.as_view(),
+        name='bob-child', ),
+    url(r'^bobchilddelete/(?P<pk>\d+)/$', BobChildDeleteView.as_view(),
+        name='bob-child-delete', ),
+
+    url(r'^archive/date$', ArchiveDateDailyReportListView.as_view(),
+        name='archive-list-date', ),
+    url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
+        name='archive-list-child', ),
+
 
 ]

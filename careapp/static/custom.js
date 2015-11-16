@@ -1,19 +1,48 @@
 $(document).ready(function() {
   $("#datepicker").datepicker(); });
 
-$(document).ready(function(){
+// $(document).ready(function(){
+//
+//   $("#act").click(function(){
+//     $('.activities').addClass('active')
+//     .animate({
+//     opacity: 0.8,
+//     left: "+=50",
+//     height: "toggle"
+//   }, 700, function() {
+//     // Animation complete.
+//   });
+//   $("#act").hide();
+//   });
+// });
 
-  $("#act").click(function(){
-    $('.activities').addClass('active')
-    .animate({
-    opacity: 0.8,
-    left: "+=50",
-    height: "toggle"
-  }, 700, function() {
-    // Animation complete.
-  });
-  $("#act").hide();
-  });
-
-
+$(function() {
+	// the element inside of which we want to scroll
+        var $elem = $('body');
+$('.scroll').click(
+		function (e) {
+  $('html, body').animate({scrollTop: $elem.height()}, 1000);
+		}
+	);
 });
+$(function() {
+
+        var $elem = $('body');
+$('.scroll').click(
+		function (e) {
+  $('html, body').animate({scrollTop: $elem.height()}, 1000);
+}
+	);
+});
+
+$("#goback").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+// dropdown nav function
+
+// $('ul.nav li.dropdown').hover(function() {
+//   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+// }, function() {
+//   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+// });

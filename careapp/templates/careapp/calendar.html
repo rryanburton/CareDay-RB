@@ -8,7 +8,6 @@
      <div id="calendar-page">
      <input id="datepicker" placeholder="Search a previous day"/>
      <button type="button">save</button>
-     <h3>Pick a child add daily report</h3>
      <div id="list">
        {% if messages %}
        <ul class="messages">
@@ -20,10 +19,6 @@
        </ul>
        {% endif %}
        <ul class="add-child">
-          <li class="child"><a href="#"><strong>Ryan</strong></a></li>
-          <li class="child"><a href="#"><strong>Bob</strong></a></li>
-          <li class="child"><a href="#"><strong>Terry</strong></a></li>
-
           {% for child in object_list %}
           <li class="child"><a href="#"><strong>Terry{{ child }}</strong>birthday: {{ child.birthday}} </a></li>
           {% endfor %}

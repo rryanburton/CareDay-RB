@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
+{% bootstrap_messages %}
 
 
 <!DOCTYPE html>
@@ -13,28 +14,44 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
     <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}"/>
-    <style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:white; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:none}
-a:active  {color:white; background-color:transparent; text-decoration:none}
-</style>
+
 </head>
 <body>
     <script src="/static/jquery/jquery-ui.min.js"></script>
     <script src="/static/custom.js"></script>
-    <div class="container-fluid" >
+   <div class="container-fluid">
+   <!--  <div>  -->
     <header class="main-header">
 
 {% if user.is_authenticated %}
-        <h1><a href="child">Careday</a></h1>
+        <h1><a href="/"> <img src="{% static 'img/careday-3d-trans.png' %}"></a></h1>
 {% else %}
-        <h1>Careday</h1>
+        <h1>CareDay</h1>
 {% endif %}
-
-        {% block toggle_login %}
-        {% include "toggle_login.html" %}
-        {% endblock %}
+<nav id="tablet">
+  <ul class="navigation group">
+      <li><a class="scroll" href="#">About us</a></li>
+        <li><a href="child">Child Roster</a></li>
+        <li><a href="bobchild">Child management</a></li>
+        <li><a href="calendar">Archive</a></li>
+    </ul>
+</nav>
+  <nav id="main-nav">
+    <a class="scroll" href="#">About us</a>
+    <a href="bobchild">Child management</a>
+    <a href="child">Child Roster</a>
+    <!-- <a href="calendar">Archive</a> -->
+      <ul class="archive-toggle">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archive <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="archive/child">Search by Child</a></li>
+                <li><a href="archive/date">Search by Date</a></li>
+              </ul>
+            </li>
+      </ul>
+    <a href="/">Login/Logout</a>
+  </nav>
 
   </header></div>
   <main class="container">
@@ -42,6 +59,43 @@ a:active  {color:white; background-color:transparent; text-decoration:none}
   {% endblock %}
   </main> <!-- end main.container -->
 <br>
-<footer></footer>
+<footer id="about-us">
+   <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+     <div class="cover-container">
+      <div class="masthead clearfix">
+     </div>
+     <div class="inner cover">
+       <h1 class="cover-heading">What is Careday.</h1>
+       <p class="lead">The typical communication tool for day care centers is pen and paper.  We sought to organize the typical tasks into a simple web application.   Day care workers enter data for diapering, sleeping, and eating over the course of a child’s stay.   A summary page can be provided to the parent at the end of the day while capturing activity metrics over time for later use.  We expect the application can be expanded with additional tasks to be tracked and by adding management reports to track day care operation.
+ .</p>
+       <p class="lead">
+         <a id="goback" href="#" class="btn btn-lg btn-default">Go Back</a>
+       </p>
+     </div>
+      <div class="mastfoot">
+        <ul id="Ryan">
+          <li>Ryan Burton - Python Engineering</li>
+          <li>rryanburton@gmail.com</li>
+          <li>gitgub: rryanburton</li>
+        <ul>
+        <ul id="Bob">
+          <li>Bob Amand - Python Engineering</li>
+          <li>biotmg@nc.rr.com</li>
+          <li>github: BobAmand</li>
+        <ul>
+        <ul id="Terry">
+          <li>Terry Calhoun - Front End Engineering</li>
+          <li>ddc@terrymcalhoun.com</li>
+          <li>github: drumslayert</li>
+        <ul>
+       <div class="inner">
+         <p>created by<a href="#">Ryan</a>,<a href="#">Bob</a>&<a href="https://twitter.com/drumslayert">@drumslayert</a>.</p>
+       </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</footer>
 </body>
 </html>

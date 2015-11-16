@@ -1,15 +1,17 @@
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
-from .forms import ChildForm, DailyReportForm, DiaperingFormSet, SleepingFormSet, \
-    EatingFormSet
-from extra_views import UpdateWithInlinesView, InlineFormSet
-from django.contrib.auth.decorators import login_required
+from .forms import ChildForm, DailyReportForm
+# , DiaperingFormSet, SleepingFormSet, EatingFormSet
+# from extra_views import UpdateWithInlinesView, InlineFormSet
+# from django.contrib.auth.decorators import login_required
+from django.forms import inlineformset_factory
+from django import forms
 
 
 # Create your views here.
@@ -49,6 +51,27 @@ class ChildListView(ListView):
     template_name = 'careapp/childs_list2.html'
 
 
+class BobChildListView(ListView):
+    model = Child
+    template_name = 'careapp/bobchild_list.html'
+
+
+class BobChildDeleteView(ChildActionMixin, DeleteView):
+    model = Child
+    success_url = reverse_lazy('bob-child')  # re-directs user here.
+    template_name = 'careapp/bobdelete_child.html'
+
+    # def get_object(self, queryset=None):
+    #     obj = Child.objects.get(id=self.kwargs['id'])
+    #     obj.delete()
+    #     return HttpResponse("Deleted Child")
+
+    # def delete(request):
+    #     query = Child.objects.get(pk=id)
+    #     query.delete()
+    #     return HttpResponse("Deleted Child!")
+
+
 class ChildCreateView(ChildActionMixin, CreateView):
     model = Child
     template_name = 'careapp/edit_child.html'
@@ -64,18 +87,18 @@ class ChildUpdateView(ChildActionMixin, UpdateView):
     success_msg = "Child updated!"
 
     def get(self, request, **kwargs):
-        self.object = Child.objects.get(id=self.kwargs['id'])
+        self.object = Child.objects.get(id=self.kwargs['pk'])
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         context = self.get_context_data(object=self.object, form=form)
         return self.render_to_response(context)
 
     def get_object(self, queryset=None):
-        obj = Child.objects.get(id=self.kwargs['id'])
+        obj = Child.objects.get(id=self.kwargs['pk'])
         return obj
 
     def get_success_url(self):
-        return reverse('childs-list')
+        return reverse('bob-child')
 
 
 class ChildDetailView(DetailView):
@@ -152,16 +175,56 @@ class DailyReportCreateView(DailyReportActionMixin, CreateView):
         return reverse('childs-list')
 
 
-class DailyReportUpdateView(UpdateWithInlinesView):
-    fields = ( 'arrival_time',
+class DailyReportUpdateView(UpdateView):
+    fields = ('arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     model = DailyReport
     form = DailyReportForm
-    inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
-    # template_name_suffix = '_update_form'
     template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
+
+    DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
+                                                 fields=('time_diaper', 'num_one', 'num_two', 'comments'),
+                                                 widgets={
+                                                    'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                                    # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
+                                                 },
+                                                 labels={
+                                                    'time_diaper': 'Potty time',
+                                                    'num_one': 'Wet',
+                                                    'num_two': 'BM',
+                                                 },
+                                                 extra=1
+                                                 )
+
+    SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
+                                            fields=('time_slp_start', 'time_slp_end'),
+                                            widgets={
+                                                'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                                'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
+                                             },
+                                            labels={
+                                                'time_slp_start': 'Nap time start',
+                                                'time_slp_end': 'Nap time finish',
+
+                                             },
+                                            extra=1)
+
+    EatingFormSet = inlineformset_factory(DailyReport, Eating,
+                                             fields=('time_eat', 'food', 'leftover'),
+                                             widgets={
+                                                'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                             },
+                                             labels={
+                                                'time_eat': 'Meal time',
+                                             },
+                                             extra=1)
+
+    # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
+    # inlines = [DiaperingFormSet]
+    # template_name_suffix = '_update_form'
+
     #
     # def get(self, request, **kwargs):
     #     self.object, created = DailyReport.objects.get_or_create(
@@ -171,6 +234,18 @@ class DailyReportUpdateView(UpdateWithInlinesView):
     #     form = self.get_form(form_class)
     #     context = self.get_context_data(object=self.object, form=form)
     #     return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyReportUpdateView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
+        else:
+            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
+        return context
 
     def form_valid(self, form):
         messages.info(self.request, self.success_msg)
@@ -360,3 +435,32 @@ class TerryCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('daily-report')
+
+###############################################################################
+#  ARCHIVE VIEWS
+
+
+class ArchiveDateDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_date.html'
+
+    def get_queryset(self):
+        # filterdate = '2015-11-13'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload
+        # return preload.filter(date=filterdate).order_by('arrival_time')
+        # return preload.order_by('-date')
+
+
+class ArchiveChildDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_child.html'
+
+    def get_queryset(self):
+        # filterdate = '2015-11-10'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload
+        # .filter(child_id='1').order_by('-date')
+        # return preload.order_by('-date')
+
+###############################################################################
