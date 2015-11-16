@@ -1,12 +1,13 @@
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.shortcuts import render, redirect
 from datetime import datetime, date
 # from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
 from .forms import ChildForm, DailyReportForm
+# , DiaperingFormSet, SleepingFormSet, EatingFormSet
 # from extra_views import UpdateWithInlinesView, InlineFormSet
 # from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
@@ -48,6 +49,27 @@ class ChildActionMixin(object):
 class ChildListView(ListView):
     model = Child
     template_name = 'careapp/childs_list2.html'
+
+
+class BobChildListView(ListView):
+    model = Child
+    template_name = 'careapp/bobchild_list.html'
+
+
+class BobChildDeleteView(ChildActionMixin, DeleteView):
+    model = Child
+    success_url = reverse_lazy('bob-child')  # re-directs user here.
+    template_name = 'careapp/bobdelete_child.html'
+
+    # def get_object(self, queryset=None):
+    #     obj = Child.objects.get(id=self.kwargs['id'])
+    #     obj.delete()
+    #     return HttpResponse("Deleted Child")
+
+    # def delete(request):
+    #     query = Child.objects.get(pk=id)
+    #     query.delete()
+    #     return HttpResponse("Deleted Child!")
 
 
 class ChildCreateView(ChildActionMixin, CreateView):
@@ -413,3 +435,31 @@ class TerryCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('daily-report')
+
+###############################################################################
+#  ARCHIVE VIEWS
+
+class ArchiveDateDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_date.html'
+
+
+    def get_queryset(self):
+        filterdate = '2015-11-13'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload
+        # return preload.filter(date=filterdate).order_by('arrival_time')
+        # return preload.order_by('-date')
+
+class ArchiveChildDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/archive_child.html'
+
+
+    def get_queryset(self):
+        filterdate = '2015-11-10'
+        preload = DailyReport.objects.all().select_related('child')
+        return preload.filter(child_id='4').order_by('-date')
+        # return preload.order_by('-date')
+
+###############################################################################
