@@ -234,7 +234,15 @@ body {
   font-family: 'lato';
   background-color: #4A4A4A;
 }
-
+a {
+  color: #fff;
+}
+a:active {
+  color: #fff;
+}
+a:visited {
+  color: #fff;
+}
 header.main-header {
   min-width: 100%;
   margin: 0 auto;
@@ -258,13 +266,17 @@ header.main-header h1 {
 section.welcome-page h2 {
   color: #fff;
   position: absolute;
+  z-index:10;
 }
 section.welcome-page p {
   color: #fff;
   position: absolute;
+  z-index:10;
+
 }
 div.main-image {
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -280,8 +292,10 @@ div.main-image {
     font-size: 13pt;
     margin-top: .8em;
     height: 1em;
-    margin-right: 9em;
-
+    /*margin-right: 9em;*/
+    z-index: 10;
+    position: absolute;
+    left: 45%;
   }
   nav#main-nav a {
     margin: 1em;
@@ -297,28 +311,32 @@ div.main-image {
     padding: 0;
     border-radius: 0;
     background: none;
+    z-index:10;
 
   }
   ul.archive-toggle {
-    position: absolute;
+    /*position: absolute;*/
     display: block;
     top: 3.1%;
     right: 0;
     bottom: 0;
     left: 88%;
+    z-index:10;
+
   }
  ul.dropdown-menu li {
    margin: 0;
    padding: 0;
    color: #fff;
    background: #E0E0E0;
+   /*position: absolute;*/
+   z-index:10;
+   /*position: fixed;*/
  }
 #tablet {
   display: none;
 }
- a !important {
-  color: #fff;
-}
+
 ul.archive-toggle {
   margin: 0;
   padding: 0;
@@ -334,6 +352,7 @@ nav#main-login {
   width: 40%;
   padding: 1.5em;
   position: absolute;
+  z-index:10;
   /*background: rgba(216, 216, 216, 0.5);*/
   margin: 1em;
   margin-top: .3em;
@@ -378,7 +397,7 @@ h3#welcome {
   position: absolute;
   display: block;
   color: #fff;
-font-size: 6em;
+  font-size: 6em;
   top: 23%;
   right: 0;
   bottom: 0;
@@ -420,7 +439,9 @@ main.container {
   /*background-image: url('img/background.jpg');*/
   /*background-repeat: no-repeat;*/
   overflow: auto;
-  position: relative;}
+  position: relative;
+
+}
 div.main-image img {
   max-width: 100%;
   height: auto;
@@ -434,6 +455,7 @@ div.main-image img {
   /*z-index: 10;*/
   display: block;
   position: absolute;
+
   height: 100%;
   overflow: auto;
   top: 0;
@@ -500,7 +522,6 @@ section#wrap {
 
 input {
   border: none;
-
 }
 
 
@@ -558,7 +579,6 @@ Footer Section
 ===========================*/
 
 #about-us {
-  height: 100%;
   background-color: #4A4A4A;
   overflow: auto;
 }
@@ -586,22 +606,7 @@ Footer Section
 .masthead-nav > li + li {
   margin-left: 20px;
 }
-/*.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}*/
-/*.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
 
- border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);*/
-}
 
 @media (min-width: 768px) {
   .masthead-brand {
@@ -618,6 +623,7 @@ Footer Section
 .cover .btn-lg {
   padding: 10px 20px;
   font-weight: bold;
+  color: #000;
 }
 .mastfoot {
   color: #999;
