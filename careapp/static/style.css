@@ -231,17 +231,17 @@ div.form-group {
 Main Header
 ============================*/
 body {
-  font-family: 'lato';
+  font-family: 'lato' !important;
   background-color: #4A4A4A;
 }
 a {
   color: #fff;
 }
-a:active {
+/*a:active {
   color: #fff;
-}
+}*/
 a:visited {
-  color: #fff;
+  color: inherit;
 }
 header.main-header {
   min-width: 100%;
@@ -264,7 +264,10 @@ header.main-header h1 img {
 }
   header.main-header h1 a:hover {
     text-decoration: none;
-    color: #E0E0E0;;
+    color: #F7F21A;;
+  }
+  header.main-header a:visited {
+    color: #fff;
   }
 section.welcome-page h2 {
   color: #fff;
@@ -304,17 +307,13 @@ div.main-image {
     margin: 1em;
   }
   nav#main-nav a:hover {
-    color: #000;
+    color: #F7F21A;
     text-decoration: none;
-    background: #E0E0E0;
-    padding: .3em;
-    border-radius: 5px;
+    border-radius: 1px;
   }
-  nav#main-nav ul.archive-toggle a:hover {
-    padding: 0;
-    border-radius: 0;
+
+  nav#main-nav ul.archive-toggle li a:hover {
     background: none;
-    z-index:10;
 
   }
   ul.archive-toggle {
@@ -327,15 +326,15 @@ div.main-image {
     z-index:10;
 
   }
+  ul.dropdown-menu {
+    background-color: #E0E0E0;
+  }
  ul.dropdown-menu li {
    margin: 0;
    padding: 0;
    color: #fff;
-   background: #E0E0E0;
-   /*position: absolute;*/
-   z-index:10;
-   /*position: fixed;*/
  }
+
 #tablet {
   display: none;
 }
@@ -544,7 +543,7 @@ section#wrap {
     padding: .5em;
     text-align: center;
     margin-top: 0; }
-section#kids h2 {
+section.kids h2 {
   color: #000;
   padding: 1em;
   margin: 0 auto;
