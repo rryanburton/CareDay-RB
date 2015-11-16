@@ -32,22 +32,22 @@
 <nav id="tablet">
   <ul class="navigation group">
       <li><a class="scroll" href="#">About us</a></li>
-        <li><a href="child">Child Roster</a></li>
-        <li><a href="bobchild">Child management</a></li>
-        <li><a href="calendar">Archive</a></li>
+        <li><a href="{% url "childs-list" %}">Child Roster</a></li>
+        <li><a href="{% url "bob-child" %}">Child management</a></li>
+
     </ul>
 </nav>
   <nav id="main-nav">
     <a class="scroll" href="#">About us</a>
-    <a href="bobchild">Child management</a>
-    <a href="child">Child Roster</a>
+    <a href="{% url "bob-child" %}">Child management</a>
+    <a href="{% url "childs-list" %}">Child Roster</a>
     <!-- <a href="calendar">Archive</a> -->
       <ul class="archive-toggle">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archive <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="archive/child">Search by Child</a></li>
-                <li><a href="archive/date">Search by Date</a></li>
+                <li><a href="{% url "archive-list-child" %}">Search by Child</a></li>
+                <li><a href="{% url "archive-list-date" %}">Search by Date</a></li>
               </ul>
             </li>
       </ul>
