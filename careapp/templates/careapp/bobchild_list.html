@@ -4,9 +4,11 @@
 {% block content %}
     {% if user.is_authenticated %}
 {% bootstrap_css %}
-
 <section class="kids">
+<button class="btn btn-default"><a href="{% url "child-new" %}">Add a new child</a></button>
 <h2>Children</h2>
+
+
  <div class="row">
 {% for child in object_list %}
   <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
@@ -26,9 +28,8 @@
 </ul>
     </section>
 
-{# <a href="{% url "childs_new" %}">childs_new</a>#}
+
     {% else %}
 {% endif %}
 {% endblock %}
-      <!-- <a href="/child/update/{{ child.id }}/"> DELETE child</a> -->
-      <!-- <a href="{% url bobdelete_child.html %}"> DELETE child</a> -->
+
