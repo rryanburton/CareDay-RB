@@ -285,6 +285,18 @@ class DailyReportUpdateView(UpdateView):
     #     messages.info(self.request, self.success_msg)
     #     return super().form_valid(form)
 
+    def form_invalid(self, form, diapering_form, sleeping_form, eating_form):
+        """
+        Called if a form is invalid. Re-renders the context data with the
+        data-filled forms and errors.
+        """
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  diapering_form=diapering_form,
+                                  sleeping_form=sleeping_form,
+                                  eating_form=eating_form,
+                                  ))
+
     def get_object(self, queryset=None):
         obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
             date=date.today(), )
