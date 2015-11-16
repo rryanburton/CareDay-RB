@@ -28,6 +28,7 @@
 {% else %}
         <h1><a href="/"> <img src="{% static 'img/careday-3d-trans.png' %}"></a></h1>
 {% endif %}
+    {% if user.is_authenticated %}
 <nav id="tablet">
   <ul class="navigation group">
       <li><a class="scroll" href="#">About us</a></li>
@@ -52,7 +53,8 @@
       </ul>
     <a href="/">Login/Logout</a>
   </nav>
-
+    {% else %}
+{% endif %}
   </header></div>
   <main class="container">
   {% block content %}

@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% block content %}
+    {% if user.is_authenticated %}
 {% bootstrap_css %}
 
 <section class="kids">
@@ -26,6 +27,8 @@
     </section>
 
 {# <a href="{% url "childs_new" %}">childs_new</a>#}
+    {% else %}
+{% endif %}
 {% endblock %}
       <!-- <a href="/child/update/{{ child.id }}/"> DELETE child</a> -->
       <!-- <a href="{% url bobdelete_child.html %}"> DELETE child</a> -->

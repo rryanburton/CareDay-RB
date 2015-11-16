@@ -375,6 +375,8 @@ nav#main-login form.form-login div.form-group {
 }
 nav#main-login form.form-login button {
   margin-left: 15px;
+  background-color: #8c8c8c;
+  border-color: #4e4e4e;
 }
 nav#main-login ul.dropdown-menu {
   float: right;
