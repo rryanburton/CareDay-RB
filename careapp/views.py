@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.shortcuts import render, redirect
@@ -181,6 +181,7 @@ class DailyReportUpdateView(UpdateView):
 
     model = DailyReport
     form = DailyReportForm
+    form_name = DailyReportForm
     template_name = 'careapp/daily_report.html'
     success_msg = "Daily Report updated!"
 
@@ -247,9 +248,42 @@ class DailyReportUpdateView(UpdateView):
             context['eating_formset'] = self.EatingFormSet(instance=context['object'])
         return context
 
-    def form_valid(self, form):
-        messages.info(self.request, self.success_msg)
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+            """
+            Handles POST requests, instantiating a form instance and its inline
+            formsets with the passed POST variables and then checking them for
+            validity.
+            """
+            self.object = None
+            form_name = self.get_form_class()
+            form = self.get_form(form_name)
+            diapering_form = self.DiaperingFormSet(self.request.POST)
+            sleeping_form = self.SleepingFormSet(self.request.POST)
+            eating_form = self.EatingFormSet(self.request.POST)
+            if (form.is_valid() and diapering_form.is_valid() and
+                sleeping_form.is_valid() and eating_form.is_valid()):
+                return self.form_valid(form, diapering_form, sleeping_form, eating_form)
+            else:
+                return self.form_invalid(form, diapering_form, sleeping_form, eating_form)
+
+    def form_valid(self, form, diapering_form, sleeping_form, eating_form):
+        """
+        Called if all forms are valid. Creates a Recipe instance along with
+        associated Ingredients and Instructions and then redirects to a
+        success page.
+        """
+        self.object = form.save()
+        diapering_form.instance = self.object
+        diapering_form.save()
+        sleeping_form.instance = self.object
+        sleeping_form.save()
+        eating_form.instance = self.object
+        eating_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    # def form_valid(self, form):
+    #     messages.info(self.request, self.success_msg)
+    #     return super().form_valid(form)
 
     def get_object(self, queryset=None):
         obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
