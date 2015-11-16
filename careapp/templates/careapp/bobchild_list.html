@@ -4,11 +4,11 @@
 {% block content %}
 {% bootstrap_css %}
 
-<section id="kids">
-<h1>Children</h1>
+<section class="kids">
+<h2>Children</h2>
  <div class="row">
 {% for child in object_list %}
-  <div class="col-lg-2 col-md-3 col-sm-3 ">
+  <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
     <a href="/child/update/{{ child.id }}/"> UPDATE child </a>
     <a href="./daily-report"><input type="image" src="{{ child.image }}" name="image" width="170" height="170"></a>
     <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a>
