@@ -5,24 +5,22 @@
 {% bootstrap_css %}
 
 
+  <h3>Report by Date:</h3>
+
+  <button class="btn btn-default" style="margin-top: 10px;width: 175px;"><a href="{% url "archive-list-date" %}">Go to Report by Child</a></button>
 
 
-    <h2>Archive of Date by Child</h2>
-    <div class="row"><ul>
-{% for dailyreport in object_list %}
-
+  <div class="row"><ul>
+    {% for dailyreport in object_list %}
 
   <div id="archive-date">
      <li> <a href="./dailyreport/update/{{ dailyreport.id }}">{{ dailyreport.date }}
-{#       <!--   <input type="image" src="{% static '' %}{{  child.image }}" name="image" width="170" height="170"> -->#}
-      </a> {{ dailyreport.child.first_name }}
-  </li>
+         </a> {{ dailyreport.child.first_name }}
+    </li>
   </div>
 
  {% endfor %}
-  </ul>  </div>
-
-
-
+                  </ul>
+  </div>
 
 {% endblock %}
