@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.shortcuts import render, redirect
@@ -87,18 +87,18 @@ class ChildUpdateView(ChildActionMixin, UpdateView):
     success_msg = "Child updated!"
 
     def get(self, request, **kwargs):
-        self.object = Child.objects.get(id=self.kwargs['pk'])
+        self.object = Child.objects.get(id=self.kwargs['id'])
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         context = self.get_context_data(object=self.object, form=form)
         return self.render_to_response(context)
 
     def get_object(self, queryset=None):
-        obj = Child.objects.get(id=self.kwargs['pk'])
+        obj = Child.objects.get(id=self.kwargs['id'])
         return obj
 
     def get_success_url(self):
-        return reverse('bob-child')
+        return reverse('childs-list')
 
 
 class ChildDetailView(DetailView):
@@ -127,7 +127,7 @@ def add_child(request):
 
 
 class DailyReportActionMixin(object):
-    fields = ( 'arrival_time',
+    fields = ('arrival_time',
               'departure_time', 'mood_am', 'mood_pm')
 
     @property
@@ -260,8 +260,68 @@ class DailyReportUpdateView(UpdateView):
         return reverse('childs-list')
 
 
-class DailyReportDetailView(DailyReportActionMixin, DetailView):
+class DailyReportDetailView(DetailView):
+    fields = ('id', 'arrival_time', 'departure_time', 'mood_am', 'mood_pm', 'child_id')
     model = DailyReport
+    template_name = 'careapp/dailyreport_detail_form.html'
+
+    DiaperingFormSet = inlineformset_factory(
+        DailyReport, Diapering,
+        fields=('id', 'time_diaper', 'num_one', 'num_two', 'comments', 'dailyreport'),
+        widgets={'time_diaper': forms.TimeInput(
+                 attrs={'class': 'time_diaper'}),
+                 }, labels={'time_diaper': 'Potty time',
+                            'num_one': 'Wet',
+                            'num_two': 'BM',
+                            },
+        extra=1)
+
+    SleepingFormSet = inlineformset_factory(
+        DailyReport, Sleeping,
+        fields=('id', 'time_slp_start', 'time_slp_end', 'dailyreport'),
+        widgets={'time_slp_start': forms.TimeInput(
+                attrs={'class': 'time_slp_start'}),
+                       'time_slp_end': forms.TimeInput(
+                attrs={'class': 'time_slp_end'}),
+         }, labels={'time_slp_start': 'Nap time start',
+                    'time_slp_end': 'Nap time finish',
+                    },
+        extra=1)
+
+    EatingFormSet = inlineformset_factory(
+        DailyReport, Eating,
+        fields=('id', 'time_eat', 'food', 'leftover', 'dailyreport'),
+        widgets={
+            'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+         },
+        labels={
+            'time_eat': 'Meal time',
+         },
+        extra=1)
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyReportUpdateView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
+        else:
+            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
+        return context
+
+    def form_valid(self, form):
+        messages.info(self.request, self.success_msg)
+        return super().form_valid(form)
+
+    def get_object(self, queryset=None):
+        obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'], )
+                                                        #  date=date.today(), )
+        return obj
+
+    def get_success_url(self):
+        return reverse('childs-list')
 
 
 ###############################################################################
