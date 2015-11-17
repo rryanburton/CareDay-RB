@@ -231,14 +231,19 @@ div.form-group {
 Main Header
 ============================*/
 body {
-  font-family: 'lato' !important;
+  font-family: 'lato';
   background-color: #4A4A4A;
 }
 a {
   color: #fff;
 }
+.active {
+color: #F7F21A !important;
+text-decoration: underline;
+}
 a:active {
-  color: #F7F21A !important;
+  color: #F7F21A;
+  text-decoration: underline;
 }
 a:visited {
   color: inherit;
@@ -253,15 +258,17 @@ header.main-header {
   overflow: auto; }
 header.main-header h1 {
   font-size: 30pt;
+  font-family: 'lato';
+  font-weight: 300;
   margin: 0;
-  margin-top: .1em;
+  margin-top: .2em;
   margin-left: .8em;
   display: block;
   float: left;
   color: #fff; }
-header.main-header a:active {
+/*header.main-header a:active {
   color: #F7F21A;
-}
+}*/
   header.main-header h1 a:hover {
     text-decoration: none;
     color: #F7F21A;
@@ -403,8 +410,8 @@ nav#main-login #logout a {
   .container-fluid {
     padding: 0;
 }
-h3#welcome {
-  position: absolute;
+div#welcome {
+  /*position: absolute;
   display: inline-table;
   color: #fff;
   font-size: 6.2em;
@@ -412,14 +419,26 @@ h3#welcome {
   right: 0;
   bottom: 0;
   left: 7%;
-  z-index: 0;
+  z-index: 0;*/
+}
+div#welcome h1{
+  position: absolute;
+  display: inline-table;
+  font-size: 5.2em;
+  color: #fff;
+  top: 24%;
+  right: 0;
+  bottom: 0;
+  left: 6.5%;
+  z-index: 0;*/
 }
 p#instruction {
   position: absolute;
   display: inline-table;
   color: #fff;
-  font-size: 2.5em;
-  top: 26%;
+  font-size: 1.414em;
+  line-height: 2em;
+  top: 33%;
   right: 0;
   bottom: 0;
   left: 7.5%;
