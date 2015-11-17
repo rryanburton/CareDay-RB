@@ -1,4 +1,16 @@
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update" />
-</form>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+
+<div>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update" />
+    </form>
+    <button class="btn btn-default"><a href="/bobchilddelete/{{ child.id }}">Delete child account</a></button>
+</div>
+
+
+{% endblock %}
