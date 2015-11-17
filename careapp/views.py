@@ -534,8 +534,23 @@ class BobArchiveDateDailyReportListView(ListView):
     template_name = 'careapp/bobarchive_date.html'
 
     def get_queryset(self):
-        # filterdate = '2015-11-13'
+
         preload = DailyReport.objects.all().select_related('date')
         return preload
-        # return preload.filter(date=filterdate).order_by('arrival_time')
-        # return preload.order_by('-date')
+
+    if request.method == "POST":
+        f = DateRangeForm(request.POST)
+        if f.is_valid():
+            c = f.save(commit=False)
+            c.end_date = timezone.now()
+            c.save()
+        else:
+            f = DateRangeForm()
+            args = {}
+            args.update(csrf(request))
+            args['form'] = f
+
+
+        return render(request, 'bobarchive_date.html', {
+            'form': f
+        })

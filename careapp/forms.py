@@ -4,8 +4,10 @@ from django import forms
 # from django.forms import inlineformset_factory
 # from datetimewidget.widgets import TimeWidget
 from .models import Child, DailyReport, Diapering, Sleeping, Eating
+from functools import partial
 
 # Create the form class.
+
 
 class ChildForm(forms.ModelForm):
 
@@ -21,7 +23,6 @@ class DailyReportForm(forms.ModelForm):
         model = DailyReport
         fields = ('date', 'child', 'arrival_time', 'departure_time',
                   'mood_am', 'mood_pm')
-
 
 
 # class DiaperingFormSet(InlineFormSet):
@@ -47,3 +48,11 @@ class DailyReportForm(forms.ModelForm):
 #     model = Eating
 #     fields = ('time_eat', 'food', 'leftover')
 #     extra = 1
+
+
+DateInput = partial(forms.DateInput, {'class': 'datepicker'})
+
+
+class DateRangeForm(forms.Form):
+    start_date = forms.DateField(widget=DateInput())
+    end_date = forms.DateField(widget=DateInput())

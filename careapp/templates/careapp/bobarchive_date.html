@@ -8,9 +8,9 @@
    <form id="calendar-form">
      <!-- <img id="boy" src="{% static 'img/boy.jpg' %}"  width:"150"; height="350";/> -->
    <div id="calendar-page">
-     <input id="datepicker" placeholder="Search a previous day"/>
+     <input id="datepicker" name="pickdate" placeholder="Search a previous day"/>
      <button type="button">save</button>
-     <h3>Pick a child add daily report</h3>
+     <h3>Date selected: {% 'name' %}</h3>
         <div id="list">
              {% if messages %}
              <ul class="messages">
