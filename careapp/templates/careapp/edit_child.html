@@ -14,9 +14,11 @@
 </ul>
 {% endif %}
 <section id="calendar-form2">
- <h1>Add A Child</h1>
+ 
 <form id="new-child" action="/child/new" method="POST">
   {% csrf_token %}
+  <div>
+     <h2>Add A Child</h2>
   <ul class="add-child">
     <li><label for="id_first_name">First name:</label><input id="id_first_name" maxlength="20" name="first_name" type="text" /></li>
     <li><label for="id_gender">Gender:</label><select id="id_gender" name="gender">
@@ -29,6 +31,7 @@
     <li><label for="id_parent_email">Parent email:</label><input id="id_parent_email" maxlength="254" name="parent_email" type="email" /></li>
     <li><label for="id_parent_phone">Parent phone:</label><input id="id_parent_phone" maxlength="15" name="parent_phone" type="text" /></li>
   </ul>
+</div>
   <button type="reset" class="btn btn-default">Clear</button>
   <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
 </form>

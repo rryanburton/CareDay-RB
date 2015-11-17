@@ -85,23 +85,66 @@ textarea {
   margin-bottom: .5em;
   font-size: 16pt;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5em;
+  text-align: left;
+  margin-bottom: 1em;
+  padding-left: 1.3em;
  }
   #child-name-date p {
     display: inline;
     font-family: inherit;
     color: #000;
     font-size: 25pt;
-    margin: 2em; }
+    margin: 1em; }
 #child-name-date img {
   border-radius: 100%;
   float: right;
-  margin-right: 2.5em;
+  margin-right: 3.5em;
 }
 
+/*===============================
+Update by date and child
+===============================*/
+#update-child-by {
+  /*background: #E0E0E0;*/
+  width: 90%;
 
-
+}
+#update-child-by div {
+  background: #E0E0E0;
+  padding: 1em;
+  width:45%;
+}
+#update-child-by button {
+  background: #E0E0E0;
+}
+#update1 {
+  background: #E0E0E0;
+}
+/*=================================
+Add a Child
+=================================*/
+section#calendar-form2 {
+  margin: 2em;
+  padding: 1em;
+  width: 40%;
+}
+section#calendar-form2 button {
+  background: #E0E0E0;
+  width:8em;
+}
+section#calendar-form2 ul {
+  list-style: none;
+  padding: 0;
+}
+section#calendar-form2 h2 {
+  padding:.5em;
+}
+section#calendar-form2 div {
+  background: #E0E0E0;
+}
+section#calendar-form2 label {
+  padding: 1em;
+}
 
 /*======================================================================
 Daily Report Forms Page
@@ -119,7 +162,7 @@ Daily Report Forms Page
 form.activities {
   padding: 1em;
   /*background: rgba(216, 216, 216, 0.5);*/
-  background: #E0E0E0;
+  /*background: #E0E0E0;*/
   border-radius: 10px;
 
   width: 95%;
@@ -127,14 +170,17 @@ form.activities {
   display: block;
 }
 form.activities h2 {
-  text-align: center;
+  text-align: left;
 }
 form.activities th {
-  text-align: center;
+  text-align: left;
+  margin-left: 1em;
+  padding: 7.5px;
 }
 form.activities input {
   height: 2em;
   margin: .5em;
+  padding: .5em;
 }
 form.activities label {
   padding: 1em;
@@ -147,8 +193,11 @@ form.activities select {
 form.activities button {
   margin-left: 15px;
   width: 12em;
-  /*background: #E0E0E0;*/
+  background: #E0E0E0;
   margin-top: 1em;
+}
+form.activities button:hover {
+  background: #fff;
 }
 form.activities .col-sm-6 {
   /*margin: .1em;*/
@@ -188,13 +237,15 @@ form.activities .col-sm-6 {
   background: #E0E0E0;
   display: block;
   min-height: 300px;
-  border-top: 1px solid #000;
+  margin-top: 1em;
+  /*border-top: 1px solid #000;*/
 }
 #daily-report-bottom-right {
   background: #E0E0E0;
   display: block;
   min-height: 300px;
-  border-top: 1px solid #000;
+  margin-top: 1em;
+  /*border-top: 1px solid #000;*/
 
 }
 /*===========================
@@ -266,9 +317,9 @@ header.main-header h1 {
   display: block;
   float: left;
   color: #fff; }
-/*header.main-header a:active {
+span.C-D {
   color: #F7F21A;
-}*/
+}
   header.main-header h1 a:hover {
     text-decoration: none;
     color: #F7F21A;
@@ -318,39 +369,12 @@ div.main-image {
     text-decoration: none;
     border-radius: 1px;
   }
-/*
-  nav#main-nav ul.archive-toggle li a:hover {
-    background: none;
 
-  }
-  ul.archive-toggle {
-    position: absolute;
-    display: block;
-    top: 3.1%;
-    right: 0;
-    bottom: 0;
-    left: 88%;
-    z-index:10;
-
-  }
-  ul.dropdown-menu {
-    background-color: #E0E0E0;
-  }
- ul.dropdown-menu li {
-   margin: 0;
-   padding: 0;
-   color: #fff;
- }*/
 
 #tablet {
   display: none;
 }
-/*ul.archive-toggle {
-  margin: 0;
-  padding: 0;
-  float: right;
-  list-style: none;
-}*/
+
 
 /*=============================
 Admin Login
@@ -426,7 +450,7 @@ div#welcome h1{
   display: inline-table;
   font-size: 5.2em;
   color: #fff;
-  top: 24%;
+  top: 20%;
   right: 0;
   bottom: 0;
   left: 6.5%;
@@ -438,7 +462,7 @@ p#instruction {
   color: #fff;
   font-size: 1.414em;
   line-height: 2em;
-  top: 33%;
+  top: 29%;
   right: 0;
   bottom: 0;
   left: 7.5%;
@@ -539,7 +563,9 @@ div.main-image img {
   margin-bottom: 2em; }
 
 select {
-  width: 125px; }
+  width: 125px;
+  border: none;
+}
 
 button {
   color: #000; }
@@ -610,7 +636,7 @@ div.col-lg-2.col-md-3.col-sm-3 input {
   text-align: center;
 }
 .col-md-3 {
-  margin-top: 5em;
+  margin-top: 2.5em;
 }
 
 
