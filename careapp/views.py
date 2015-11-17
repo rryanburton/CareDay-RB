@@ -239,6 +239,7 @@ class DailyReportUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(DailyReportUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
+            print(context)
             context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
             context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
             context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
@@ -254,7 +255,7 @@ class DailyReportUpdateView(UpdateView):
             formsets with the passed POST variables and then checking them for
             validity.
             """
-            self.object = None
+            self.object = self.get_object()
             form_name = self.get_form_class()
             form = self.get_form(form_name)
             diapering_form = self.DiaperingFormSet(self.request.POST)
@@ -290,6 +291,7 @@ class DailyReportUpdateView(UpdateView):
         Called if a form is invalid. Re-renders the context data with the
         data-filled forms and errors.
         """
+        messages.add_message(self.request, message="Error saving form", level=messages.WARNING)
         return self.render_to_response(
             self.get_context_data(form=form,
                                   diapering_form=diapering_form,
