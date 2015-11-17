@@ -1,4 +1,96 @@
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update" />
-</form>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+<head>
+  <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script data-require="bootstrap@*" data-semver="3.0.2" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <link data-require="bootstrap-css@3.0.2" data-semver="3.0.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /*  body{padding:60px;} */
+
+    form {
+      margin-bottom: 50px;
+    }
+  </style>
+  <script>
+    $(function() {
+
+      var popOpts = {
+        placement: 'right',
+        title: 'Delete Child Account',
+        html: 'true',
+        content: 'Are you sure you want to delete this Child account?<br><button class="btn btn-default popover-submit" type="button">Yes</button><button class="btn btn-default" type="button">No</button>',
+        //container: 'body'
+      }
+
+
+      // Delete button popover confirmation
+      $(".btn-delete").popover(popOpts).on('shown.bs.popover', function(e) {
+        var $delete = $(this)
+        var $form = $delete.closest('form')
+        var $pop = $form.find('.popover');
+        var $popButtons = $pop.find('button').click(function() {
+          if ($(this).is('.popover-submit')) {
+            $form.submit();
+          }
+          $delete.popover('destroy').popover(popOpts);
+
+
+        })
+
+
+
+      });
+      $(".deleteForm").submit(function(e) {
+        e.preventDefault()
+        var postData = $(this).serializeArray();
+        console.log(postData)
+          /*$.ajax({
+            type: "POST",
+            cache: false,
+            url: "delete.php",
+            data: postData,
+          });*/
+      });
+
+    })
+  </script>
+</head>
+<div class="container-fluid" id="child-update" style=
+        "margin-left: 50px;
+        margin-top: 50px;
+        ">
+    <form action="" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+{#        {{ form.as_p }}#}
+        <br><input type="submit" value="Update" />
+           <button class="btn btn-default btn-delete" data-toggle="popover" type="button">
+{#        <!-- <a href="{% url "bob-child-delete" child.pk %}">  --> #}
+            <span class="glyphicon glyphicon-trash"></span> Delete child account</a>
+    </button>
+
+    </form>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+{#<body>#}
+{#  <div class="container">#}
+{#    <div class="row">#}
+{#      <form action="" method="post" class="deleteForm">#}
+{#        <input name="id" value="100" type="hidden">#}
+{#        <button class="btn btn-default btn-delete" data-toggle="popover" type="button"><span class="glyphicon glyphicon-trash"></span>#}
+{#        </button>#}
+{#      </form>#}
+{#    </div><!-- /.row -->#}
+{#  </div><!-- /.container -->#}
+{#</body>#}
+
