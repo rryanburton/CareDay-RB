@@ -9,6 +9,7 @@
 <h2>Child Management</h2>
 
 
+
  <div class="row">
 {% for child in object_list %}
   <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
@@ -29,7 +30,7 @@
 
   </div>
 </div>
-
+<button class="btn btn-default"><a href="{% url "child-new" %}">Add a new child</a></button>
 <ul class="bob-child">
 
 
@@ -40,4 +41,3 @@
     {% else %}
 {% endif %}
 {% endblock %}
-
