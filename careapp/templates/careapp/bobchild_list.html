@@ -5,7 +5,7 @@
     {% if user.is_authenticated %}
 {% bootstrap_css %}
 <section class="kids">
-<button class="btn btn-default"><a href="{% url "child-new" %}">Add a new child</a></button>
+
 <h2>Children</h2>
 
 
@@ -14,14 +14,14 @@
   <div id="roster-images" class="col-lg-2 col-md-3 col-sm-3 ">
     <a href="/child/update/{{ child.id }}/"> UPDATE child </a>
     <a href=""><input type="image" src="{% static '' %}{{ child.image }}" name="image" width="170" height="170"></a>
-    <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a>
+    <!-- <a href="/bobchilddelete/{{ child.id }}"> DELETE child </a> -->
     <p>{{ child }}</p>
 
 
   </div>
 {% endfor %}
 </div>
-
+<button class="btn btn-default"><a href="{% url "child-new" %}">Add a new child</a></button>
 <ul class="bob-child">
 
 
@@ -32,4 +32,3 @@
     {% else %}
 {% endif %}
 {% endblock %}
-
