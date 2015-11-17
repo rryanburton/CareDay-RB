@@ -1,20 +1,8 @@
-$(document).ready(function() {
-  $("#datepicker").datepicker(); });
+// $(document).ready(function() {
+//   $("#datepicker").datepicker(); });
 
-// $(document).ready(function(){
-//
-//   $("#act").click(function(){
-//     $('.activities').addClass('active')
-//     .animate({
-//     opacity: 0.8,
-//     left: "+=50",
-//     height: "toggle"
-//   }, 700, function() {
-//     // Animation complete.
-//   });
-//   $("#act").hide();
-//   });
-// });
+// you can click on the h1 welcome message on landing page and it will take you
+// to our contact info 
 
 $(function() {
 	// the element inside of which we want to scroll
@@ -35,17 +23,9 @@ $('.scroll').click(
 	);
 });
 
-$("#goback").click(function() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
-  return false;
-});
-// var $elem = $('body');
-// $('#goback').click(
-// function (e) {
-//   console.log('click')
-// $('html, body').animate({scrollTop: $elem.height()}, 1000);
-// }
-// );
+
+// make links active when clicked
+
 $(function () {
     setNavigation();
 });
