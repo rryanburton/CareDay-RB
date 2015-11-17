@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
-    DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
+    DailyReportListView,  DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
     ArchiveChildDailyReportListView, ArchiveDateDailyReportListView, \
     TerryCreateView, BobChildListView, BobChildDeleteView
@@ -41,8 +41,8 @@ urlpatterns = [
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),
-    url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
-        name='dailyreport-new', ),
+    # url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
+    #     name='dailyreport-new', ),
     # url(r'^dailyreport/update/(?P<id>\d+)/$',
     #     DailyReportUpdateView.as_view(), name='dailyreport-update'),
 

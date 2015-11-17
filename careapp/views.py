@@ -152,27 +152,27 @@ class DailyReportListView(ListView):
         # return preload.order_by('-date')
 
 
-class DailyReportCreateView(DailyReportActionMixin, CreateView):
-    model = DailyReport
-    template_name = 'careapp/daily_report_initial.html'
-    success_msg = "Daily Report created"
-
-    def daily_report(request):
-        '''
-        Opens the Daily sign-in form.
-        '''
-        if request.method == 'POST':
-            form = DailyReportForm(request.POST)
-            if form.is_valid():
-                form.save()
-            return redirect('dailyreport-new')
-        else:
-            form = DailyReportCreateView()
-        return render(request, 'careapp/daily_report.html',
-                      {'form': form})
-
-    def get_success_url(self):
-        return reverse('childs-list')
+# class DailyReportCreateView(DailyReportActionMixin, CreateView):
+#     model = DailyReport
+#     template_name = 'careapp/daily_report_initial.html'
+#     success_msg = "Daily Report created"
+#
+#     def daily_report(request):
+#         '''
+#         Opens the Daily sign-in form.
+#         '''
+#         if request.method == 'POST':
+#             form = DailyReportForm(request.POST)
+#             if form.is_valid():
+#                 form.save()
+#             return redirect('dailyreport-new')
+#         else:
+#             form = DailyReportCreateView()
+#         return render(request, 'careapp/daily_report.html',
+#                       {'form': form})
+#
+#     def get_success_url(self):
+#         return reverse('childs-list')
 
 
 class DailyReportUpdateView(UpdateView):
@@ -258,13 +258,14 @@ class DailyReportUpdateView(UpdateView):
             self.object = self.get_object()
             form_name = self.get_form_class()
             form = self.get_form(form_name)
-            diapering_form = self.DiaperingFormSet(self.request.POST)
-            sleeping_form = self.SleepingFormSet(self.request.POST)
-            eating_form = self.EatingFormSet(self.request.POST)
+            diapering_form = self.DiaperingFormSet(self.request.POST, instance=self.object)
+            sleeping_form = self.SleepingFormSet(self.request.POST, instance=self.object)
+            eating_form = self.EatingFormSet(self.request.POST, instance=self.object)
             if (form.is_valid() and diapering_form.is_valid() and
                 sleeping_form.is_valid() and eating_form.is_valid()):
                 return self.form_valid(form, diapering_form, sleeping_form, eating_form)
             else:
+                print(diapering_form.errors)
                 return self.form_invalid(form, diapering_form, sleeping_form, eating_form)
 
     def form_valid(self, form, diapering_form, sleeping_form, eating_form):
@@ -280,6 +281,7 @@ class DailyReportUpdateView(UpdateView):
         sleeping_form.save()
         eating_form.instance = self.object
         eating_form.save()
+        messages.add_message(self.request, level=messages.SUCCESS, message=self.success_msg)
         return HttpResponseRedirect(self.get_success_url())
 
     # def form_valid(self, form):
