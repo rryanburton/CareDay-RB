@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+{% bootstrap_css %}
+
+
+   <form id="calendar-form">
+     <!-- <img id="boy" src="{% static 'img/boy.jpg' %}"  width:"150"; height="350";/> -->
+   <div id="calendar-page">
+     <input id="datepicker" placeholder="Search a previous day"/>
+     <button type="button">save</button>
+     <h3>Pick a child add daily report</h3>
+        <div id="list">
+             {% if messages %}
+             <ul class="messages">
+               {% for message in messages %}
+               <p id="message_{{ forloop.counter }}" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                {{ message }}
+             </p>
+               {% endfor %}
+             </ul>
+             {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

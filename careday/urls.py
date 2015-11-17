@@ -22,7 +22,7 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
     ArchiveChildDailyReportListView, ArchiveDateDailyReportListView, \
     TerryCreateView, BobChildListView, BobChildDeleteView, \
-    DailyReportDetailView
+    DailyReportDetailView, BobArchiveDateDailyReportListView
 
 from django.contrib.auth.views import logout
 
@@ -76,6 +76,7 @@ urlpatterns = [
         name='archive-list-date', ),
     url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
         name='archive-list-child', ),
-
+    url(r'^archive/bobdate$', BobArchiveDateDailyReportListView.as_view(),
+        name='archive-list-bobchild', ),
 
 ]

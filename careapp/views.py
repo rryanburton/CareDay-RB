@@ -259,6 +259,8 @@ class DailyReportUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('childs-list')
 
+# ##########  non-working detail view ################
+
 
 class DailyReportDetailView(DetailView):
     fields = ('id', 'arrival_time', 'departure_time', 'mood_am', 'mood_pm', 'child_id')
@@ -316,7 +318,7 @@ class DailyReportDetailView(DetailView):
         return super().form_valid(form)
 
     def get_object(self, queryset=None):
-        obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'], )
+        obj, created = DailyReport.objects.get_or_create(dailyreport_id=self.kwargs['pk'], )
                                                         #  date=date.today(), )
         return obj
 
@@ -524,3 +526,16 @@ class ArchiveChildDailyReportListView(ListView):
         # return preload.order_by('-date')
 
 ###############################################################################
+#  ARCHIVE ATTEMPT WITH DATE PICKER
+
+
+class BobArchiveDateDailyReportListView(ListView):
+    model = DailyReport
+    template_name = 'careapp/bobarchive_date.html'
+
+    def get_queryset(self):
+        # filterdate = '2015-11-13'
+        preload = DailyReport.objects.all().select_related('date')
+        return preload
+        # return preload.filter(date=filterdate).order_by('arrival_time')
+        # return preload.order_by('-date')
