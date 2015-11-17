@@ -46,3 +46,19 @@ $("#goback").click(function() {
 // $('html, body').animate({scrollTop: $elem.height()}, 1000);
 // }
 // );
+$(function () {
+    setNavigation();
+});
+
+function setNavigation() {
+    var path = window.location.pathname;
+    path = path.replace(/\/$/, "");
+    path = decodeURIComponent(path);
+
+    $("#main-nav a").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).closest('a').addClass('active');
+        }
+    });
+}
