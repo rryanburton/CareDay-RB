@@ -563,6 +563,7 @@ div.col-lg-2.col-md-3.col-sm-3 p {
   }
 #roster-images  {
 text-align: center;
+      margin-bottom: 25px;
 }
 div.col-lg-2.col-md-3.col-sm-3 input {
   margin: 0 auto;
