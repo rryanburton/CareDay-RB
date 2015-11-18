@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse_lazy
 from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
-    DailyReportListView,  DailyReportUpdateView, \
+    DailyReportListView, DailyReportCreateView, DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
     ArchiveChildDailyReportListView, ArchiveDateDailyReportListView, \
     TerryCreateView, BobChildListView, BobChildDeleteView
@@ -41,16 +41,20 @@ urlpatterns = [
     url(r'^child/new$', ChildCreateView.as_view(), name='child-new', ),
     url(r'^dailyreport$', DailyReportListView.as_view(),
         name='dailyreport-list', ),
-    # url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
-    #     name='dailyreport-new', ),
-    # url(r'^dailyreport/update/(?P<id>\d+)/$',
+    url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
+        name='dailyreport-new', ),
+    # # url(r'^dailyreport/update/(?P<id>\d+)/$',
     #     DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
-    # url(r'^dailyreport/update/(?P<date>\d+)/(?P<child_id>\d+)/$',
-    #         DailyReportUpdateView.as_view(),  name='dailyreport-update'),
 
     url(r'^dailyreport/update/(?P<child_id>\d+)/$',
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
+    # url(r'^dailyreport/detail/(?P<pk>\d+)/$',
+    #     DailyReportDetailView.as_view(), name='dailyreport-detail'),
+
+    url(r'^dailyreport/(?P<date>\d{4}-\d{2}-\d{2})/(?P<child_id>\d+)/$',
+        DailyReportUpdateView.as_view(),  name='dailyreport-update-date'),
+
 
     # url(r'^$', index, name='index'),
     url(r'^calendar$', TemplateView.as_view(
@@ -72,6 +76,7 @@ urlpatterns = [
         name='archive-list-date', ),
     url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
         name='archive-list-child', ),
-
+    # url(r'^archive/bobdate$', BobArchiveDateDailyReportListView.as_view(),
+    #     name='archive-list-bobchild', ),
 
 ]

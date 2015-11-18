@@ -152,27 +152,27 @@ class DailyReportListView(ListView):
         # return preload.order_by('-date')
 
 
-# class DailyReportCreateView(DailyReportActionMixin, CreateView):
-#     model = DailyReport
-#     template_name = 'careapp/daily_report_initial.html'
-#     success_msg = "Daily Report created"
-#
-#     def daily_report(request):
-#         '''
-#         Opens the Daily sign-in form.
-#         '''
-#         if request.method == 'POST':
-#             form = DailyReportForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#             return redirect('dailyreport-new')
-#         else:
-#             form = DailyReportCreateView()
-#         return render(request, 'careapp/daily_report.html',
-#                       {'form': form})
-#
-#     def get_success_url(self):
-#         return reverse('childs-list')
+class DailyReportCreateView(DailyReportActionMixin, CreateView):
+    model = DailyReport
+    template_name = 'careapp/daily_report_initial.html'
+    success_msg = "Daily Report created"
+
+    def daily_report(request):
+        '''
+        Opens the Daily sign-in form.
+        '''
+        if request.method == 'POST':
+            form = DailyReportForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('dailyreport-new')
+        else:
+            form = DailyReportCreateView()
+        return render(request, 'careapp/daily_report.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('childs-list')
 
 
 class DailyReportUpdateView(UpdateView):
@@ -300,12 +300,17 @@ class DailyReportUpdateView(UpdateView):
                                   ))
 
     def get_object(self, queryset=None):
+        desired_date = date.today()
+        if 'date' in self.kwargs:
+            desired_date = datetime.strptime(self.kwargs['date'], "%Y-%m-%d")
         obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
-            date=date.today(), )
+            date=desired_date, )
         return obj
 
     def get_success_url(self):
         return reverse('childs-list')
+
+########################################################################
 
 
 class DailyReportDetailView(DailyReportActionMixin, DetailView):
