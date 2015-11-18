@@ -152,27 +152,27 @@ class DailyReportListView(ListView):
         # return preload.order_by('-date')
 
 
-# class DailyReportCreateView(DailyReportActionMixin, CreateView):
-#     model = DailyReport
-#     template_name = 'careapp/daily_report_initial.html'
-#     success_msg = "Daily Report created"
-#
-#     def daily_report(request):
-#         '''
-#         Opens the Daily sign-in form.
-#         '''
-#         if request.method == 'POST':
-#             form = DailyReportForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#             return redirect('dailyreport-new')
-#         else:
-#             form = DailyReportCreateView()
-#         return render(request, 'careapp/daily_report.html',
-#                       {'form': form})
-#
-#     def get_success_url(self):
-#         return reverse('childs-list')
+class DailyReportCreateView(DailyReportActionMixin, CreateView):
+    model = DailyReport
+    template_name = 'careapp/daily_report_initial.html'
+    success_msg = "Daily Report created"
+
+    def daily_report(request):
+        '''
+        Opens the Daily sign-in form.
+        '''
+        if request.method == 'POST':
+            form = DailyReportForm(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('dailyreport-new')
+        else:
+            form = DailyReportCreateView()
+        return render(request, 'careapp/daily_report.html',
+                      {'form': form})
+
+    def get_success_url(self):
+        return reverse('childs-list')
 
 
 class DailyReportUpdateView(UpdateView):
@@ -300,17 +300,153 @@ class DailyReportUpdateView(UpdateView):
                                   ))
 
     def get_object(self, queryset=None):
+        desired_date = date.today()
+        if 'date' in self.kwargs:
+            desired_date = datetime.strptime(self.kwargs['date'], "%Y-%m-%d")
         obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
-            date=date.today(), )
+            date=desired_date, )
         return obj
 
     def get_success_url(self):
         return reverse('childs-list')
 
+#########################################################################
+# Detail view
 
-class DailyReportDetailView(DailyReportActionMixin, DetailView):
+# class DailyReportDetailView(DailyReportActionMixin, DetailView):
+#     model = DailyReport
+
+class DailyReportDetailView(UpdateView):
+    fields = ('arrival_time',
+              'departure_time', 'mood_am', 'mood_pm')
+
     model = DailyReport
+    form = DailyReportForm
+    form_name = DailyReportForm
+    template_name = 'careapp/daily_report.html'
+    success_msg = "Daily Report updated!"
 
+    DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
+                                                 fields=('time_diaper', 'num_one', 'num_two', 'comments'),
+                                                 widgets={
+                                                    'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                                    # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
+                                                 },
+                                                 labels={
+                                                    'time_diaper': 'Potty time',
+                                                    'num_one': 'Wet',
+                                                    'num_two': 'BM',
+                                                 },
+                                                 extra=1
+                                                 )
+
+    SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
+                                            fields=('time_slp_start', 'time_slp_end'),
+                                            widgets={
+                                                'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                                'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
+                                             },
+                                            labels={
+                                                'time_slp_start': 'Nap time start',
+                                                'time_slp_end': 'Nap time finish',
+
+                                             },
+                                            extra=1)
+
+    EatingFormSet = inlineformset_factory(DailyReport, Eating,
+                                             fields=('time_eat', 'food', 'leftover'),
+                                             widgets={
+                                                'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                             },
+                                             labels={
+                                                'time_eat': 'Meal time',
+                                             },
+                                             extra=1)
+
+    # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
+    # inlines = [DiaperingFormSet]
+    # template_name_suffix = '_update_form'
+
+
+    # def get(self, request, **kwargs):
+    #     self.object, created = DailyReport.objects.get_or_create(
+    #         child_id=self.kwargs['child_id'],
+    #         date=self.kwargs['date'])
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+    #     context = self.get_context_data(object=self.object, form=form)
+    #     return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyReportDetailView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
+        else:
+            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
+        return context
+
+    def post(self, request, *args, **kwargs):
+            """
+            Handles POST requests, instantiating a form instance and its inline
+            formsets with the passed POST variables and then checking them for
+            validity.
+            """
+            self.object = self.get_object()
+            form_name = self.get_form_class()
+            form = self.get_form(form_name)
+            diapering_form = self.DiaperingFormSet(self.request.POST, instance=self.object)
+            sleeping_form = self.SleepingFormSet(self.request.POST, instance=self.object)
+            eating_form = self.EatingFormSet(self.request.POST, instance=self.object)
+            if (form.is_valid() and diapering_form.is_valid() and
+                sleeping_form.is_valid() and eating_form.is_valid()):
+                return self.form_valid(form, diapering_form, sleeping_form, eating_form)
+            else:
+                return self.form_invalid(form, diapering_form, sleeping_form, eating_form)
+
+    def form_valid(self, form, diapering_form, sleeping_form, eating_form):
+        """
+        Called if all forms are valid. Creates a Recipe instance along with
+        associated Ingredients and Instructions and then redirects to a
+        success page.
+        """
+        self.object = form.save()
+        diapering_form.instance = self.object
+        diapering_form.save()
+        sleeping_form.instance = self.object
+        sleeping_form.save()
+        eating_form.instance = self.object
+        eating_form.save()
+        messages.add_message(self.request, level=messages.SUCCESS, message=self.success_msg)
+        return HttpResponseRedirect(self.get_success_url())
+
+    # def form_valid(self, form):
+    #     messages.info(self.request, self.success_msg)
+    #     return super().form_valid(form)
+
+    def form_invalid(self, form, diapering_form, sleeping_form, eating_form):
+        """
+        Called if a form is invalid. Re-renders the context data with the
+        data-filled forms and errors.
+        """
+        messages.add_message(self.request, message="Error saving form", level=messages.WARNING)
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  diapering_form=diapering_form,
+                                  sleeping_form=sleeping_form,
+                                  eating_form=eating_form,
+                                  ))
+
+    def get_object(self, queryset=None):
+        obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
+            date=self.kwargs['date'], )
+        return obj
+
+    def get_success_url(self):
+        return reverse('childs-list')
 
 ###############################################################################
 # DIAPERING TABLES
