@@ -2,7 +2,7 @@
 //   $("#datepicker").datepicker(); });
 
 // you can click on the h1 welcome message on landing page and it will take you
-// to our contact info 
+// to our contact info
 
 $(function() {
 	// the element inside of which we want to scroll
@@ -42,3 +42,6 @@ function setNavigation() {
         }
     });
 }
+$(function() {
+    $("#archive-date").pagination('selectPage', pageNumber);
+});
