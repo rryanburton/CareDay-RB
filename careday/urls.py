@@ -21,8 +21,7 @@ from careapp.views import ChildListView, ChildCreateView, ChildUpdateView, \
     DailyReportListView,  DailyReportUpdateView, \
     add_child, DiaperingCreateView, SleepingCreateView, EatingCreateView, \
     ArchiveChildDailyReportListView, ArchiveDateDailyReportListView, \
-    TerryCreateView, BobChildListView, BobChildDeleteView
-
+    TerryCreateView, BobChildListView, BobChildDeleteView, DailyReportArchiveDetailView
 from django.contrib.auth.views import logout
 
 urlpatterns = [
@@ -46,8 +45,7 @@ urlpatterns = [
     # url(r'^dailyreport/update/(?P<id>\d+)/$',
     #     DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
-    # url(r'^dailyreport/update/(?P<date>\d+)/(?P<child_id>\d+)/$',
-    #         DailyReportUpdateView.as_view(),  name='dailyreport-update'),
+
 
     url(r'^dailyreport/update/(?P<child_id>\d+)/$',
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
@@ -72,6 +70,7 @@ urlpatterns = [
         name='archive-list-date', ),
     url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
         name='archive-list-child', ),
-
+    url(r'^archive/(?P<date>\d+)/(?P<child_id>\d+)/$',
+        DailyReportArchiveDetailView.as_view(),  name='dailyreport-archive'),
 
 ]

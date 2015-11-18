@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime, date
 # from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -312,6 +312,8 @@ class DailyReportDetailView(DailyReportActionMixin, DetailView):
     model = DailyReport
 
 
+
+
 ###############################################################################
 # DIAPERING TABLES
 
@@ -510,5 +512,92 @@ class ArchiveChildDailyReportListView(ListView):
         return preload
         # .filter(child_id='1').order_by('-date')
         # return preload.order_by('-date')
+
+
+class DailyReportArchiveDetailView(DetailView):
+    fields = ('arrival_time',
+              'departure_time', 'mood_am', 'mood_pm')
+
+    model = DailyReport
+    form = DailyReportForm
+    form_name = DailyReportForm
+    template_name = 'careapp/archive_detail.html'
+    success_msg = "Daily Report updated!"
+
+    DiaperingFormSet = inlineformset_factory(DailyReport, Diapering,
+                                                 fields=('time_diaper', 'num_one', 'num_two', 'comments'),
+                                                 widgets={
+                                                    'time_diaper': forms.TimeInput(attrs={'class': 'time_diaper'}),
+                                                    # 'time_diaper': forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3)),
+                                                 },
+                                                 labels={
+                                                    'time_diaper': 'Potty time',
+                                                    'num_one': 'Wet',
+                                                    'num_two': 'BM',
+                                                 },
+                                                 extra=0
+                                                 )
+
+    SleepingFormSet = inlineformset_factory(DailyReport, Sleeping,
+                                            fields=('time_slp_start', 'time_slp_end'),
+                                            widgets={
+                                                'time_slp_start': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                                'time_slp_end': forms.TimeInput(attrs={'class': 'time_slp_end'}),
+                                             },
+                                            labels={
+                                                'time_slp_start': 'Nap time start',
+                                                'time_slp_end': 'Nap time finish',
+
+                                             },
+                                            extra=0)
+
+    EatingFormSet = inlineformset_factory(DailyReport, Eating,
+                                             fields=('time_eat', 'food', 'leftover'),
+                                             widgets={
+                                                'time_eat': forms.TimeInput(attrs={'class': 'time_slp_start'}),
+                                             },
+                                             labels={
+                                                'time_eat': 'Meal time',
+                                             },
+                                             extra=0)
+
+    # inlines = [DiaperingFormSet, SleepingFormSet, EatingFormSet]
+    # inlines = [DiaperingFormSet]
+    # template_name_suffix = '_update_form'
+
+    #
+    # def get(self, request, **kwargs):
+    #     self.object, created = DailyReport.objects.get_or_create(
+    #         child_id=self.kwargs['child_id'],
+    #         date=date.today(), )
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+    #     context = self.get_context_data(object=self.object, form=form)
+    #     return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        context = super(DailyReportArchiveDetailView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['diapering_formset'] = self.DiaperingFormSet(self.request.POST, instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(self.request.POST, instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(self.request.POST, instance=context['object'])
+        else:
+            context['diapering_formset'] = self.DiaperingFormSet(instance=context['object'])
+            context['sleeping_formset'] = self.SleepingFormSet(instance=context['object'])
+            context['eating_formset'] = self.EatingFormSet(instance=context['object'])
+        return context
+
+    def get_object(self, queryset=None):
+        print(self.kwargs['date'])
+        obj, created = DailyReport.objects.get_or_create(child_id=self.kwargs['child_id'],
+            date=datetime.strptime(self.kwargs['date'], "%Y%m%d").strftime("%Y-%m-%d"), )
+        return obj
+
+    # def get(self, request, **kwargs):
+    #         self.object = DailyReport.objects.get(child=self.kwargs['child_id'], date=self.kwargs['date'])
+    #         form_class = self.get_form_class()
+    #         form = self.get_form(form_class)
+    #         # context = self.get_context_data(object=self.object, form=form)
+    #         return self.render_to_response(context)
 
 ###############################################################################
