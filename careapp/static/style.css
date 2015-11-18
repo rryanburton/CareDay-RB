@@ -104,17 +104,17 @@ textarea {
 /*===============================
 Update by date and child
 ===============================*/
-#update-child-by {
+.update-child-by {
   /*background: #E0E0E0;*/
   width: 90%;
 
 }
-#update-child-by div {
+.update-child-by div {
   background: #E0E0E0;
   padding: 1em;
   width:45%;
 }
-#update-child-by button {
+.update-child-by button {
   background: #E0E0E0;
 }
 #update1 {
@@ -126,7 +126,7 @@ Add a Child
 section#calendar-form2 {
   margin: 2em;
   padding: 1em;
-  width: 40%;
+  width: 100%;
 }
 section#calendar-form2 button {
   background: #E0E0E0;
