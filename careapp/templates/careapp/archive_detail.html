@@ -1,16 +1,37 @@
-archive detail
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block content %}
+{% bootstrap_css %}
 
-<ul>
-<li>date {{ dailyreport.date}}
-<li>name  {{ dailyreport.child.first_name }}
+{#<ul>#}
+{#<li>date {{ dailyreport.date}}#}
+{#<li>name  {{ dailyreport.child.first_name }}#}
+{##}
+{#<li>arrival time  {{ dailyreport.arrival_time }}#}
+{#<li> departure time  {{ dailyreport.departure_time }}#}
+{#    <li> morning mood {{ dailyreport.mood_am }}#}
+{#<li>{{ dailyreport.sleeping_set }}</li>#}
+<div id="child-name-date">
+  <p>{{ dailyreport.date }}</p>
+    <img src="{% static '' %}{{  dailyreport.child.image }}" width="64" height="64">
+  <p>{{ dailyreport.child }}</p>
+</div>
 
-<li>arrival time  {{ dailyreport.arrival_time }}
-<li> departure time  {{ dailyreport.departure_time }}
-    <li> morning mood {{ dailyreport.mood_am }}
-<li>{{ dailyreport.sleeping_set }}</li>
+
+<form class="activities" action="{% url "dailyreport-update" dailyreport.child_id %}" method="POST">
+    <div class="row">
+      {% csrf_token %}
+        <div class="col-sm-6" id="daily-report-top-left">
+          <h2>Arrival/Departure</h2>
+          <li><label for="id_arrival_time">Arrival time:</label>{{ dailyreport.arrival_time }}</li>
+          <li><label for="id_departure_time">Departure time:</label>{{ dailyreport.departure_time }}</li>
+          <li><label for="id_mood_am">Morning Mood:</label>{{ dailyreport.mood_am }}</li>
+          <li><label for="id_mood_pm">Afternoon Mood:</label>{{ dailyreport.mood_pm }}</li>
+        </div>
 
 
-<!--  Diapering   -->
+ <!--  Diapering   -->
         <div class="col-sm-6" id="daily-report-top-right">
           <h2>Diapering</h2>
             <table id="diapering_formset" class="form">
@@ -46,7 +67,7 @@ archive detail
 
      <!--  Sleeping   -->
 
- <div class="col-sm-6" id="daily-report-bottom-left">
+    <div class="col-sm-6" id="daily-report-bottom-left">
         <h2>Sleeping</h2>
         <table id="sleeping_formset" class="form">
         {{ sleeping_formset.non_form_errors.as_ul }}
@@ -56,29 +77,30 @@ archive detail
                 <thead>
                     <tr>
                         {% for field in form.visible_fields %}
-
-                            <th>{{ field.label|capfirst }}
+                        <th>{{ field.label|capfirst }}
                         {% endfor %}
                     </tr>
                 </thead>
             {% endif %}
-
+            <tr class="{% cycle row1,row2 %}">
             {% for field in form.visible_fields %}
                 <td>
                 {# Include the hidden fields in the form #}
                 {% if forloop.first %}
-
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
                 {% endif %}
                   {{ field.errors.as_ul }}
-                  {{ field.value }}
-
+                  {{ field }}
                 </td>
             {% endfor %}
             </tr>
         {% endfor %}
         </table>
     </div>
- <!--  Eating   -->
+
+      <!--  Eating   -->
 
     <div class="col-sm-6" id="daily-report-bottom-right">
         <h2>Eating</h2>
@@ -112,3 +134,5 @@ archive detail
         {% endfor %}
         </table>
     </div>
+
+{% endblock %}
