@@ -15,9 +15,9 @@
 {% endif %}
 <section id="calendar-form2">
 
-<form id="new-child" action="/child/new" method="POST">
-  {% csrf_token %}
-{% bootstrap_form form %}
+<form class="update-child-by" action="/child/new" method="POST">
+<div>  {% csrf_token %}
+{% bootstrap_form form %} </div>
 
     <!-- {#  <ul class="add-child">#}
 {#    <li><label for="id_first_name">First name:</label><input id="id_first_name" maxlength="20" name="first_name" type="text" /></li>#}
