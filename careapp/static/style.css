@@ -116,9 +116,17 @@ Update by date and child
 }
 .update-child-by button {
   background: #E0E0E0;
+  border: 0;
+  border-radius: 0;
+  padding: 7px;
+  width: 13em;
 }
 #update1 {
   background: #E0E0E0;
+  border: 0;
+  border-radius: 0;
+  padding: 7px;
+  width: 6em;
 }
 /*=================================
 Add a Child
@@ -131,6 +139,10 @@ section#calendar-form2 {
 section#calendar-form2 button {
   background: #E0E0E0;
   width:8em;
+  border: 0;
+  border-radius: 0;
+  padding: 5px;
+
 }
 section#calendar-form2 ul {
   list-style: none;
@@ -184,6 +196,7 @@ form.activities input {
 }
 form.activities label {
   padding: 1em;
+  font-size: 15px;
 }
 form.activities select {
   height: 2em;
@@ -587,10 +600,37 @@ section#wrap {
 input {
   border: none;
 }
+/*=====================================
+childs and date list archive section
+=====================================*/
 
+#archives button {
+  margin: 2em;
+  background: #F7F21A;
+  width: 18em;
+  height: 36px;
+  border: 0;
+  margin-left: 68px;
+  border-radius: 0;
+}
 
+#archive-date {
+  width: 20%;
+  margin-left: 1em;
+}
+#archive-date li {
+  list-style: none;
+  margin: 1em;
+  padding: 8px;
+  background: #E0E0E0;
+}
 
-
+h3.rh3 {
+  margin-left: 1.5em;
+}
+/*===============
+dropdown
+===============*/
 
 
 /*==========================

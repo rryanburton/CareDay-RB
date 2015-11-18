@@ -4,12 +4,12 @@
 {% block content %}
 {% bootstrap_css %}
 
+<div id="archives">
+  <button class="btn btn-default"><a href="{% url "archive-list-child" %}">Go to report by date &nbsp; <i class="fa fa-calendar"></i></a></button>
 
-  <h3>Report by Child:</h3>
-
-  <button class="btn btn-default" style="margin-top: 10px;width: 175px;"><a href="{% url "archive-list-child" %}">Go to Report by Date</a></button>
-
-    <div class="row"><ul>
+</div>
+<h3 class="rh3">Report by Child</h3>
+    <div class="row"><ul class="fallback">
 {% for dailyreport in object_list %}
 
 
