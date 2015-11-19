@@ -8,15 +8,14 @@
   <button class="btn btn-default"><a href="{% url "archive-list-child" %}">Go to report by date &nbsp; <i class="fa fa-calendar"></i></a></button>
 
 </div>
-<h3 class="rh3">Report by Child</h3>
+<h3 class="rh3">Daily Report by Child + Date</h3>
     <div class="row"><ul class="fallback">
 {% for dailyreport in object_list %}
 
 
   <div id="archive-date">
-     <li> <a href="/dailyreport/{{ dailyreport.date|date:"Y-m-d" }}/{{ dailyreport.child_id }}">{{ dailyreport.child.first_name }}
-{#       <!--   <input type="image" src="{% static '' %}{{  child.image }}" name="image" width="170" height="170"> -->#}
-      </a> {{ dailyreport.date }}
+     <li> <a href="/dailyreport/{{ dailyreport.date|date:"Y-m-d" }}/{{ dailyreport.child_id }}">{{ dailyreport.child.first_name }}:
+       {{ dailyreport.date }}</a>
   </li>
   </div>
 
