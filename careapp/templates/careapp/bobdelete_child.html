@@ -1,7 +1,11 @@
-
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
 <form action="" method="post">{% csrf_token %}
 
     <p>Are you sure you want to delete {{ object.first_name }}? </p>
     <input type="reset" value="Cancel" />
     <input type="submit" value="Confirm" />
 </form>
+{% endblock %}
