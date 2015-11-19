@@ -1,20 +1,8 @@
-$(document).ready(function() {
-  $("#datepicker").datepicker(); });
+// $(document).ready(function() {
+//   $("#datepicker").datepicker(); });
 
-// $(document).ready(function(){
-//
-//   $("#act").click(function(){
-//     $('.activities').addClass('active')
-//     .animate({
-//     opacity: 0.8,
-//     left: "+=50",
-//     height: "toggle"
-//   }, 700, function() {
-//     // Animation complete.
-//   });
-//   $("#act").hide();
-//   });
-// });
+// you can click on the h1 welcome message on landing page and it will take you
+// to our contact info
 
 $(function() {
 	// the element inside of which we want to scroll
@@ -35,14 +23,25 @@ $('.scroll').click(
 	);
 });
 
-$("#goback").click(function() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
-  return false;
-});
-// dropdown nav function
 
-// $('ul.nav li.dropdown').hover(function() {
-//   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-// }, function() {
-//   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-// });
+// make links active when clicked
+
+$(function () {
+    setNavigation();
+});
+
+function setNavigation() {
+    var path = window.location.pathname;
+    path = path.replace(/\/$/, "");
+    path = decodeURIComponent(path);
+
+    $("#main-nav a").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).closest('a').addClass('active');
+        }
+    });
+}
+$(function() {
+    $("#archive-date").pagination('selectPage', pageNumber);
+});

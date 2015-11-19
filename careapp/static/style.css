@@ -85,23 +85,78 @@ textarea {
   margin-bottom: .5em;
   font-size: 16pt;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5em;
+  text-align: left;
+  margin-bottom: 1em;
+  padding-left: 1.3em;
  }
   #child-name-date p {
     display: inline;
     font-family: inherit;
     color: #000;
     font-size: 25pt;
-    margin: 2em; }
+    margin: 1em; }
 #child-name-date img {
   border-radius: 100%;
   float: right;
-  margin-right: 2.5em;
+  margin-right: 3.5em;
 }
 
+/*===============================
+Update by date and child
+===============================*/
+.update-child-by {
+  /*background: #E0E0E0;*/
+  width: 90%;
 
+}
+.update-child-by div {
+  background: #E0E0E0;
+  padding: 1em;
+  width:45%;
+}
+.update-child-by button {
+  background: #E0E0E0;
+  border: 0;
+  border-radius: 0;
+  padding: 7px;
+  width: 13em;
+}
+#update1 {
+  background: #E0E0E0;
+  border: 0;
+  border-radius: 0;
+  padding: 7px;
+  width: 6em;
+}
+/*=================================
+Add a Child
+=================================*/
+section#calendar-form2 {
+  margin: 2em;
+  padding: 1em;
+  width: 100%;
+}
+section#calendar-form2 button {
+  background: #E0E0E0;
+  width:8em;
+  border: 0;
+  border-radius: 0;
+  padding: 5px;
 
+}
+section#calendar-form2 ul {
+  list-style: none;
+  padding: 0;
+}
+section#calendar-form2 h2 {
+  padding:.5em;
+}
+section#calendar-form2 div {
+  background: #E0E0E0;
+}
+section#calendar-form2 label {
+  padding: 1em;
+}
 
 /*======================================================================
 Daily Report Forms Page
@@ -119,7 +174,7 @@ Daily Report Forms Page
 form.activities {
   padding: 1em;
   /*background: rgba(216, 216, 216, 0.5);*/
-  background: #E0E0E0;
+  /*background: #E0E0E0;*/
   border-radius: 10px;
 
   width: 95%;
@@ -127,17 +182,21 @@ form.activities {
   display: block;
 }
 form.activities h2 {
-  text-align: center;
+  text-align: left;
 }
 form.activities th {
-  text-align: center;
+  text-align: left;
+  margin-left: 1em;
+  padding: 7.5px;
 }
 form.activities input {
   height: 2em;
   margin: .5em;
+  padding: .5em;
 }
 form.activities label {
   padding: 1em;
+  font-size: 15px;
 }
 form.activities select {
   height: 2em;
@@ -147,8 +206,11 @@ form.activities select {
 form.activities button {
   margin-left: 15px;
   width: 12em;
-  /*background: #E0E0E0;*/
+  background: #E0E0E0;
   margin-top: 1em;
+}
+form.activities button:hover {
+  background: #fff;
 }
 form.activities .col-sm-6 {
   /*margin: .1em;*/
@@ -188,14 +250,21 @@ form.activities .col-sm-6 {
   background: #E0E0E0;
   display: block;
   min-height: 300px;
-  border-top: 1px solid #000;
+  margin-top: 1em;
+  /*border-top: 1px solid #000;*/
 }
 #daily-report-bottom-right {
   background: #E0E0E0;
   display: block;
   min-height: 300px;
-  border-top: 1px solid #000;
+  margin-top: 1em;
+  /*border-top: 1px solid #000;*/
 
+}
+
+#email a {
+  color: #000;
+  text-decoration: none;
 }
 /*===========================
 Admin Fail Login
@@ -231,15 +300,20 @@ div.form-group {
 Main Header
 ============================*/
 body {
-  font-family: 'lato' !important;
+  font-family: 'lato';
   background-color: #4A4A4A;
 }
 a {
   color: #fff;
 }
-/*a:active {
-  color: #fff;
-}*/
+.active {
+color: #F7F21A !important;
+text-decoration: underline;
+}
+a:active {
+  color: #F7F21A;
+  text-decoration: underline;
+}
 a:visited {
   color: inherit;
 }
@@ -253,18 +327,20 @@ header.main-header {
   overflow: auto; }
 header.main-header h1 {
   font-size: 30pt;
+  font-family: 'lato';
+  font-weight: 300;
   margin: 0;
-  margin-top: .1em;
+  margin-top: .2em;
   margin-left: .8em;
   display: block;
   float: left;
   color: #fff; }
-header.main-header h1 img {
-
+span.C-D {
+  color: #F7F21A;
 }
   header.main-header h1 a:hover {
     text-decoration: none;
-    color: #F7F21A;;
+    color: #F7F21A;
   }
   header.main-header a:visited {
     color: #fff;
@@ -295,12 +371,12 @@ div.main-image {
     float: right;
     margin: 1em;
     padding: .5em;
-    font-size: 13pt;
-    margin-top: .8em;
+    font-size: 1.414em;
+    margin-top: .5em;
     height: 1em;
     /*margin-right: 9em;*/
     z-index: 10;
-    position: absolute;
+
     left: 45%;
   }
   nav#main-nav a {
@@ -312,39 +388,11 @@ div.main-image {
     border-radius: 1px;
   }
 
-  nav#main-nav ul.archive-toggle li a:hover {
-    background: none;
-
-  }
-  ul.archive-toggle {
-    /*position: absolute;*/
-    display: block;
-    top: 3.1%;
-    right: 0;
-    bottom: 0;
-    left: 88%;
-    z-index:10;
-
-  }
-  ul.dropdown-menu {
-    background-color: #E0E0E0;
-  }
- ul.dropdown-menu li {
-   margin: 0;
-   padding: 0;
-   color: #fff;
- }
 
 #tablet {
   display: none;
 }
 
-ul.archive-toggle {
-  margin: 0;
-  padding: 0;
-  float: right;
-  list-style: none;
-}
 
 /*=============================
 Admin Login
@@ -361,10 +409,10 @@ nav#main-login {
   margin-right: 5em;
   display: inline-block;
   border-radius: 3px;
-  top: 12%;
+  top: 46%;
   right: 0;
   bottom: 0;
-  left: 30%;
+  left: 4%;
   height: 190px;
 }
 nav#main-login a {
@@ -377,6 +425,13 @@ nav#main-login form.form-login button {
   margin-left: 15px;
   background-color: #8c8c8c;
   border-color: #4e4e4e;
+  display: inline-block;
+  padding: 6px 15px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
 }
 nav#main-login ul.dropdown-menu {
   float: right;
@@ -397,35 +452,50 @@ nav#main-login #logout a {
   .container-fluid {
     padding: 0;
 }
-h3#welcome {
-  position: absolute;
-  display: block;
+div#welcome {
+  /*position: absolute;
+  display: inline-table;
   color: #fff;
-  font-size: 6em;
-  top: 23%;
+  font-size: 6.2em;
+  top: 17%;
   right: 0;
   bottom: 0;
-  left: 26%;
+  left: 7%;
+  z-index: 0;*/
+}
+div#welcome h1{
+  position: absolute;
+  display: inline-table;
+  font-size: 5.2em;
+  color: #fff;
+  top: 20%;
+  right: 0;
+  bottom: 0;
+  left: 6.5%;
+  z-index: 0;*/
 }
 p#instruction {
   position: absolute;
+  display: inline-table;
   color: #fff;
-  font-size: 2em;
-  top: 39%;
+  font-size: 1.414em;
+  line-height: 2em;
+  top: 29%;
   right: 0;
   bottom: 0;
-  left: 24%;
+  left: 7.5%;
+  z-index: 0;
 }
 p#instruction a {
-  text-decoration: underline;
+  text-decoration: none;
 }
-p#instruction a:hover {
+/*p#instruction a:hover {
   color: #000;
   text-decoration: none;
   background: #E0E0E0;
   padding: .3em;
   border-radius: 5px;
-}
+}*/
 input webkit-autofill textarea webkit-autofill select webkit-autofill {
   background-color: #fff;
 }
@@ -447,10 +517,11 @@ main.container {
 
 }
 div.main-image img {
-  max-width: 100%;
+  /*min-width: 100%;*/
   height: auto;
   margin: 0 auto;
   position: relative;
+  width: 100%;
   /*background:#7f7f7f;
   background:rgba(0,0,0,0.5);*/
 }
@@ -510,7 +581,9 @@ div.main-image img {
   margin-bottom: 2em; }
 
 select {
-  width: 125px; }
+  width: 125px;
+  border: none;
+}
 
 button {
   color: #000; }
@@ -527,10 +600,37 @@ section#wrap {
 input {
   border: none;
 }
+/*=====================================
+childs and date list archive section
+=====================================*/
 
+#archives button {
+  margin: 2em;
+  background: #F7F21A;
+  width: 18em;
+  height: 36px;
+  border: 0;
+  margin-left: 68px;
+  border-radius: 0;
+}
 
+#archive-date {
+  width: 20%;
+  margin-left: 1em;
+}
+#archive-date li {
+  list-style: none;
+  margin: 1em;
+  padding: 8px;
+  background: #E0E0E0;
+}
 
-
+h3.rh3 {
+  margin-left: 1.5em;
+}
+/*===============
+dropdown
+===============*/
 
 
 /*==========================
@@ -547,8 +647,10 @@ section#wrap {
     margin-top: 0; }
 section.kids h2 {
   color: #000;
-  padding: 1em;
+  font-size: 3.998em;
+  padding: 2%;
   margin: 0 auto;
+
   text-align: center;
 }
 div.row {
@@ -558,11 +660,15 @@ margin: 0 auto;
 div.col-lg-2.col-md-3.col-sm-3 p {
   color:#000;
   padding: .5em;
-  font-size: 14pt;
+  font-size: 1.999em;
   text-align: center;
   }
 #roster-images  {
 text-align: center;
+
+}
+#roster-images p {
+  font-size: 1.999em;
 }
 div.col-lg-2.col-md-3.col-sm-3 input {
   margin: 0 auto;
@@ -574,7 +680,9 @@ div.col-lg-2.col-md-3.col-sm-3 input {
   border-radius: 100px;
   text-align: center;
 }
-
+.col-md-3 {
+  margin-top: 2.5em;
+}
 
 
 
@@ -588,62 +696,54 @@ Footer Section
 }
  #about-us {
   color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-align: left;
 }
 #about-us a {
 
 }
 
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.top-footer {
+  width:60%;
+  margin-left: 20%;
+  margin-right: 5%;
 }
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
-.cover {
-  padding: 0 20px;
-}
-.cover .btn-lg {
-  padding: 10px 20px;
+#goback.btn-lg {
+  /*padding: 10px 20px;
   font-weight: bold;
-  color: #000;
-}
-.mastfoot {
-  color: #999;
-  color: rgba(255,255,255,.5);
+  color: #000;*/
+  margin-left: 15px;
+  background-color: #8c8c8c;
+  border-color: #4e4e4e;
   display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  border-radius: 4px;
 }
-.mastfoot li {
-  list-style: none;
-  font-size: 1.5em;
+.main-footer {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  text-align: left;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+div.col-sm-9  {
+  font-size: 1.999em;
   color: #fff;
   text-align: left;
-  display: block;
-}
-.mastfoot ul {
-  display: inline;
+  width: 27%;
+  margin-left: 6%;
+  margin-top: 2em;
 
+}
+div.inner {
+  margin-top: 6em;
+  text-align: center;
+  font-size: 12pt;
 }
 
 
@@ -654,7 +754,7 @@ media queries
 @media (max-width: 800px) {
 
 
-  /*header.main-header {
+  header.main-header {
     max-width: 82.3%;
     width: 900px;
     margin: 0 auto;
@@ -681,7 +781,6 @@ label {
 
 td, th {
     text-align: center;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #000000;
@@ -692,8 +791,8 @@ td, th {
 
 table {
     background-color: transparent;
-}*/
 }
+
 
 
 

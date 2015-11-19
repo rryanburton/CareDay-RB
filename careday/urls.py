@@ -43,14 +43,18 @@ urlpatterns = [
         name='dailyreport-list', ),
     url(r'^dailyreport/new$', DailyReportCreateView.as_view(),
         name='dailyreport-new', ),
-    # url(r'^dailyreport/update/(?P<id>\d+)/$',
+    # # url(r'^dailyreport/update/(?P<id>\d+)/$',
     #     DailyReportUpdateView.as_view(), name='dailyreport-update'),
 
-    # url(r'^dailyreport/update/(?P<date>\d+)/(?P<child_id>\d+)/$',
-    #         DailyReportUpdateView.as_view(),  name='dailyreport-update'),
 
     url(r'^dailyreport/update/(?P<child_id>\d+)/$',
         DailyReportUpdateView.as_view(), name='dailyreport-update'),
+    # url(r'^dailyreport/detail/(?P<pk>\d+)/$',
+    #     DailyReportDetailView.as_view(), name='dailyreport-detail'),
+
+    url(r'^dailyreport/(?P<date>\d{4}-\d{2}-\d{2})/(?P<child_id>\d+)/$',
+        DailyReportUpdateView.as_view(),  name='dailyreport-update-date'),
+
 
     # url(r'^$', index, name='index'),
     url(r'^calendar$', TemplateView.as_view(
@@ -72,6 +76,7 @@ urlpatterns = [
         name='archive-list-date', ),
     url(r'^archive/child$', ArchiveChildDailyReportListView.as_view(),
         name='archive-list-child', ),
-
+    # url(r'^archive/bobdate$', BobArchiveDateDailyReportListView.as_view(),
+    #     name='archive-list-bobchild', ),
 
 ]
