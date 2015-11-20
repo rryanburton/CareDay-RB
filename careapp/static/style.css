@@ -628,6 +628,10 @@ childs and date list archive section
 h3.rh3 {
   margin-left: 1.5em;
 }
+ul.fallback li a {
+    color: 000;
+  }
+
 /*===============
 dropdown
 ===============*/
