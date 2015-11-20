@@ -56,7 +56,7 @@
 {#        {{ form.as_p }}#} </div>
         <br><input id="update1" class="btn btn-default" type="submit" value="Update" />
            <button class="btn btn-default btn-delete" data-toggle="popover" type="button">
-       <a href="{% url "bob-child-delete" child.pk %}"> 
+       <a href="{% url 'childdelete' child.pk %}">
             <span class="glyphicon glyphicon-trash"></span> Delete child account</a>
     </button>
 
