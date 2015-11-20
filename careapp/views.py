@@ -58,8 +58,8 @@ class ChildMgtListView(ListView):
 
 class ChildMgtDeleteView(ChildActionMixin, DeleteView):
     model = Child
-    success_url = reverse_lazy('bob-child')  # re-directs user here.
-    template_name = 'careapp/bobdelete_child.html'
+    success_url = reverse_lazy('childmgt')  # re-directs user here.
+    template_name = 'careapp/delete_child.html'
 
     # def get_object(self, queryset=None):
     #     obj = Child.objects.get(id=self.kwargs['id'])
@@ -98,7 +98,7 @@ class ChildUpdateView(ChildActionMixin, UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('bob-child')
+        return reverse('childmgt')
 
 
 class ChildDetailView(DetailView):
