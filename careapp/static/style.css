@@ -631,7 +631,15 @@ h3.rh3 {
 ul.fallback li a {
     color: 000;
   }
-
+.btn-default a:visited {
+  color: #000;
+}
+.btn-default a {
+  color: #000 !important;
+}
+.btn-default {
+  background: #ccc !important;
+}
 /*===============
 dropdown
 ===============*/
@@ -670,6 +678,9 @@ div.col-lg-2.col-md-3.col-sm-3 p {
 #roster-images  {
 text-align: center;
 
+}
+#roster-images button {
+  background: #E0E0E0;
 }
 #roster-images p {
   font-size: 1.999em;
