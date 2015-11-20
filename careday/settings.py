@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'careapp',
     'bootstrap3',
+    'django.contrib.admindocs',
 
 )
 

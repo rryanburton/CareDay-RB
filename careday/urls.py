@@ -28,6 +28,7 @@ from django.contrib.auth.views import logout
 urlpatterns = [
     url(r'^$', TemplateView.as_view(
         template_name='careapp/index.html'), name='index',),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'},
