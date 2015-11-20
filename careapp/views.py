@@ -48,15 +48,15 @@ class ChildActionMixin(object):
 
 class ChildListView(ListView):
     model = Child
-    template_name = 'careapp/childs_list2.html'
+    template_name = 'careapp/children_list.html'
 
 
-class BobChildListView(ListView):
+class ChildMgtListView(ListView):
     model = Child
-    template_name = 'careapp/bobchild_list.html'
+    template_name = 'careapp/child_list.html'
 
 
-class BobChildDeleteView(ChildActionMixin, DeleteView):
+class ChildMgtDeleteView(ChildActionMixin, DeleteView):
     model = Child
     success_url = reverse_lazy('bob-child')  # re-directs user here.
     template_name = 'careapp/bobdelete_child.html'
