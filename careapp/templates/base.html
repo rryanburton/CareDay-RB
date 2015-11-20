@@ -33,10 +33,10 @@
   <nav id="tablet">
           <a class="scroll" href="#">About us</a>
           <a href="{% url "childs-list" %}">Child Roster</a>
-          <a href="{% url 'childmgt' %}">Child management</a>
+          <a href="{% url "childmgt" %}">Child management</a>
   </nav>
   <nav id="main-nav">
-    <a href="{% url 'childmgt' %}">Child management</a>
+    <a href="{% url "childmgt" %}">Child management</a>
     <a href="{% url "childs-list" %}">Child roster</a>
     <a href="{% url "archive-list-child" %}">Archive</a>
     <a id="logout" href="{% url "careday_logout" %}">Logout</a>
