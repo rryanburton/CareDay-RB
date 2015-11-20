@@ -42,6 +42,3 @@ function setNavigation() {
         }
     });
 }
-$(function() {
-    $("#archive-date").pagination('selectPage', pageNumber);
-});
