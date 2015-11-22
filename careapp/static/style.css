@@ -1,5 +1,19 @@
+input.time_slp_start  {
+    width: 104px;
+}
+input.time_slp_end  {
+    width: 104px;
+}
+input.time_diaper  {
+    width: 104px;
+}
+input#id_arrival_time{
+    width: 104px;
+}
 
-
+input#id_departure_time{
+    width: 104px;
+}
 
 /*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
 /*
