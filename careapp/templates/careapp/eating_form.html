@@ -1,18 +1,18 @@
-{% load bootstrap3 %}
-{% bootstrap_javascript jquery=1 %}
-{% block content %}
-
-<h2>Recording Food Intake</h2>
-<form action="{% url "eating" %}" method="POST">
-  {% csrf_token %}
-  <ul>
-    <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-    <li><label for="id_time_eat">Feeding start:</label>{{form.time_eat}}</li>
-    <li><label for="id_food">Food:</label>{{form.food}}</li>
-    <li><label for="id_leftover">Leftover:</label>{{form.leftover}}</li>
-
-  </ul>
-  <button type="reset" class="btn btn-default">Clear</button>
-  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-</form>
-{% endblock %}
+{#{% load bootstrap3 %}#}
+{#{% bootstrap_javascript jquery=1 %}#}
+{#{% block content %}#}
+{##}
+{#<h2>Recording Food Intake</h2>#}
+{#<form action="{% url "eating" %}" method="POST">#}
+{#  {% csrf_token %}#}
+{#  <ul>#}
+{#    <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>#}
+{#    <li><label for="id_time_eat">Feeding start:</label>{{form.time_eat}}</li>#}
+{#    <li><label for="id_food">Food:</label>{{form.food}}</li>#}
+{#    <li><label for="id_leftover">Leftover:</label>{{form.leftover}}</li>#}
+{##}
+{#  </ul>#}
+{#  <button type="reset" class="btn btn-default">Clear</button>#}
+{#  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>#}
+{#</form>#}
+{#{% endblock %}#}

@@ -1,16 +1,16 @@
-{% load bootstrap3 %}
-{% bootstrap_javascript jquery=1 %}
-{% block content %}
-
-<h2>Recording Nap Times</h2>
-<form action="{% url "sleeping" %}" method="POST">
-  {% csrf_token %}
-  <ul>
-    <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>
-    <li><label for="id_time_slp_start">Nap start:</label>{{form.time_slp_start}}</li>
-    <li><label for="id_time_slp_end">Nap end:</label>{{form.time_slp_end}}</li>
-  </ul>
-  <button type="reset" class="btn btn-default">Clear</button>
-  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>
-</form>
-{% endblock %}
+{#{% load bootstrap3 %}#}
+{#{% bootstrap_javascript jquery=1 %}#}
+{#{% block content %}#}
+{##}
+{#<h2>Recording Nap Times</h2>#}
+{#<form action="{% url "sleeping" %}" method="POST">#}
+{#  {% csrf_token %}#}
+{#  <ul>#}
+{#    <li><label for="id_dailyreport">DailyReport:</label>{{ form.dailyreport }}</li>#}
+{#    <li><label for="id_time_slp_start">Nap start:</label>{{form.time_slp_start}}</li>#}
+{#    <li><label for="id_time_slp_end">Nap end:</label>{{form.time_slp_end}}</li>#}
+{#  </ul>#}
+{#  <button type="reset" class="btn btn-default">Clear</button>#}
+{#  <button type="submit" id="save_child" class="btn btn-default" value="Save">Save</button>#}
+{#</form>#}
+{#{% endblock %}#}

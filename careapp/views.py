@@ -12,6 +12,7 @@ from .forms import ChildForm, DailyReportForm
 # from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django import forms
+from datetimewidget.widgets import TimeWidget
 
 
 # Create your views here.
